@@ -1,0 +1,15 @@
+.btn-group.host-picker
+  .prefix.btn-pmp
+    Host
+  %button.btn.btn-form.dropdown-toggle{'data-toggle' => 'dropdown'}
+    %span.text
+      api.pmp.io
+    %span.caret
+  %ul.dropdown-menu.dropdown-menu-right
+    %li
+      %a{href: '#', 'data-value' => 'https://api.pmp.io'}
+        api.pmp.io
+    %li
+      %a{href: '#', 'data-value' => 'https://api-sandbox.pmp.io'}
+        api-sandbox.pmp.io
+  %input{type: 'hidden', name: 'host', value: 'https://api.pmp.io'}

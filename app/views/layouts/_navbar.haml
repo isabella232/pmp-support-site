@@ -1,0 +1,15 @@
+.collapse.navbar-collapse
+  %ul.nav.navbar-nav.navbar-right
+    %li.dropdown
+      %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
+        = format_user(current_user)
+        %span.caret
+      %ul.dropdown-menu
+        %li.dropdown-header Switch accounts
+        - current_users.each do |u|
+          %li
+            %a{href: '#'}
+              = format_user(u)
+        %li.divider
+        %li
+          %a{href: logout_path} Logout

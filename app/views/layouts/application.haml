@@ -1,0 +1,60 @@
+!!!
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{'http_equiv' =>'X-UA-Compatible', content: 'IE=Edge,chrome=1'}
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    %title
+      PMP Dev Portal
+    = csrf_meta_tags
+    /[if lt IE 9]
+      %script{src: '//html5shim.googlecode.com/svn/trunk/html5.js'}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  %body{class: "#{controller_name} #{action_name}"}
+
+    -# fixed navbar
+    .navbar.navbar-pmp.navbar-fixed-top
+      .container
+        .navbar-header
+          - if current_user
+            %button.navbar-toggle{'data-collapse' => 'collapse', 'data-target' => '.navbar-collapse'}
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+          %a.navbar-brand
+            PMP Support
+        - if current_user
+          = render 'layouts/navbar'
+
+    -# main content
+    #main.container
+      - if content_for?(:logbox)
+        = render 'layouts/logbox'
+      - elsif flash.alert
+        .alert.alert-danger.alert-dismissable
+          %button.close{'data-dismiss' => 'alert'} &times;
+          = flash.alert
+      - elsif flash.notice
+        .alert.alert-pmp.alert-dismissable
+          %button.close{'data-dismiss' => 'alert'} &times;
+          = flash.notice
+      = yield
+
+    -# sticky footer
+    #footer
+      .container
+        .row
+          .col-sm-4.footer-col
+            %p
+              %i.fa.fa-bookmark
+              %a{href: 'http://publicmediaplatform.org'}
+                publicmediaplatform.org
+          .col-sm-4.footer-col
+            %p
+              %i.fa.fa-question-circle
+              %a{href: 'http://support.pmp.io'}
+                support.pmp.io
+          .col-sm-4.footer-col
+            %p
+              &copy; 2014 Public Media Platform, Inc

@@ -1,0 +1,23 @@
+-# main form
+- content_for :logbox do
+  = form_tag(login_path) do
+    - if flash.alert || flash.notice
+      %span.help-block.text-danger
+        = flash.alert || flash.notice
+    - else
+      %span.help-block
+        Please enter your account login and password
+    = render partial: 'hoster'
+    %input.form-control{autofocus: '', placeholder: 'Username', type: 'text', name: 'username'}
+    %input.form-control{placeholder: 'Password', type: 'password', name: 'password'}
+    %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
+      Sign in
+
+-# nav links
+- content_for :logbox_links do
+  = link_to forgot_path, class: 'pull-left' do
+    %i.fa.fa-arrow-left
+    Forgot password?
+  = link_to register_path, class: 'pull-right' do
+    Need an account?
+    %i.fa.fa-arrow-right

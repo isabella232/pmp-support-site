@@ -1,0 +1,47 @@
+//
+// app layout
+//
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  background: #DEE5E6;
+  color: #464646;
+  margin-bottom: 60px; // footer height
+}
+#main {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; // fixed height
+  background-color: #464646;
+  .footer-col {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    a {
+      color: inherit;
+    }
+    p {
+      color: #777;
+      &:active, &:hover {
+        color: #bbb;
+        a { text-decoration: underline; }
+      }
+    }
+  }
+}
+
+.vcenter-ct {
+  display: table;
+  height: 100%;
+}
+.vcenter {
+  display: table-cell;
+  vertical-align: middle;
+}
