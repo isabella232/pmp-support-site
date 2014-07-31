@@ -41,6 +41,12 @@
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
+.jumbotron {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  background: #fff;
+}
 .alert-success {
   background-image: -webkit-linear-gradient(top, #55A833 0%, #2D8309 100%);
   background-image: -o-linear-gradient(top, #55A833 0%, #2D8309 100%);
@@ -132,6 +138,12 @@ a:hover, a:focus {
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background-color: #16726F;
     border-color: #16726F;
+  }
+  .navbar-nav > .active {
+    a, a:hover, a:focus {
+      text-decoration: none;
+      background-color: #16908D;
+    }
   }
 }
 

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # landing
+  root 'dashboard#index'
+
   # user sessions
   get  'login'    => 'sessions#login'
   get  'register' => 'sessions#register'
@@ -10,7 +13,6 @@ Rails.application.routes.draw do
   post 'forgot'   => 'sessions#do_forgot_password'
 
   # client credentials
-  root 'credentials#index'
   resources :credentials, only: [:index, :create, :destroy]
 
 end

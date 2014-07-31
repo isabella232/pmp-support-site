@@ -1,0 +1,30 @@
+.jumbotron
+  %h2
+    Public Media Platform (PMP) Support
+  %p{style: 'float:right; margin-left:1em;'}
+    = image_tag 'logo.png'
+  %p
+    The
+    = link_to 'Public Media Platform', 'http://pmp.io/'
+    is a joint effort of several major US public media organizations.
+  %p
+    Use this Support site to:
+    %ul
+      - if current_user
+        %li
+          = link_to 'manage your credentials', credentials_path
+      - else
+        %li
+          = link_to 'manage your api user', login_path
+        %li
+          = link_to 'request an api account', register_path
+      %li
+        = link_to 'report a problem', 'https://github.com/publicmediaplatform/pmp-issues/issues/new'
+      %li
+        = link_to 'view open issues', 'https://github.com/publicmediaplatform/pmp-issues/issues?state=open'
+      %li
+        = link_to 'read the technical documentation', 'http://docs.pmp.io/wiki/'
+      %li
+        = link_to 'email the developer community', 'https://groups.google.com/forum/#!forum/pmp-dev'
+      %li
+        You can also find PMP developers on IRC at irc.freenode.net in the #pmp channel.

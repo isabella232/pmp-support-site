@@ -17,15 +17,13 @@
     .navbar.navbar-pmp.navbar-fixed-top
       .container
         .navbar-header
-          - if current_user
-            %button.navbar-toggle{'data-collapse' => 'collapse', 'data-target' => '.navbar-collapse'}
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-          %a.navbar-brand
+          %button.navbar-toggle{'data-collapse' => 'collapse', 'data-target' => '.navbar-collapse'}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: root_path}
             PMP Support
-        - if current_user
-          = render 'layouts/navbar'
+        = render 'layouts/navbar'
 
     -# main content
     #main.container

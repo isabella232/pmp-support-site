@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter :require_login!, unless: :current_user
-
-
-
 protected
 
   # memoize user
@@ -35,8 +31,18 @@ protected
 
   # force login
   def require_login!
-    flash[:notice] = 'You must login first'
-    redirect_to login_path
+    unless current_user
+      flash[:notice] = 'You must login first'
+      redirect_to login_path
+    end
+  end
+
+  # force unlogin
+  def require_not_login!
+    if current_user
+      flash[:notice] = 'You are already logged in'
+      redirect_to root_path
+    end
   end
 
 end

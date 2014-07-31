@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_login!
-  before_filter :require_not_login!, if: :current_user, except: :logout
+  before_filter :require_login!, only: :logout
+  before_filter :require_not_login!, except: :logout
   rescue_from ActionController::ParameterMissing, with: :show_errors
 
   # GET /login
@@ -54,11 +54,6 @@ class SessionsController < ApplicationController
   end
 
 protected
-
-  def require_not_login!
-    flash[:notice] = 'You are already logged in'
-    redirect_to root_path
-  end
 
   # flash errors
   def show_errors(err)

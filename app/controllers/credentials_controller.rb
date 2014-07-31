@@ -1,4 +1,5 @@
 class CredentialsController < ApplicationController
+  before_filter :require_login!
 
   # GET /credentials
   def index
