@@ -21,14 +21,16 @@
           = format_user(current_user)
           %span.caret
         %ul.dropdown-menu
-          %li.dropdown-header Switch accounts
-          - current_users.each do |u|
-            %li
-              %a{href: '#'}
-                = format_user(u)
-          %li.divider
+          %li
+            = link_to 'Add account', add_account_path
           %li
             = link_to 'Logout', logout_path
+          %li.divider
+          %li.dropdown-header Switch accounts
+          - current_users.each_with_index do |u, idx|
+            %li
+              %a{href: switch_path(idx)}
+                = format_user(u)
     - else
       %li{class: active_tab(login_path, register_path, forgot_path)}
         = link_to 'Login', login_path

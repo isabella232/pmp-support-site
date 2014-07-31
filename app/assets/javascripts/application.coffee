@@ -17,6 +17,12 @@ $(document).on 'page:load ready', ->
     $target.closest('.host-picker').find('.text').text($target.text())
     $target.closest('.host-picker').find('input').val($target.data('value'))
 
+  # prevent bootstrap dropdown from stealing form-submit events
+  $('body.sessions form input').keypress (e) ->
+    if (e.which == 13)
+      e.preventDefault()
+      $(e.target).closest('form').submit()
+
   # center modals
   $('body').on 'show.bs.modal', '.modal', ->
     $(this).css top: '50%', 'margin-top': -> -($(this).height() / 2)

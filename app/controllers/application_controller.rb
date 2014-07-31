@@ -5,11 +5,7 @@ protected
 
   # memoize user
   def current_user
-    if session[:current_user]
-      @current_user ||= session[:users].find { |u| u[0] == session[:current_user] }
-    else
-      @current_user = nil
-    end
+    session[:current_user] || nil
   end
   helper_method :current_user
 
@@ -21,7 +17,12 @@ protected
 
   # memoize pmp
   def current_pmp
+    if @current_user != current_user
+      @current_user = nil
+      @pmp = nil
+    end
     if cu = current_user
+      @current_user = cu
       @pmp ||= PMP::Client.new(user: cu[0], password: cu[1], endpoint: cu[2] + '/')
     else
       @pmp = nil

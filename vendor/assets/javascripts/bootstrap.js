@@ -689,6 +689,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
   Dropdown.VERSION = '3.2.0'
 
   Dropdown.prototype.toggle = function (e) {
+    console.log("BS toggle", e);
     var $this = $(this)
 
     if ($this.is('.disabled, :disabled')) return
