@@ -5,6 +5,8 @@ gem 'sqlite3'
 gem 'therubyracer',  platforms: :ruby
 gem 'turbolinks'
 gem 'unicorn'
+gem 'negative_captcha'
+gem 'password_strength'
 # gem 'pmp', '>= 0.3.2', require: true
 gem 'pmp', path: '/Users/cavis/code/pmp-ruby-sdk', require: true
 
@@ -18,4 +20,5 @@ gem 'font-awesome-rails'
 group :test, :development do
   gem 'pry', require: true
   gem 'spring'
+  gem 'letter_opener'
 end

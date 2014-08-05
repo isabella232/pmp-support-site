@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
-  before_filter :require_login!, only: [:add_account, :do_add_account, :switch, :logout]
+
+  before_filter :setup_negative_captcha
+  before_filter :require_login!,     only:   [:add_account, :do_add_account, :switch, :logout]
   before_filter :require_not_login!, except: [:add_account, :do_add_account, :switch, :logout]
-  rescue_from ActionController::ParameterMissing, with: :show_errors
+
   rescue_from Faraday::ClientError, with: :show_invalid
 
   # GET /login
@@ -10,6 +12,10 @@ class SessionsController < ApplicationController
 
   # GET /add_account
   def add_account
+  end
+
+  # GET /register
+  def register
   end
 
   # GET /switch/1
@@ -22,14 +28,6 @@ class SessionsController < ApplicationController
     end
   end
 
-  # GET /register
-  def register
-  end
-
-  # GET /forgot
-  def forgot_password
-  end
-
   # GET /logout
   def logout
     session[:users] = nil
@@ -39,41 +37,42 @@ class SessionsController < ApplicationController
 
   # POST /login
   def do_login
-    get_client.credentials.list
-    (session[:users] ||= []) << make_user
-    session[:current_user] = make_user
-    redirect_to credentials_path, notice: 'You are now logged in'
+    if @captcha.valid?
+      if @captcha.values['host'].present? && @captcha.values['username'].present? && @captcha.values['password'].present?
+        get_client.credentials.list
+        (session[:users] ||= []) << make_user
+        session[:current_user] = make_user
+        redirect_to credentials_path, notice: 'You are now logged in'
+      else
+        flash.now.alert = 'Please fill out all fields'
+        render :new
+      end
+    else
+      flash.now.alert = @captcha.error
+      render :new
+    end
   end
 
   # POST /add_account
   def do_add_account
-    client = get_client
-    if session[:users].find { |u| u[0] == make_user[0] && u[2] == make_user[2] }
-      flash.now.alert = 'Already signed in to that account'
-      render :add_account
+    if @captcha.values['host'].present? && @captcha.values['username'].present? && @captcha.values['password'].present?
+      client = get_client
+      if session[:users].find { |u| u[0] == make_user[0] && u[2] == make_user[2] }
+        flash.now.alert = 'Already signed in to that account'
+        render :add_account
+      else
+        get_client.credentials.list
+        session[:users] << make_user
+        session[:current_user] = make_user
+        redirect_to credentials_path, notice: "Switched to account #{view_context.format_user(make_user)}"
+      end
     else
-      get_client.credentials.list
-      session[:users] << make_user
-      session[:current_user] = make_user
-      redirect_to credentials_path, notice: "Switched to account #{view_context.format_user(make_user)}"
+      flash.now.alert = 'Please fill out all fields'
+      render :add_account
     end
   end
 
-  # POST /register
-  def do_register
-  end
-
-  # POST /forgot
-  def do_forgot_password
-  end
-
 protected
-
-  # flash errors
-  def show_errors(err)
-    flash.now.alert = 'Please fill out all fields'
-    render request.path.gsub('/', '')
-  end
 
   # rescue 401's
   def show_invalid(err)
@@ -87,17 +86,24 @@ protected
 
   # get pmp client from parameters
   def get_client
-    params[:session].require(:host)
-    params[:session].require(:username)
-    params[:session].require(:password)
-    sp = params[:session] || {}
+    sp = @captcha.values || {}
     PMP::Client.new(user: sp[:username], password: sp[:password], endpoint: sp[:host] + '/')
   end
 
   # assemble user array
   def make_user
-    sp = params[:session] || {}
+    sp = @captcha.values || {}
     [sp[:username], sp[:password], sp[:host]]
+  end
+
+  # negative-captcha gem
+  def setup_negative_captcha
+    @captcha = NegativeCaptcha.new(
+      secret:  Rails.application.secrets.secret_key_base,
+      spinner: request.remote_ip,
+      fields: [:host, :username, :password],
+      params: params
+    )
   end
 
 end

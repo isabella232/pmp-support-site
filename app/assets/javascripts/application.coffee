@@ -15,13 +15,15 @@ $(document).on 'page:load ready', ->
     e.preventDefault()
     $target = $(e.target)
     $target.closest('.host-picker').find('.text').text($target.text())
-    $target.closest('.host-picker').find('input').val($target.data('value'))
+    $target.closest('.host-picker').find('input').first().val($target.data('value'))
 
   # prevent bootstrap dropdown from stealing form-submit events
-  $('body.sessions form input').keypress (e) ->
+  preventDropdown = (e) ->
     if (e.which == 13)
       e.preventDefault()
       $(e.target).closest('form').submit()
+  $('body.sessions form input').keypress(preventDropdown)
+  $('body.password_reset form input').keypress(preventDropdown)
 
   # center modals
   $('body').on 'show.bs.modal', '.modal', ->
@@ -58,5 +60,4 @@ $(document).on 'page:load ready', ->
           label: 'Delete'
           className: 'btn-danger'
           callback: ->
-            console.log("SUBMITTT!!", $form[0])
             $form.submit()

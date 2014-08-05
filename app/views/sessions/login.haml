@@ -1,16 +1,20 @@
 -# main form
-- sessdata = params[:session] || {}
 - content_for :logbox do
+
   = form_tag(login_path) do
-    - if flash.alert || flash.notice
+    = raw negative_captcha(@captcha)
+    - if flash.alert
       %span.help-block.text-danger
-        = flash.alert || flash.notice
+        != flash.alert
+    - elsif flash.notice
+      %span.help-block
+        != flash.notice
     - else
       %span.help-block
         Please enter your account login and password
     = render partial: 'hoster'
-    = text_field :session, :username, placeholder: 'Username', class: 'form-control', value: sessdata[:username]
-    = password_field :session, :password, placeholder: 'Password', class: 'form-control', value: sessdata[:password]
+    = negative_text_field_tag(@captcha, :username, class: 'form-control', autofocus: true, required: true, placeholder: 'Username')
+    = negative_password_field_tag(@captcha, :password, class: 'form-control', required: true, placeholder: 'Password')
     %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
       Sign in
 
