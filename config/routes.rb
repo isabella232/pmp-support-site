@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   get  'forgot/:id' => 'password_reset#show', as: :reset_password
   put  'forgot/:id' => 'password_reset#update'
 
+  # account
+  resource :account
+
   # client credentials
   resources :credentials, only: [:index, :create, :destroy]
 

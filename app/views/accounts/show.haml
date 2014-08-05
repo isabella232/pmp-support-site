@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    .well
+      %h2
+        Account Information
+      .row
+        .col-md-6
+          %table.table.table-bordered
+            %tr
+              %td.table-label
+                Host
+              %td
+                = current_user[2]
+            %tr
+              %td.table-label
+                User
+              %td
+                = current_user[0]
+            %tr
+              %td.table-label
+                Password
+              %td
+                ********

@@ -3,6 +3,8 @@
     %li{class: active_tab(root_path)}
       = link_to 'Home', root_path
     - if current_user
+      %li{class: active_tab(account_path)}
+        = link_to 'Account', account_path
       %li{class: active_tab(credentials_path)}
         = link_to 'Credentials', credentials_path
   %ul.nav.navbar-nav.navbar-right
