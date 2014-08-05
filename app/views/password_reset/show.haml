@@ -15,7 +15,7 @@
     .btn-group.host-picker
       .prefix.btn-pmp
         Host
-      %button.btn.btn-form
+      .btn.btn-form.disabled
         %span.text
           = @reset.host.gsub(/^https?:\/\//, '')
     = negative_text_field_tag(@captcha, :username, class: 'form-control', autofocus: true, required: true, placeholder: 'Username')

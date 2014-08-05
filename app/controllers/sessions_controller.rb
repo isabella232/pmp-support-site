@@ -14,10 +14,6 @@ class SessionsController < ApplicationController
   def add_account
   end
 
-  # GET /register
-  def register
-  end
-
   # GET /switch/1
   def switch
     if new_usr = session[:users][params[:id].to_i]
@@ -45,11 +41,11 @@ class SessionsController < ApplicationController
         redirect_to credentials_path, notice: 'You are now logged in'
       else
         flash.now.alert = 'Please fill out all fields'
-        render :new
+        render :login
       end
     else
       flash.now.alert = @captcha.error
-      render :new
+      render :login
     end
   end
 

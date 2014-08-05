@@ -1,0 +1,28 @@
+-# main form
+- content_for :logbox do
+
+  = form_tag(register_path) do
+    = raw negative_captcha(@captcha)
+    - if flash.alert
+      %span.help-block.text-danger
+        != flash.alert
+    - elsif flash.notice
+      %span.help-block
+        != flash.notice
+    - else
+      %span.help-block
+        Request an API user for the PMP.
+    = render partial: 'sessions/hoster'
+    = negative_text_field_tag(@captcha, :name, class: 'form-control', autofocus: true, required: true, placeholder: 'Your name')
+    = negative_text_field_tag(@captcha, :email, class: 'form-control', required: true, placeholder: 'Contact email')
+    = negative_text_field_tag(@captcha, :organization, class: 'form-control', required: true, placeholder: 'Name of organization')
+    = negative_text_field_tag(@captcha, :username, class: 'form-control', required: true, placeholder: 'Username requested')
+    = negative_text_area_tag(@captcha, :intention, class: 'form-control', required: true, placeholder: 'For what purpose do you intend to use the PMP?', rows: 6)
+    %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
+      Send request
+
+-# nav links
+- content_for :logbox_links do
+  = link_to login_path, class: 'pull-left' do
+    %i.fa.fa-arrow-left
+    Back to login?

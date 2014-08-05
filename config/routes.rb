@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'add_account' => 'sessions#do_add_account'
 
   # account creation
-  get  'register' => 'register#show'
+  get  'register' => 'register#new'
   post 'register' => 'register#create'
 
   # forgot password

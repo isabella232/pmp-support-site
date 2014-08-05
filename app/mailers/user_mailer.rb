@@ -7,4 +7,9 @@ class UserMailer < ActionMailer::Base
     mail(to: @password_reset.email_address, subject: "Reset your #{@password_reset.host} password")
   end
 
+  def registration_request(req)
+    @request = req
+    mail(to: 'ryan@publicmediaplatform.org', subject: "PMP registration request from #{req['name']}")
+  end
+
 end
