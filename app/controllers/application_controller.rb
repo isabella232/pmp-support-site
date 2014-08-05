@@ -1,7 +1,21 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_filter :set_mailer_host
 
 protected
+
+  # make sure the mailer knows where we are
+  def set_mailer_host
+    ActionMailer::Base.default_url_options[:host] = request.host_with_port
+  end
+
+  # admin interface to the API
+  def admin_pmp(hostname)
+    @admin_pmps ||= {}
+    key, cfg = Rails.application.secrets.pmp_hosts.find { |k, c| c['host'] == hostname }
+    @admin_pmps[key] ||= PMP::Client.new(client_id: cfg['client_id'], client_secret: cfg['client_secret'], endpoint: cfg['host'])
+    @admin_pmps[key]
+  end
 
   # memoize user
   def current_user
