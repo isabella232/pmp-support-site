@@ -5,15 +5,6 @@
     - if current_user
       %li{class: active_tab(credentials_path)}
         = link_to 'Credentials', credentials_path
-    %li.dropdown
-      %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
-        Links
-        %span.caret
-      %ul.dropdown-menu
-        %li
-          = link_to 'Issue Queue', 'https://github.com/publicmediaplatform/pmp-issues/issues'
-          = link_to 'Documentation', 'https://github.com/publicmediaplatform/pmpdocs/wiki'
-          = link_to 'Mailing List', 'https://groups.google.com/forum/#!forum/pmp-dev'
   %ul.nav.navbar-nav.navbar-right
     - if current_user
       %li.dropdown

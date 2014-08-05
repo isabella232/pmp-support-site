@@ -8,7 +8,7 @@ html {
 body {
   background: #DEE5E6;
   color: #464646;
-  margin-bottom: 60px; // footer height
+  margin-bottom: 100px; // footer height
 }
 #main {
   padding-top: 70px;
@@ -18,21 +18,21 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px; // fixed height
+  height: 100px; // fixed height
   background-color: #464646;
-  .footer-col {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 16px;
-    a {
-      color: inherit;
+  a, p {
+    color: #999;
+    &:hover {
+      color: #eee;
     }
-    p {
-      color: #777;
-      &:active, &:hover {
-        color: #bbb;
-        a { text-decoration: underline; }
-      }
+  }
+  ul {
+    list-style: none;
+    margin: 0 auto;
+    padding: 14px 0 0;
+    width: 200px;
+    li {
+      padding-bottom: 6px;
     }
   }
 }
