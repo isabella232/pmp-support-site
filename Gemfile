@@ -8,7 +8,7 @@ gem 'unicorn'
 gem 'negative_captcha'
 gem 'password_strength'
 # gem 'pmp', '>= 0.3.2', require: true
-gem 'pmp', path: '/Users/cavis/code/pmp-ruby-sdk', require: true
+gem 'pmp', github: 'cavis/pmp' # TODO: remove when gem is updated
 
 gem 'haml'
 gem 'sass-rails', '~> 4.0.3'
