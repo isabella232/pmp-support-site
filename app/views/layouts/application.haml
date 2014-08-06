@@ -10,6 +10,8 @@
     /[if lt IE 9]
       %script{src: '//html5shim.googlecode.com/svn/trunk/html5.js'}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Spinnaker'
+    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Roboto+Slab'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %body{class: "#{controller_name} #{action_name}"}
 
@@ -17,7 +19,7 @@
     .navbar.navbar-pmp.navbar-fixed-top
       .container
         .navbar-header
-          %button.navbar-toggle{'data-collapse' => 'collapse', 'data-target' => '.navbar-collapse'}
+          %button.navbar-toggle{'data-toggle' => 'collapse', 'data-target' => '.navbar-collapse'}
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
@@ -41,34 +43,4 @@
 
     -# sticky footer
     #footer
-      .container
-        .row
-          .col-sm-4
-            %ul
-              %li
-                = link_to 'https://github.com/publicmediaplatform/pmp-issues/issues' do
-                  %i.fa.fa-fw.fa-lg.fa-bug>
-                  Issue Queue
-              %li
-                = link_to 'https://github.com/publicmediaplatform/pmpdocs/wiki' do
-                  %i.fa.fa-fw.fa-lg.fa-code>
-                  Documentation
-              %li
-                = link_to 'https://groups.google.com/forum/#!forum/pmp-dev' do
-                  %i.fa.fa-fw.fa-lg.fa-envelope>
-                  Mailing List
-          .col-sm-4
-            %ul
-              %li
-                = link_to 'http://publicmediaplatform.org' do
-                  %i.fa.fa-fw.fa-lg.fa-bookmark>
-                  publicmediaplatform.org
-              %li
-                = link_to 'http://twitter.com/pmpio' do
-                  %i.fa.fa-fw.fa-lg.fa-twitter>
-                  pmpio
-          .col-sm-4
-            %ul
-              %li
-                %p
-                  &copy; 2014 Public Media Platform
+      = render 'layouts/footer'

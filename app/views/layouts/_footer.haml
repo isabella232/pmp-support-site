@@ -1,0 +1,34 @@
+.container
+  .row
+    .col-sm-4.col-xs-6
+      %ul
+        %li
+          = link_to 'https://github.com/publicmediaplatform/pmp-issues/issues' do
+            %i.fa.fa-fw.fa-lg.fa-bug>
+            Issue Queue
+        %li
+          = link_to 'https://github.com/publicmediaplatform/pmpdocs/wiki' do
+            %i.fa.fa-fw.fa-lg.fa-code>
+            Documentation
+        %li
+          = link_to 'https://groups.google.com/forum/#!forum/pmp-dev' do
+            %i.fa.fa-fw.fa-lg.fa-envelope>
+            Mailing List
+    .col-sm-4.col-xs-6
+      %ul
+        %li
+          = link_to 'http://publicmediaplatform.org', class: 'hidden-xs' do
+            %i.fa.fa-fw.fa-lg.fa-bookmark>
+            publicmediaplatform.org
+          = link_to 'http://publicmediaplatform.org', class: 'visible-xs' do
+            %i.fa.fa-fw.fa-lg.fa-bookmark>
+            pmp.io
+        %li
+          = link_to 'http://twitter.com/pmpio' do
+            %i.fa.fa-fw.fa-lg.fa-twitter>
+            pmpio
+    .col-sm-4.hidden-xs
+      %ul
+        %li
+          %p
+            &copy; 2014 Public Media Platform

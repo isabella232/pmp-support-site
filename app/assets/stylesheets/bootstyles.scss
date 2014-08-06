@@ -1,6 +1,18 @@
 //
 // overrides to bootstrap stuff
 //
+
+// fonts
+// body, p, div {
+//   font-family: "Roboto Slab", "Times New Roman", Times, serif;
+//   TODO: this doesn't look great
+// }
+.navbar-brand, .navbar-nav > li > a {
+  font-family: "Spinnaker", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+// components
 .well {
   background: #fff;
   -webkit-border-radius: 0px;
@@ -121,10 +133,19 @@ a:hover, a:focus {
   background-color: #189D98;
   border-color: #189D98;
   color: #fff;
+  .navbar-toggle {
+    background-color: #16908D;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    .icon-bar {
+      background: #fff;
+    }
+  }
   .navbar-brand {
     color: #fff;
     text-shadow: none;
-    font-size: 24px;
+    font-size: 32px;
   }
   .navbar-nav > li > a {
     color: #fff;
