@@ -18,14 +18,14 @@ Rails.application.configure do
 
   # Emailz
   config.action_mailer.delivery_method = :letter_opener
-  if Rails.application.secrets.smtp_username.present? && Rails.application.secrets.smtp_password.present?
+  if Rails.application.secrets.smtp_user.present? && Rails.application.secrets.smtp_pass.present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       address:              'smtp.mandrillapp.com',
       port:                 587,
       domain:               'support.pmp.io',
-      user_name:            Rails.application.secrets.smtp_username,
-      password:             Rails.application.secrets.smtp_password,
+      user_name:            Rails.application.secrets.smtp_user,
+      password:             Rails.application.secrets.smtp_pass,
       authentication:       'plain',
       enable_starttls_auto: true,
     }

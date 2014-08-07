@@ -22,3 +22,7 @@ group :test, :development do
   gem 'spring'
   gem 'letter_opener'
 end
+
+group :production do
+  gem 'mysql2'
+end
