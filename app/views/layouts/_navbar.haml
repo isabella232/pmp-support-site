@@ -1,7 +1,7 @@
 .collapse.navbar-collapse
   %ul.nav.navbar-nav
     %li{class: active_tab(root_path)}
-      = link_to 'Home', root_path
+      = link_to 'Support', root_path
     - if current_user
       %li{class: active_tab(account_path)}
         = link_to 'Account', account_path

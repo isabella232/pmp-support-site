@@ -10,8 +10,6 @@
     /[if lt IE 9]
       %script{src: '//html5shim.googlecode.com/svn/trunk/html5.js'}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Spinnaker'
-    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Roboto+Slab'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %body{class: "#{controller_name} #{action_name}"}
 
@@ -24,7 +22,7 @@
             %span.icon-bar
             %span.icon-bar
           %a.navbar-brand{href: root_path}
-            PMP Support
+            PMP
         = render 'layouts/navbar'
 
     -# main content

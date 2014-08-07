@@ -2,16 +2,6 @@
 // overrides to bootstrap stuff
 //
 
-// fonts
-// body, p, div {
-//   font-family: "Roboto Slab", "Times New Roman", Times, serif;
-//   TODO: this doesn't look great
-// }
-.navbar-brand, .navbar-nav > li > a {
-  font-family: "Spinnaker", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-}
-
 // components
 .well {
   background: #fff;
@@ -145,12 +135,19 @@ a:hover, a:focus {
   .navbar-brand {
     color: #fff;
     text-shadow: none;
-    font-size: 32px;
+    font-size: 42px;
+    line-height: 28px;
+    text-transform: uppercase;
+    font-family: "blue_highwayd", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   .navbar-nav > li > a {
+    padding-top: 18px;
+    padding-bottom: 12px;
     color: #fff;
     text-shadow: none;
-    font-size: 16px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: "blue_highwayd", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;

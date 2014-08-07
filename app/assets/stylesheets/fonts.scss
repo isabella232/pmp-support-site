@@ -1,0 +1,44 @@
+//
+// PMP fonts defs and overrides
+//
+@font-face {
+    font-family: 'blue_highwaybold';
+    src: url('blue_highway_bd-webfont.eot');
+    src: url('blue_highway_bd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('blue_highway_bd-webfont.woff') format('woff'),
+         url('blue_highway_bd-webfont.ttf') format('truetype'),
+         url('blue_highway_bd-webfont.svg#blue_highwaybold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'blue_highwayd';
+    src: url('blue_highway_d-webfont.eot');
+    src: url('blue_highway_d-webfont.eot?#iefix') format('embedded-opentype'),
+         url('blue_highway_d-webfont.woff') format('woff'),
+         url('blue_highway_d-webfont.ttf') format('truetype'),
+         url('blue_highway_d-webfont.svg#blue_highwayd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'blue_highwayregular';
+    src: url('blue_highway_rg-webfont.eot');
+    src: url('blue_highway_rg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('blue_highway_rg-webfont.woff') format('woff'),
+         url('blue_highway_rg-webfont.ttf') format('truetype'),
+         url('blue_highway_rg-webfont.svg#blue_highwayregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// fonts
+// body, p, div {
+//   font-family: "Roboto Slab", "Times New Roman", Times, serif;
+//   TODO: this doesn't look great
+// }
+// .navbar-brand, .navbar-nav > li > a {
+
+  // text-transform: uppercase;
+// }
+
