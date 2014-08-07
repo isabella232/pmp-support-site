@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: 'noreply@publicmediaplatform.org'
+  default from: 'support@publicmediaplatform.org'
 
   def password_reset_email(password_reset)
     @password_reset = password_reset

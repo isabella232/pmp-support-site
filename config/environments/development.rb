@@ -16,8 +16,20 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  # Test sending
+  # Emailz
   config.action_mailer.delivery_method = :letter_opener
+  if Rails.application.secrets.gmail_username.present? && Rails.application.secrets.gmail_password.present?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               Rails.application.secrets.gmail_username.split('@').last,
+      user_name:            Rails.application.secrets.gmail_username,
+      password:             Rails.application.secrets.gmail_password,
+      authentication:       'plain',
+      enable_starttls_auto: true,
+    }
+  end
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

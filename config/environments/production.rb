@@ -64,6 +64,20 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  # Emailz with Gmailz
+  if Rails.application.secrets.gmail_username.present? && Rails.application.secrets.gmail_password.present?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               Rails.application.secrets.gmail_username.split('@').last,
+      user_name:            Rails.application.secrets.gmail_username,
+      password:             Rails.application.secrets.gmail_password,
+      authentication:       'plain',
+      enable_starttls_auto: true,
+    }
+  end
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
