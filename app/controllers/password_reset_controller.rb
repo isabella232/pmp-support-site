@@ -20,19 +20,21 @@ class PasswordResetController < ApplicationController
             host: @captcha.values[:host],
           }
           if PasswordReset.create(reset_params)
-            flash.now.notice = "An email with reset instructions has been sent to #{email}.  If this is incorrect, please #{support_mailto}."
+            redirect_to login_path, notice: "An email with reset instructions has been sent to #{email}.  If this is incorrect, please #{support_mailto}."
           else
             flash.now.alert = "Something went wrong - please #{support_mailto}."
+            render :new
           end
         else
-          flash.now.alert = "No email associated with user - please #{support_mailto}."
+          redirect_to login_path, alert: "No email associated with user - please #{support_mailto}."
         end
       elsif collection.items.count < 1
         flash.now.alert = 'Unable to find a user by that name'
+        render :new
       else
         flash.now.alert = 'Error: too many users with that name!'
+        render :new
       end
-      render :new
     else
       flash.now.alert = @captcha.error
       render :new
