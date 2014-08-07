@@ -65,14 +65,14 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Emailz with Gmailz
-  if Rails.application.secrets.gmail_username.present? && Rails.application.secrets.gmail_password.present?
+  if Rails.application.secrets.smtp_username.present? && Rails.application.secrets.smtp_password.present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
+      address:              'smtp.mandrillapp.com',
       port:                 587,
-      domain:               Rails.application.secrets.gmail_username.split('@').last,
-      user_name:            Rails.application.secrets.gmail_username,
-      password:             Rails.application.secrets.gmail_password,
+      domain:               'support.pmp.io',
+      user_name:            Rails.application.secrets.smtp_username,
+      password:             Rails.application.secrets.smtp_password,
       authentication:       'plain',
       enable_starttls_auto: true,
     }
