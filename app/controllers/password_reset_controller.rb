@@ -12,7 +12,7 @@ class PasswordResetController < ApplicationController
     if @captcha.valid?
       collection = find_all_by_auth_user(@captcha.values)
       if collection.items.count == 1
-        if email = collection.items.first.email
+        if email = get_contact_email(collection.items.first)
           reset_params = {
             email_address: email,
             user_name: @captcha.values[:username],
@@ -102,13 +102,22 @@ protected
 
   # link to support
   def support_mailto
-    "<a href='mailto:ryan@publicmediaplatform.org'>contact support</a>"
+    "<a href='mailto:support@publicmediaplatform.org'>contact support</a>"
   end
 
   # check password strength
   def password_valid?(uname, pwd)
     strength = PasswordStrength.test(uname, pwd)
     strength.valid?(:good)
+  end
+
+  def get_contact_email(doc)
+    if doc.emails.present?
+      eml = doc.emails.find { |e| e['type'] == 'primary' } || docs.emails.first
+      eml['email']
+    else
+      doc.email
+    end
   end
 
 end

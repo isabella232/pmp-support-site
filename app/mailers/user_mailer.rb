@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
 
   def registration_request(req)
     @request = req
-    mail(to: 'ryan@publicmediaplatform.org', subject: "PMP registration request from #{req['name']}")
+    mail(to: 'support@publicmediaplatform.org', subject: "PMP registration request from #{req['name']}")
   end
 
 end
