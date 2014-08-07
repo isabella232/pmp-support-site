@@ -24,7 +24,7 @@ production:
   <<: *default
   adapter: mysql2
   encoding: utf8
+  host:     localhost
   database: <%= Rails.application.secrets.db_name %>
   username: <%= Rails.application.secrets.db_user %>
   password: <%= Rails.application.secrets.db_pass %>
-  socket: /tmp/mysql.sock
