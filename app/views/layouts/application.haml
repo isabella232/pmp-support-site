@@ -34,7 +34,7 @@
       - if content_for?(:logbox)
         = render 'layouts/logbox'
       - elsif flash.alert
-        .alert.alert-danger.alert-dismissable
+        .alert.alert-pmp.alert-dismissable
           %button.close{'data-dismiss' => 'alert'} &times;
           = flash.alert
       - elsif flash.notice

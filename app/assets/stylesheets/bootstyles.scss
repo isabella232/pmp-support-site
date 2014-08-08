@@ -167,14 +167,14 @@ a:hover, a:focus {
 
 // pmp style alert
 .alert-pmp {
-  background-image: -webkit-linear-gradient(top, #12B8B2 0%, #189D98 100%);
-  background-image: -o-linear-gradient(top, #12B8B2 0%, #189D98 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#12B8B2), to(#189D98));
-  background-image: linear-gradient(to bottom, #12B8B2 0%, #189D98 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF12B8B2', endColorstr='#FF189D98', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #CC362B 0%, #B33026 100%);
+  background-image: -o-linear-gradient(top, #CC362B 0%, #B33026 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#CC362B), to(#B33026));
+  background-image: linear-gradient(to bottom, #CC362B 0%, #B33026 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFCC362B', endColorstr='#FFB33026', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   background-repeat: repeat-x;
-  background-color: #189D98;
-  border-color: #189D98;
+  background-color: #B33026;
+  border-color: #B33026;
   color: #fff;
 }
