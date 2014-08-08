@@ -8,7 +8,21 @@
 #= require bootbox
 #
 
+# turbolinks + google analytics workaround
+if window.history?.pushState and window.history.replaceState
+  $(document).on 'page:change', ->
+    if window.ga?
+      ga('set', 'location', location.href.split('#')[0])
+      ga('send', 'pageview')
+else
+  $ -> ga('send', 'pageview') if window.ga? # turbolinks disabled
+
+# ready listeners
 $(document).on 'page:load ready', ->
+
+  # set google analytics id fields
+  if window.ga?
+    ga (tracker) -> $('.ga-client-id').val(tracker.get('clientId'))
 
   # enable host picker
   $('.host-picker a').click (e) ->
