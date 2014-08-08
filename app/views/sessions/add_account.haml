@@ -2,6 +2,7 @@
 - content_for :logbox do
 
   = form_tag(add_account_path) do
+    = hidden_field_tag(:ga_client_id, '', class: 'ga-client-id')
     = raw negative_captcha(@captcha)
     - if flash.alert
       %span.help-block.text-danger

@@ -20,23 +20,29 @@ class PasswordResetController < ApplicationController
             host: @captcha.values[:host],
           }
           if PasswordReset.create(reset_params)
+            ga_event!('passwords', 'create')
             redirect_to login_path, notice: "An email with reset instructions has been sent to #{email}.  If this is incorrect, please #{support_mailto}."
           else
             flash.now.alert = "Something went wrong - please #{support_mailto}."
+            ga_event!('passwords', 'fatal')
             render :new
           end
         else
+          ga_event!('passwords', 'no_email')
           redirect_to login_path, alert: "No email associated with user - please #{support_mailto}."
         end
       elsif collection.items.count < 1
         flash.now.alert = 'Unable to find a user by that name'
+        ga_event!('passwords', 'no_name')
         render :new
       else
         flash.now.alert = 'Error: too many users with that name!'
+        ga_event!('passwords', 'too_many')
         render :new
       end
     else
       flash.now.alert = @captcha.error
+      ga_event!('passwords', 'captcha')
       render :new
     end
   end
@@ -56,22 +62,27 @@ class PasswordResetController < ApplicationController
     if @captcha.valid?
       if @captcha.values['username'] != @reset.user_name
         flash.now.alert = 'Incorrect username provided'
+        ga_event!('passwords', 'non_match')
         render :show
       elsif @captcha.values['password'] != @captcha.values['confirm_password']
         flash.now.alert = 'Password does not match confirmation'
+        ga_event!('passwords', 'confirmation')
         render :show
       elsif !password_valid?(@reset.user_name, @captcha.values['password'])
         flash.now.alert = 'Your password is weak!  Beef it up a bit, eh?'
+        ga_event!('passwords', 'weak')
         render :show
       else
         doc = find_by_reset(@reset)
         doc.auth[:password] = @captcha.values['password']
         doc.save
         @reset.destroy
+        ga_event!('passwords', 'success')
         redirect_to login_path, notice: 'Password changed!  Please login.'
       end
     else
       flash.now.alert = @captcha.error
+      ga_event!('passwords', 'captcha')
       render :show
     end
   end

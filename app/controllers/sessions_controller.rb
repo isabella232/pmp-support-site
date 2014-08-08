@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
   def switch
     if new_usr = session[:users][params[:id].to_i]
       session[:current_user] = new_usr
+      ga_event!('sessions', 'switch')
       redirect_to credentials_path, notice: "Switched to account #{view_context.format_user(new_usr)}"
     else
       redirect_to root_path, alert: 'Unknown account'
@@ -28,6 +29,7 @@ class SessionsController < ApplicationController
   def logout
     session[:users] = nil
     session[:current_user] = nil
+    ga_event!('sessions', 'logout')
     redirect_to login_path, notice: 'You have been logged out'
   end
 
@@ -38,6 +40,7 @@ class SessionsController < ApplicationController
         get_client.credentials.list
         (session[:users] ||= []) << make_user
         session[:current_user] = make_user
+        ga_event!('sessions', 'login')
         redirect_to credentials_path, notice: 'You are now logged in'
       else
         flash.now.alert = 'Please fill out all fields'
@@ -60,6 +63,7 @@ class SessionsController < ApplicationController
         get_client.credentials.list
         session[:users] << make_user
         session[:current_user] = make_user
+        ga_event!('sessions', 'add_account')
         redirect_to credentials_path, notice: "Switched to account #{view_context.format_user(make_user)}"
       end
     else
@@ -74,6 +78,7 @@ protected
   def show_invalid(err)
     if err.as_json['response']['status'] == 401
       flash.now.alert = 'Invalid username/password'
+      ga_event!('sessions', 'invalid')
       render request.path.gsub('/', '')
     else
       raise err
