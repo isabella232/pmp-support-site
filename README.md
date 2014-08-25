@@ -6,6 +6,8 @@ Rails application powering [support.pmp.io](https://support.pmp.io).
 
 The support.pmp.io site provides links and information for getting help with the PMP.
 
+Documentation is parsed from the markdown files in the `docs` directory.  They will be sorted by name before being rendered as the docs page.
+
 
 Issues and Contributing
 -----------------------
