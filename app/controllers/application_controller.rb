@@ -48,9 +48,18 @@ protected
 
   # force login
   def require_login!
-    unless current_user
-      flash[:notice] = 'You must login first'
-      redirect_to login_path
+    if current_user
+      if session[:last_seen_at] && session[:last_seen_at] < 12.hours.ago
+        session[:last_seen_at] = nil
+        session[:users] = nil
+        session[:current_user] = nil
+        ga_event!('sessions', 'timeout')
+        redirect_to login_path, notice: 'Your session has expired - please login'
+      else
+        session[:last_seen_at] = Time.now
+      end
+    else
+      redirect_to login_path, notice: 'You must login first'
     end
   end
 
