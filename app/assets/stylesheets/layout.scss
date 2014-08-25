@@ -40,6 +40,14 @@ body {
   }
 }
 
+// anchors + fixed navbar
+.hdr-anchor {
+  top: -70px; // header height
+  position: relative;
+  visibility: hidden;
+}
+
+// vertical centering
 .vcenter-ct {
   display: table;
   height: 100%;

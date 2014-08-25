@@ -125,9 +125,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    redcarpet (3.1.2)
     ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rouge (1.6.2)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -184,7 +186,9 @@ DEPENDENCIES
   pry
   quiet_assets
   rails (= 4.1.4)
+  redcarpet
   rest-client
+  rouge
   sass-rails (~> 4.0.3)
   spring
   sqlite3

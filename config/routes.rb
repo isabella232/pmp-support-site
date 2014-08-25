@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # landing
   root 'dashboard#index'
 
+  # documentation
+  get 'docs' => 'docs#index'
+
   # user sessions
   get  'login'       => 'sessions#login'
   get  'add_account' => 'sessions#add_account'

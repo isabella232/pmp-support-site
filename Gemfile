@@ -17,6 +17,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'rest-client'
+gem 'redcarpet'
+gem 'rouge'
 
 group :test, :development do
   gem 'pry', require: true
