@@ -1,0 +1,29 @@
+-# main form
+- content_for :logbox do
+
+  = form_tag(login_path) do
+    = hidden_field_tag(:ga_client_id, '', class: 'ga-client-id')
+    = raw negative_captcha(@captcha)
+    - if flash.alert
+      %span.help-block.text-danger
+        != flash.alert
+    - elsif flash.notice
+      %span.help-block
+        != flash.notice
+    - else
+      %span.help-block
+        Please enter your account login and password
+    = render partial: 'hoster'
+    = negative_text_field_tag(@captcha, :username, class: 'form-control', autofocus: true, required: true, placeholder: 'Username')
+    = negative_password_field_tag(@captcha, :password, class: 'form-control', required: true, placeholder: 'Password')
+    %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
+      Sign in
+
+-# nav links
+- content_for :logbox_links do
+  = link_to forgot_path, class: 'pull-left' do
+    %i.fa.fa-arrow-left
+    Forgot password?
+  = link_to register_path, class: 'pull-right' do
+    Need an account?
+    %i.fa.fa-arrow-right

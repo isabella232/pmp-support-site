@@ -1,0 +1,26 @@
+-# main form
+- content_for :logbox do
+
+  = form_tag(reset_password_path(@reset.token), method: :put) do
+    = hidden_field_tag(:ga_client_id, '', class: 'ga-client-id')
+    = raw negative_captcha(@captcha)
+    - if flash.alert
+      %span.help-block.text-danger
+        != flash.alert
+    - elsif flash.notice
+      %span.help-block
+        != flash.notice
+    - else
+      %span.help-block
+        Please confirm your username and enter a new password.
+    .btn-group.host-picker
+      .prefix.btn-pmp
+        Host
+      .btn.btn-form.disabled
+        %span.text
+          = @reset.host.gsub(/^https?:\/\//, '')
+    = negative_text_field_tag(@captcha, :username, class: 'form-control', autofocus: true, required: true, placeholder: 'Username')
+    = negative_password_field_tag(@captcha, :password, class: 'form-control', autofocus: true, required: true, placeholder: 'New Password')
+    = negative_password_field_tag(@captcha, :confirm_password, class: 'form-control', autofocus: true, required: true, placeholder: 'Confirm new password')
+    %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
+      Change Password

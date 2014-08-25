@@ -1,0 +1,30 @@
+.row
+  .col-sm-9
+    %h1
+      The Public Media Platform
+    %p
+      Formed by five of the country’s <a href="http://publicmediaplatform.org/about/#section-4">leading public media organizations</a> the <b>Public Media Platform</b> (PMP) uses API technology to distribute digital content (audio, video, text, and images) from multiple public media entities across a variety of web and mobile platforms. This groundbreaking collaboration provides the industry’s first ever cross-media digital distribution system, with the ultimate goal of bringing public media to a larger audience.
+    %h3
+      Use this developer support site to:
+    %ul
+      - if current_user
+        %li
+          = link_to 'Manage your API user', credentials_path
+      - else
+        %li
+          = link_to 'Manage your API user', login_path
+        %li
+          = link_to 'Request an API account', register_path
+      %li
+        = link_to 'Read the technical documentation', docs_path
+      %li
+        = link_to 'Report a problem', 'https://github.com/publicmediaplatform/pmp-issues/issues/new'
+      %li
+        = link_to 'View open issues', 'https://github.com/publicmediaplatform/pmp-issues/issues?state=open'
+      %li
+        = link_to 'Email the developer community', 'https://groups.google.com/forum/#!forum/pmp-dev'
+      %li
+        You can also find PMP developers on IRC at irc.freenode.net in the <code>#pmp</code> channel.
+  .col-sm-3
+    %br
+    = image_tag 'logo.png', class: 'img-responsive'

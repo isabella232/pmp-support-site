@@ -1,0 +1,71 @@
+//
+// session pages
+//
+body.sessions, body.password_reset, body.register {
+
+  .well {
+    margin-top: 60px;
+  }
+
+  .btn {
+    height: 40px;
+    padding: 8px 16px;
+  }
+
+  .logo {
+    display: block;
+    margin: 8px -12px 8px 0;
+    text-align: center;
+    img {
+      width: 100%;
+      max-width: 122px;
+      text-align: center;
+    }
+    @media (min-width: 992px) {
+      margin-top: 32px;
+    }
+  }
+
+  .btn-group {
+    display: block;
+    margin-bottom: -1px;
+    padding-left: 60px;
+    .prefix {
+      z-index: 4;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 61px;
+      height: 40px;
+      padding: 10px 0 0 14px;
+      font-weight: bold;
+    }
+    .btn {
+      float: none;
+      width: 100%;
+      text-align: left;
+      .caret {
+        float: right;
+        margin-top: 8px;
+      }
+    }
+    .dropdown-menu {
+      left: 60px;
+      margin-top: -1px;
+      border-color: #189D98;
+      outline: 0;
+    }
+  }
+
+  .form-control {
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: -1px;
+  }
+  .form-control:focus {
+    z-index: 10;
+  }
+
+}
