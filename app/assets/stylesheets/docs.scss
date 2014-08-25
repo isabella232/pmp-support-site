@@ -5,7 +5,7 @@ body.docs {
 
   // headers
   h1 {
-    border-top: 1px solid #464646;
+    border-top: 1px solid #b6b6b6;
     padding-top: 26px;
     margin-top: 44px;
   }
@@ -32,7 +32,7 @@ body.docs {
     }
     th {
       vertical-align: bottom;
-      border-bottom: 2px solid #ddd;
+      font-weight: bold;
     }
     tr:first-child > td, tr:first-child > th {
       border-top: 0;
@@ -103,7 +103,7 @@ body.docs {
     // nav second level
     .nav {
       .nav {
-        display: none; // hide by default
+        // display: none; // hide by default
         padding-bottom: 10px;
       }
       .nav > li > a {
