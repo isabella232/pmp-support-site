@@ -3,6 +3,42 @@
 //
 body.docs {
 
+  // headers
+  h1 {
+    border-top: 1px solid #464646;
+    padding-top: 26px;
+    margin-top: 44px;
+  }
+  h1#introduction {
+    border-top: 0;
+    padding-top: 0px;
+    margin-top: 20px;
+  }
+
+  // tables
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    td, th {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 8px;
+      line-height: 1.42857143;
+      vertical-align: top;
+      border: 1px solid #ddd;
+    }
+    th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #ddd;
+    }
+    tr:first-child > td, tr:first-child > th {
+      border-top: 0;
+    }
+  }
+
   // fix bootstrap alterations to code blocks
   pre {
     padding: 0;
@@ -23,7 +59,7 @@ body.docs {
       margin-bottom: 0;
     }
     > li > a:hover, > li > a:focus {
-      background-color: #8FB9B8;
+      background-color: #818181;
       color: #fff;
       padding-bottom: 7px;
       margin-bottom: 3px;

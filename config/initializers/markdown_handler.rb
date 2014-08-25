@@ -16,7 +16,7 @@ module MarkdownHandler
     # lax_spacing:
     # space_after_headers:
     # superscript:
-    # underline:
+    underline: true,
     highlight: true,
     # quote:
     # footnotes:

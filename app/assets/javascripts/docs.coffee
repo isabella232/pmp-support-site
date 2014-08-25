@@ -28,20 +28,38 @@ $(document).on 'page:load ready', ->
   for langs, idx in groupedLangs
     str = "<ul class='nav nav-tabs' role='tablist'>"
     for lang, lidx in langs
-      actv = if lidx == 0 then 'active' else ''
+      if localStorage? && localStorage.activeLang in langs
+        actv = if lang == localStorage.activeLang then 'active' else ''
+      else
+        actv = if lidx == 0 then 'active' else ''
       str += "<li class='#{actv}'><a href='#code-#{idx}-#{lidx}' class='code-#{lang}' role='tab' data-toggle='tab'>#{getLangName(lang)}</a></li>"
     $(str + '</ul>').insertBefore(groupedCodes[idx][0])
 
   # put code blocks into tab panes
   for blocks, idx in groupedCodes
     $(blocks).wrapAll("<div class='tab-content'></div>")
+    langs = groupedLangs[idx]
     for block, bidx in blocks
-      actv = if bidx == 0 then 'active' else ''
+      lang = langs[bidx]
+      if localStorage? && localStorage.activeLang in langs
+        actv = if lang == localStorage.activeLang then 'active' else ''
+      else
+        actv = if bidx == 0 then 'active' else ''
       $(block).wrap("<div class='tab-pane #{actv}' id='code-#{idx}-#{bidx}'></div>")
 
   # switch all tab panes on click (if possible)
+  $window = $(window)
   $('.markdown-content .nav-tabs a').click (e) ->
-    $(".markdown-content .#{$(this).attr('class')}").not(this).tab('show')
+    $this = $(this)
+    offsetStart = $this.offset().top
+    $(".markdown-content .#{$this.attr('class')}").not($this).tab('show')
+
+    # scroll window back to the same place
+    $window.scrollTop($window.scrollTop() + ($this.offset().top - offsetStart))
+
+    # remember content types
+    if localStorage?
+      localStorage.activeLang = $this.attr('class').replace(/code-/, '')
 
   # create sidenav menu
   $sideNav = $('.docs-sidebar .nav')
