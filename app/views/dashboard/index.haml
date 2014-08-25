@@ -1,30 +1,30 @@
-.jumbotron
-  %h2
-    Public Media Platform (PMP) Support
-  %p{style: 'float:right; margin-left:1em;'}
-    = image_tag 'logo.png'
-  %p
-    The
-    = link_to 'Public Media Platform', 'http://pmp.io/'
-    is a joint effort of several major US public media organizations.
-  %p
-    Use this Support site to:
+.row
+  .col-sm-9
+    %h1
+      The Public Media Platform
+    %p
+      Formed by five of the country’s <a href="http://publicmediaplatform.org/about/#section-4">leading public media organizations</a> the <b>Public Media Platform</b> (PMP) uses API technology to distribute digital content (audio, video, text, and images) from multiple public media entities across a variety of web and mobile platforms. This groundbreaking collaboration provides the industry’s first ever cross-media digital distribution system, with the ultimate goal of bringing public media to a larger audience.
+    %h3
+      Use this developer support site to:
     %ul
       - if current_user
         %li
-          = link_to 'manage your credentials', credentials_path
+          = link_to 'Manage your API user', credentials_path
       - else
         %li
-          = link_to 'manage your api user', login_path
+          = link_to 'Manage your API user', login_path
         %li
-          = link_to 'request an api account', register_path
+          = link_to 'Request an API account', register_path
       %li
-        = link_to 'report a problem', 'https://github.com/publicmediaplatform/pmp-issues/issues/new'
+        = link_to 'Read the technical documentation', docs_path
       %li
-        = link_to 'view open issues', 'https://github.com/publicmediaplatform/pmp-issues/issues?state=open'
+        = link_to 'Report a problem', 'https://github.com/publicmediaplatform/pmp-issues/issues/new'
       %li
-        = link_to 'read the technical documentation', 'http://docs.pmp.io/wiki/'
+        = link_to 'View open issues', 'https://github.com/publicmediaplatform/pmp-issues/issues?state=open'
       %li
-        = link_to 'email the developer community', 'https://groups.google.com/forum/#!forum/pmp-dev'
+        = link_to 'Email the developer community', 'https://groups.google.com/forum/#!forum/pmp-dev'
       %li
-        You can also find PMP developers on IRC at irc.freenode.net in the #pmp channel.
+        You can also find PMP developers on IRC at irc.freenode.net in the <code>#pmp</code> channel.
+  .col-sm-3
+    %br
+    = image_tag 'logo.png', class: 'img-responsive'
