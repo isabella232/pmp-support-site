@@ -1,12 +1,12 @@
 # Authentication
 
-The PMP uses an OAuth2 [Client Credentials](http://techblog.hybris.com/2012/07/09/oauth-the-client-credentials-flow/) flow. This means you'll be generating a separate `client_id` and `client_secret` for each application that will use the API.  You should NEVER code your username/password into an applicaton - just the client credentials!
+API users are given a `username` and `password`.  These cannot be used directly to authenticate with the PMP - rather they are used to manage multiple API client credentials under a single user account.  The PMP uses an OAuth2 [Client Credentials](http://techblog.hybris.com/2012/07/09/oauth-the-client-credentials-flow/) flow, meaning you'll be generating a separate `client_id` and `client_secret` for each application that will use the API.
 
-## Credentials
+Normally, you should use the [support site](http://support.pmp.io/credentials).  This section is for reference, in case you want to manage them manually.
 
-Normally, you should use the [support site](http://support.pmp.io/credentials) to manage your client credentials.  But in case you'd like to do it manually...
+<div class="alert alert-warning">You should NEVER use your username/password into an applicaton - just client_id/client_secret!</div>
 
-### Listing Credentials
+## Credential List
 
 ```shell
 curl -u "username:password" -X GET "https://api.pmp.io/auth/credentials"
@@ -36,9 +36,13 @@ sdk.credList(function(resp) {
 });
 ```
 
-### Generating Credentials
+## Credential Creation
 
-See `urn:collectiondoc:form:createcredentials` in [the home doc](https://api.pmp.io).  Uses the "publish" endpoint, content-type must be set to "application/x-www-form-encoded", and these optional parameters may be included:
+See `urn:collectiondoc:form:createcredentials` in [the home doc](https://api.pmp.io).
+
+* Uses the "publish" endpoint
+* Must have header `Content-Type: application/x-www-form-encoded`
+* These optional form parameters may be included:
 
 Parameter       | Default   | Usage
 --------------- | --------- | -----
@@ -70,9 +74,12 @@ sdk.credCreate('somethingCool', 'read', 999999, function(resp) {
 });
 ```
 
-### Removing Credentials
+## Credential Deletion
 
-See `urn:collectiondoc:form:removecredentials` in [the home doc](https://api.pmp.io).  Uses the "publish" endpoint, and you must include the "client_id" in the URL:
+See `urn:collectiondoc:form:removecredentials` in [the home doc](https://api.pmp.io).
+
+* Uses the "publish" endpoint
+* Include the `client_id` in the URL
 
 ```shell
 curl -u "username:password" -X DELETE "https://publish.pmp.io/auth/credentials/405a022e-6274-4170-8eba-67933551c3c3"
@@ -90,13 +97,16 @@ sdk.credDestroy('405a022e-6274-4170-8eba-67933551c3c3', function(resp) {
 });
 ```
 
-## Access Tokens
+## Token Creation
 
-To begin making requests to the API, clients must request a non-expired bearer token.  This is normally handled transparently by the client sdk, but in case you'd like to get one manually...
+To begin making requests to the API, you'll need a non-expired bearer token.  This is normally handled transparently by the client sdk, but if you'd like to get one manually...
 
-### Grabbing an access token
+See `urn:collectiondoc:form:issuetoken` in [the home doc](https://api.pmp.io).
 
-See `urn:collectiondoc:form:issuetoken` in [the home doc](https://api.pmp.io).  Notice that this DOES NOT use the "publish" endpoint, even though it is a POST request.  The content-type must be set to "application/x-www-form-encoded", and the client_id/secret should be included as the basic auth (not your username/password).  You must also send the form parameters `grant_type=client_credentials`.
+* DOES NOT use the "publish" endpoint, even though it is a POST request
+* The Content-Type header must be set to `application/x-www-form-encoded`
+* `client_id`/`client_secret` should be included as the basic auth
+* Must send the form parameter `grant_type=client_credentials`
 
 ```shell
 curl -u "client_id:client_secret" -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials" "https://api.pmp.io/auth/access_token"
@@ -120,11 +130,14 @@ sdk.token(function(token) {
 });
 ```
 
-`token_expires_in` is the number seconds until this access_token will expire, and your client will need to request a new one.  Re-requesting a non-expired token for the same client will return the same `access_token`.  SDK's *should* automatically re-request the token when it expires.
+In the response, `token_expires_in` is the number seconds until this `access_token` will expire and your client will need to request a new one.  Re-requesting a non-expired token for the same client will return the same `access_token`.  SDK's *should* automatically re-request the token when it expires.
 
-### Revoking an access token
+## Token Deletion
 
-See `urn:collectiondoc:form:revoketoken` in [the home doc](https://api.pmp.io).  Again, this is not in the normal workflow, but you can revoke an access token by issuing a DELETE request.  Notice that this uses the publish endpoint.
+See `urn:collectiondoc:form:revoketoken` in [the home doc](https://api.pmp.io).
+
+* Uses the "publish" endpoint
+* HTTP `DELETE` request
 
 ```shell
 curl -u "client_id:client" -X DELETE "https://api.pmp.io/auth/access_token"
@@ -138,7 +151,7 @@ curl -u "client_id:client" -X DELETE "https://api.pmp.io/auth/access_token"
 
 ## Usage
 
-Now that you've completed the OAuth2 flow, you can make authenticated requests against the API.  Just include the header `Authorization: Bearer 3f2401ae1a74adf8b14a638a`, using your token.  For instance, to fetch a non-public document...
+Now that you've completed the OAuth2 flow, you can make authenticated requests against the API.  Just include the header `Authorization: Bearer YOURTOKENHERE`.  For instance, to fetch a document...
 
 ```shell
 curl -H "Authorization: Bearer 3f2401ae1a74adf8b14a638a" -X GET "https://api.pmp.io/docs/04224975-e93c-4b17-9df9-96db37d318f3"

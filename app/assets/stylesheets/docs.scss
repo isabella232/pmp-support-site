@@ -5,14 +5,22 @@ body.docs {
 
   // headers
   h1 {
-    border-top: 1px solid #b6b6b6;
-    padding-top: 26px;
-    margin-top: 44px;
+    margin-top: 50px;
+    margin-bottom: 20px;
   }
-  h1#introduction {
-    border-top: 0;
-    padding-top: 0px;
+  h1#getting-started {
     margin-top: 20px;
+  }
+  h2 {
+    margin-top: 40px;
+    margin-bottom: 12px;
+    font-size: 26px;
+    color: #555;
+  }
+  h3 {
+    margin-top: 26px;
+    margin-bottom: 10px;
+    font-size: 22px;
   }
 
   // tables
@@ -21,14 +29,14 @@ body.docs {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #bbb;
     td, th {
       background-color: #fff;
-      border: 1px solid #ddd;
+      border: 1px solid #bbb;
       padding: 8px;
       line-height: 1.42857143;
       vertical-align: top;
-      border: 1px solid #ddd;
+      border: 1px solid #bbb;
     }
     th {
       vertical-align: bottom;
@@ -38,10 +46,16 @@ body.docs {
       border-top: 0;
     }
   }
+  a {
+    font-weight: 500;
+  }
 
   // fix bootstrap alterations to code blocks
   pre {
     padding: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
   }
   pre code {
     display: block;
@@ -51,24 +65,25 @@ body.docs {
   // code tabs
   .markdown-content .nav-tabs {
     border-bottom: 0 none;
+    margin-top: 16px;
     > li {
-      margin-bottom: -3px;
+      margin-bottom: 0;
     }
     > li > a {
       border: 0 none;
-      margin-bottom: 0;
+      margin: 0 4px 0 0;
+      padding: 4px 10px;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
     }
     > li > a:hover, > li > a:focus {
       background-color: #818181;
       color: #fff;
-      padding-bottom: 7px;
-      margin-bottom: 3px;
     }
     > li.active > a, > li.active > a:hover, > li.active > a:focus {
       background-color: #49483e;
       color: #f8f8f2;
-      padding-bottom: 10px;
-      margin-bottom: 0;
     }
   }
   .markdown-content .tab-content pre {
@@ -83,7 +98,7 @@ body.docs {
     .nav > li > a {
       display: block;
       padding: 4px 20px;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
       color: #999;
     }
@@ -103,14 +118,14 @@ body.docs {
     // nav second level
     .nav {
       .nav {
-        // display: none; // hide by default
+        display: none; // hide by default
         padding-bottom: 10px;
       }
       .nav > li > a {
         padding-top: 1px;
         padding-bottom: 1px;
         padding-left: 30px;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: normal;
       }
       .nav > .active > a, .nav > .active:hover > a, .nav > .active:focus > a {
