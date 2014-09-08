@@ -27,10 +27,11 @@ API clients are available in multiple languages.  Whenever possible, we encourag
 
 Language   | Links
 ---------- | --------
-Javascript | pmp-js-sdk on [github](https://github.com/publicmediaplatform/pmp-js-sdk)
+Javascript | pmp-js-sdk on [github](https://github.com/publicmediaplatform/pmp-js-sdk) / [npm](https://www.npmjs.org/package/pmpsdk)
 Perl       | Net::PMP on [github](https://github.com/APMG/pmp-sdk-perl) / [cpan](https://metacpan.org/release/Net-PMP) --- Net::PMP::Profile on [github](https://github.com/APMG/net-pmp-profile-perl) / [cpan](https://metacpan.org/release/Net-PMP-Profile)
 PHP        | phpsdk on [github](https://github.com/publicmediaplatform/phpsdk)
-Python     | pmpbelt on [github](https://github.com/npr/pmpbelt)
+Python     | pmp-myriad on [github](https://github.com/pbs/pmp-myriad)
+Python     | py3-pmp-wrapper on [github](https://github.com/KPBS/py3-pmp-wrapper)
 Ruby       | pmp on [github](https://github.com/PRX/pmp) / [rubygems](https://rubygems.org/gems/pmp)
 
 If you know of another SDK not mentioned here, please [let us know](mailto:support@publicmediaplatform.org)!
