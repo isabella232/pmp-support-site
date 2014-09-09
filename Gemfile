@@ -1,14 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.4'
-gem 'sqlite3'
 gem 'therubyracer',  platforms: :ruby
 gem 'turbolinks'
 gem 'unicorn'
 gem 'negative_captcha'
 gem 'password_strength'
-# gem 'pmp', '>= 0.3.2', require: true
-gem 'pmp', github: 'cavis/pmp' # TODO: remove when gem is updated
+gem 'pmp', '>= 0.4.0', require: true
 
 gem 'haml'
 gem 'sass-rails', '~> 4.0.3'
@@ -25,8 +23,9 @@ group :test, :development do
   gem 'spring'
   gem 'letter_opener'
   gem 'quiet_assets'
+  gem 'sqlite3'
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'pg'
 end
