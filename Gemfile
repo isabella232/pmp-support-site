@@ -24,6 +24,8 @@ group :test, :development do
   gem 'letter_opener'
   gem 'quiet_assets'
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'capybara'
 end
 
 group :production do
