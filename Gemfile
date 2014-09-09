@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 gem 'therubyracer',  platforms: :ruby
 gem 'turbolinks'
-gem 'unicorn'
 gem 'negative_captcha'
 gem 'password_strength'
 gem 'pmp', '>= 0.4.0', require: true
@@ -26,8 +25,10 @@ group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'capybara'
+  gem 'rake'
 end
 
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
