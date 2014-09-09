@@ -17,7 +17,7 @@ module AuthHelper
 
   # bypass javascript dropdown
   def set_host_picker(host)
-    page.find('.host-picker').all('input').first.set(host)
+    page.find('.host-picker').all('input', visible: false).first.set(host)
   end
 
   # manually log in user
@@ -28,6 +28,7 @@ module AuthHelper
     fill_in 'Password', with: pmp_password
     click_button 'Sign in'
     expect(page).to have_content('You are now logged in')
+    expect(page.body).to match(%r{#{pmp_username} @ #{pmp_host.gsub(/^http(s):\/\//, '')}}i)
   end
 
 end

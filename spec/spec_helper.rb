@@ -12,9 +12,4 @@ RSpec.configure do |config|
   # randomize
   config.order = :random
 
-  # either syntax is okay
-  config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]
-  end
-
 end
