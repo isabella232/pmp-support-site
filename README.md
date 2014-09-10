@@ -1,6 +1,6 @@
-================
-PMP Support Site
-================
+# PMP Support Site
+
+[![Build Status](https://travis-ci.org/publicmediaplatform/support.pmp.io.svg?branch=master)](https://travis-ci.org/publicmediaplatform/support.pmp.io.svg?branch=master)
 
 Rails application powering [support.pmp.io](https://support.pmp.io).
 
@@ -8,15 +8,11 @@ The support.pmp.io site provides links and information for getting help with the
 
 Documentation is parsed from the markdown files in the `docs` directory.  They will be sorted by name before being rendered as the docs page.
 
-
-Issues and Contributing
------------------------
+## Issues and Contributing
 
 Report any bugs or feature-requests via the [main PMP issue tracker](http://github.com/publicmediaplatform/pmp-issues/issues).  Or send me a fax.  Pull requests welcome!  Thanks.
 
-
-License
--------
+## License
 
 support.pmp.io is free software, and may be redistributed under the MIT-LICENSE.
 
