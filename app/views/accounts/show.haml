@@ -1,23 +1,83 @@
 .row
-  .col-md-12
+  .col-md-5
+    %table.table.table-bordered.well
+      %thead
+        %tr
+          %th
+          %th
+            Your Account
+      %tbody
+        %tr
+          %td.table-label
+            Host
+          %td
+            = link_to full_host(current_user).gsub(/\/$/, ''), full_host(current_user)
+        %tr
+          %td.table-label
+            GUID
+          %td
+            = @me.attributes.guid
+        %tr
+          %td.table-label
+            Created
+          %td
+            = format_time(@me.created)
+        %tr
+          %td.table-label
+            Modified
+          %td
+            = format_time(@me.modified)
+        %tr
+          %td.table-label
+            Tags
+          %td
+            - if @me.tags && @me.tags.count > 0
+              - @me.tags.each do |t|
+                %span.label.label-primary
+                  = t
+            - else
+              %span.text-muted
+                (none)
+  .col-md-7
     .well
-      %h2
-        Account Information
-      .row
-        .col-md-6
-          %table.table.table-bordered
-            %tr
-              %td.table-label
-                Host
-              %td
-                = current_user[2]
-            %tr
-              %td.table-label
+      = form_tag(account_path, method: 'put', class: 'form-horizontal', id: 'update-account-form') do
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            %h1
+              Update Account
+        .form-group
+          %label.col-sm-2.control-label{for: 'input-username'}
+            Username
+          .col-sm-10
+            %input#input-username.form-control{type: 'text', name: 'username', value: @me.attributes.auth.user}
+        .form-group
+          %label.col-sm-2.control-label{for: 'input-password'}
+            Password
+          .col-sm-10.change-password
+            %a{href: '#'}
+              Change Password
+            %input#input-password.form-control{type: 'password', name: 'password', placeholder: 'Enter a new password'}
+        .form-group
+          %label.col-sm-2.control-label{for: 'input-email'}
+            Email
+          .col-sm-10
+            %input#input-email.form-control{type: 'text', required: true, name: 'email', value: doc_email(@me)}
+        .form-group
+          %label.col-sm-2.control-label{for: 'input-title'}
+            Title
+          .col-sm-10
+            %input#input-title.form-control{type: 'text', required: true, name: 'title', value: @me.title}
+        .form-group
+          %label.col-sm-2.control-label{for: 'input-type'}
+            Type
+          .col-sm-10
+            %select#input-type.form-control{name: 'type'}
+              %option{value: 'user', selected: doc_type(@me) == 'user'}
                 User
-              %td
-                = current_user[0]
-            %tr
-              %td.table-label
-                Password
-              %td
-                ********
+              %option{value: 'organization', selected: doc_type(@me) == 'organization'}
+                Organization
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            %button.btn.btn-pmp{type: 'submit'}
+              %i.fa.fa-save.fa-lg
+              %span Update

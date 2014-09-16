@@ -11,6 +11,7 @@ module PmpUser
     helper_method :current_users
     helper_method :current_pmp
     helper_method :current_auth
+    rescue_from Faraday::ClientError, with: :logout_on_401
   end
 
   # config for the current user account
@@ -90,6 +91,17 @@ module PmpUser
     end
   end
 
+  # update the current user
+  def user_update(new_username = nil, new_password = nil)
+    if new_username.present?
+      current_user['user'] = new_username
+      current_user['key'] = get_pmp_key(current_user['host'], new_username)
+    end
+    if new_password.present?
+      current_user['pass'] = new_password
+    end
+  end
+
   # log out all accounts
   def user_destroy_all
     session[:users] = []
@@ -125,6 +137,17 @@ protected
       pmp_cfg[:password] = config['pass'] || ''
     end
     PMP::Client.new(pmp_cfg)
+  end
+
+  # catch global 401's
+  def logout_on_401(e)
+    if e.response && e.response[:status] == 401
+      session[:users] = []
+      session[:current_user] = nil
+      redirect_to login_path, notice: 'Unauthorized! Please login again.'
+    else
+      raise e
+    end
   end
 
 end

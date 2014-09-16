@@ -9,6 +9,11 @@
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
+.form-horizontal .control-label {
+  @media (min-width: 768px) {
+    padding-top: 10px;
+  }
+}
 .form-control {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -171,7 +176,19 @@ a:hover, a:focus {
   }
 }
 
-// pmp style alert
+// pmp alerts
+.alert-primary {
+  background-image: -webkit-linear-gradient(top, #4487C0 0%, #428bca 100%);
+  background-image: -o-linear-gradient(top, #4487C0 0%, #428bca 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4487C0), to(#428bca));
+  background-image: linear-gradient(to bottom, #4487C0 0%, #428bca 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF4487C0', endColorstr='#FF428bca', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  background-color: #4487C0;
+  border-color: #4984B6;
+  color: #fff;
+}
 .alert-pmp {
   background-image: -webkit-linear-gradient(top, #CC362B 0%, #B33026 100%);
   background-image: -o-linear-gradient(top, #CC362B 0%, #B33026 100%);

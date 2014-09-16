@@ -1,4 +1,5 @@
 class PasswordResetController < ApplicationController
+  include PmpPassword
 
   before_filter :setup_negative_captcha
   before_filter :require_not_login!
@@ -79,8 +80,8 @@ class PasswordResetController < ApplicationController
       flash.now.alert = 'Password does not match confirmation'
       ga_event!('passwords', 'confirmation')
       render :show
-    elsif !password_valid?(@reset.user_name, @captcha.values['password'])
-      flash.now.alert = 'Your password is weak!  Beef it up a bit, eh?'
+    elsif msg = invalid_password_msg(@reset.user_name, @captcha.values['password'])
+      flash.now.alert = msg
       ga_event!('passwords', 'weak')
       render :show
     else
@@ -128,12 +129,6 @@ protected
   # link to support
   def support_mailto
     "<a href='mailto:support@publicmediaplatform.org'>contact support</a>"
-  end
-
-  # check password strength
-  def password_valid?(uname, pwd)
-    strength = PasswordStrength.test(uname, pwd)
-    strength.valid?(:good)
   end
 
   def get_contact_email(doc)
