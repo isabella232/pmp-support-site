@@ -50,14 +50,14 @@
   background: #fff;
 }
 .alert-success {
-  background-image: -webkit-linear-gradient(top, #55A833 0%, #2D8309 100%);
-  background-image: -o-linear-gradient(top, #55A833 0%, #2D8309 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#55A833), to(#2D8309));
-  background-image: linear-gradient(to bottom, #55A833 0%, #2D8309 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff55A833', endColorstr='#ff2D8309', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #83FF0D 0%, #80F511 100%);
+  background-image: -o-linear-gradient(top, #83FF0D 0%, #80F511 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#83FF0D), to(#80F511));
+  background-image: linear-gradient(to bottom, #83FF0D 0%, #80F511 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff83FF0D', endColorstr='#ff80F511', GradientType=0);
   background-repeat: repeat-x;
-  border-color: #469425;
-  color: #fff;
+  border-color: #87EE25;
+  color: #666;
   text-shadow: none;
 }
 a {

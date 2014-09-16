@@ -15,6 +15,9 @@ class PasswordResetController < ApplicationController
     elsif !@captcha.values['host'].present? || !@captcha.values['username'].present?
       flash.now.alert = 'Please fill out all fields'
       render :new
+    elsif !Rails.application.secrets.pmp_hosts.keys.include?(@captcha.values['host'])
+      flash.now.alert = 'Invalid host'
+      render :new
     elsif user_items.nil?
       flash.now.alert = "Something went wrong - please #{support_mailto}."
       ga_event!('passwords', 'fatal')

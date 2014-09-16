@@ -3,13 +3,13 @@ class CredentialsController < ApplicationController
 
   # GET /credentials
   def index
-    @clients = current_pmp.credentials.list.clients
+    @clients = current_auth.credentials.list.clients
   end
 
   # POST /credentials
   def create
     client_params = params.slice(:scope, :label, :token_expires_in)
-    cred = current_pmp.credentials.create(client_params)
+    cred = current_auth.credentials.create(client_params)
     ga_event!('credentials', 'create')
     redirect_to credentials_path, notice: "Created client #{cred[:client_id]}"
   rescue Faraday::ClientError => e
@@ -19,7 +19,7 @@ class CredentialsController < ApplicationController
 
   # DELETE /credentials/1
   def destroy
-    current_pmp.credentials.destroy(params[:id])
+    current_auth.credentials.destroy(params[:id])
     ga_event!('credentials', 'destroy')
     redirect_to credentials_path, notice: "Deleted client #{params[:id]}"
   rescue Faraday::ClientError => e

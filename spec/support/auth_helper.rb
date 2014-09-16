@@ -17,6 +17,9 @@ module AuthHelper
 
   # bypass javascript dropdown
   def set_host_picker(host)
+    Rails.application.secrets.pmp_hosts.each do |name, cfg|
+      host = name if cfg['host'].include?(host)
+    end
     page.find('.host-picker').all('input', visible: false).first.set(host)
   end
 
@@ -28,7 +31,7 @@ module AuthHelper
     fill_in 'Password', with: pmp_password
     click_button 'Sign in'
     expect(page).to have_content('You are now logged in')
-    expect(page.body).to match(%r{#{pmp_username} @ #{pmp_host.gsub(/^http(s):\/\//, '')}}i)
+    expect(page.body).to match(%r{#{pmp_username}@#{pmp_host.gsub(/^http(s):\/\//, '')}}i)
   end
 
 end
