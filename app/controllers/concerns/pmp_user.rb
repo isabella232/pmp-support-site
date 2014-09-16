@@ -6,6 +6,8 @@ require 'active_support/concern'
 module PmpUser
   extend ActiveSupport::Concern
 
+  SUPPORT_CLIENT_LABEL = 'pmp-support-app'
+
   included do
     helper_method :current_user
     helper_method :current_users
@@ -56,9 +58,9 @@ module PmpUser
     all_clients = pmp.credentials.list.clients
 
     # find or create a client for the support-app to use
-    client = all_clients.find { |c| c['label'] == 'pmp-support-app' }
+    client = all_clients.find { |c| c['label'] == SUPPORT_CLIENT_LABEL }
     unless client
-      client = pmp.credentials.create(scope: 'write', label: 'pmp-support-app')
+      client = pmp.credentials.create(scope: 'write', label: SUPPORT_CLIENT_LABEL)
     end
     config[:id] = client[:client_id]
     config[:secret] = client[:client_secret]
@@ -104,6 +106,7 @@ module PmpUser
 
   # log out all accounts
   def user_destroy_all
+    destroy_support_clients!
     session[:users] = []
     session[:current_user] = nil
   end
@@ -142,11 +145,29 @@ protected
   # catch global 401's
   def logout_on_401(e)
     if e.response && e.response[:status] == 401
+      destroy_support_clients!
       session[:users] = []
       session[:current_user] = nil
       redirect_to login_path, notice: 'Unauthorized! Please login again.'
     else
       raise e
+    end
+  end
+
+  # attempt to destroy any creds we generated
+  def destroy_support_clients!
+    current_users.each do |user_config|
+      begin
+        pmp = get_pmp_client(user_config)
+        pmp.credentials.list.clients.each do |cred|
+          if cred['label'] == SUPPORT_CLIENT_LABEL
+            pmp.credentials.destroy(cred['client_id'])
+            puts "DESTROY #{cred['client_id']}"
+          end
+        end
+      rescue Faraday::ClientError => e
+        # just ignore any errors and continue with logout
+      end
     end
   end
 

@@ -3,6 +3,10 @@
 #
 $(document).on 'page:load ready', ->
 
+  # tooltip
+  $('.readonly-tip i').tooltip
+    placement: 'left'
+
   # create credentials
   $('.create-client').click (e) ->
     if $('.new-client-row').length == 1

@@ -4,6 +4,7 @@ class CredentialsController < ApplicationController
   # GET /credentials
   def index
     @clients = current_auth.credentials.list.clients
+    @my_client_label = SUPPORT_CLIENT_LABEL
   end
 
   # POST /credentials

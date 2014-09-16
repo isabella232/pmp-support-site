@@ -55,7 +55,6 @@ class SessionsController < ApplicationController
         render :add_account
       elsif user_add(host, user, pass)
         ga_event!('sessions', 'add_account')
-        redirect_to credentials_path, notice: 'You are now logged in'
         redirect_to credentials_path, notice: "Switched to account #{current_user['key']}"
       else
         ga_event!('sessions', 'invalid')

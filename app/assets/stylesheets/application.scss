@@ -11,3 +11,14 @@
 //= require layout
 //= require_tree .
 //
+
+// global logout modal
+.bootbox-logout .modal-dialog {
+  width: 200px;
+  .bootbox-body {
+    text-align: center;
+  }
+  h3 {
+    margin: 4px 0 1px;
+  }
+}
