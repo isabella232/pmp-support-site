@@ -30,7 +30,7 @@ feature 'forgot password' do
     expect(page).to have_content('Hidden form fields were submitted')
   end
 
-  scenario 'username not found' do
+  scenario 'username not found', admin: true do
     visit forgot_path
     set_host_picker pmp_host
     fill_in 'Username', with: 'foobar93052758'
@@ -104,7 +104,7 @@ feature 'forgot password' do
     expect(PasswordReset.count).to eq(1)
   end
 
-  scenario 'full reset path works' do
+  scenario 'full reset path works', admin: true do
     visit forgot_path
     set_host_picker pmp_host
     fill_in 'Username', with: pmp_username
