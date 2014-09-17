@@ -162,7 +162,6 @@ protected
         pmp.credentials.list.clients.each do |cred|
           if cred['label'] == SUPPORT_CLIENT_LABEL
             pmp.credentials.destroy(cred['client_id'])
-            puts "DESTROY #{cred['client_id']}"
           end
         end
       rescue Faraday::ClientError => e

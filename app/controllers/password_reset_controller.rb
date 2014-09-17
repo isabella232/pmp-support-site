@@ -133,7 +133,7 @@ protected
 
   def get_contact_email(doc)
     if doc.emails.present?
-      eml = doc.emails.find { |e| e['type'] == 'primary' } || docs.emails.first
+      eml = doc.emails.find { |e| e['type'] == 'primary' } || doc.emails.first
       eml['email']
     else
       doc.email

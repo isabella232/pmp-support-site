@@ -100,7 +100,7 @@ feature 'forgot password' do
     fill_in 'New password', with: '4'
     fill_in 'Confirm new password', with: '4'
     click_button 'Change password'
-    expect(page).to have_content('Your password is weak')
+    expect(page).to have_content('That password is weak')
     expect(PasswordReset.count).to eq(1)
   end
 

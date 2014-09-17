@@ -18,7 +18,7 @@ module ApplicationHelper
   # find a contact email in a cdoc
   def doc_email(doc)
     if doc.emails.present?
-      eml = doc.emails.find { |e| e['type'] == 'primary' } || docs.emails.first
+      eml = doc.emails.find { |e| e['type'] == 'primary' } || doc.emails.first
       eml['email']
     else
       doc.email

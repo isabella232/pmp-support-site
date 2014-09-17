@@ -22,6 +22,13 @@ class AccountsController < ApplicationController
       user_update(account_params[:username], account_params[:password])
       redirect_to account_path, notice: 'Your account has been updated'
     end
+  rescue Faraday::ClientError => e
+    if e.response && e.response[:status] == 409
+      flash.now.alert = 'Username is already taken! Try another one.'
+      render :show
+    else
+      raise e
+    end
   end
 
 protected
