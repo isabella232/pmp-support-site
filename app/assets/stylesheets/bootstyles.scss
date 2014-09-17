@@ -9,6 +9,11 @@
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
+.form-horizontal .control-label {
+  @media (min-width: 768px) {
+    padding-top: 10px;
+  }
+}
 .form-control {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -50,14 +55,14 @@
   background: #fff;
 }
 .alert-success {
-  background-image: -webkit-linear-gradient(top, #55A833 0%, #2D8309 100%);
-  background-image: -o-linear-gradient(top, #55A833 0%, #2D8309 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#55A833), to(#2D8309));
-  background-image: linear-gradient(to bottom, #55A833 0%, #2D8309 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff55A833', endColorstr='#ff2D8309', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #83FF0D 0%, #80F511 100%);
+  background-image: -o-linear-gradient(top, #83FF0D 0%, #80F511 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#83FF0D), to(#80F511));
+  background-image: linear-gradient(to bottom, #83FF0D 0%, #80F511 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff83FF0D', endColorstr='#ff80F511', GradientType=0);
   background-repeat: repeat-x;
-  border-color: #469425;
-  color: #fff;
+  border-color: #87EE25;
+  color: #666;
   text-shadow: none;
 }
 a {
@@ -171,7 +176,19 @@ a:hover, a:focus {
   }
 }
 
-// pmp style alert
+// pmp alerts
+.alert-primary {
+  background-image: -webkit-linear-gradient(top, #4487C0 0%, #428bca 100%);
+  background-image: -o-linear-gradient(top, #4487C0 0%, #428bca 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4487C0), to(#428bca));
+  background-image: linear-gradient(to bottom, #4487C0 0%, #428bca 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF4487C0', endColorstr='#FF428bca', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  background-color: #4487C0;
+  border-color: #4984B6;
+  color: #fff;
+}
 .alert-pmp {
   background-image: -webkit-linear-gradient(top, #CC362B 0%, #B33026 100%);
   background-image: -o-linear-gradient(top, #CC362B 0%, #B33026 100%);

@@ -95,7 +95,7 @@ GEM
     password_strength (0.4.1)
       activerecord
     pg (0.17.1)
-    pmp (0.4.0)
+    pmp (0.4.1)
       activesupport
       excon
       faraday
@@ -213,7 +213,7 @@ DEPENDENCIES
   negative_captcha
   password_strength
   pg
-  pmp (>= 0.4.0)
+  pmp (>= 0.4.1)
   poltergeist
   pry
   quiet_assets

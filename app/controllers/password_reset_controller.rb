@@ -1,4 +1,5 @@
 class PasswordResetController < ApplicationController
+  include PmpPassword
 
   before_filter :setup_negative_captcha
   before_filter :require_not_login!
@@ -14,6 +15,9 @@ class PasswordResetController < ApplicationController
       render :new
     elsif !@captcha.values['host'].present? || !@captcha.values['username'].present?
       flash.now.alert = 'Please fill out all fields'
+      render :new
+    elsif !Rails.application.secrets.pmp_hosts.keys.include?(@captcha.values['host'])
+      flash.now.alert = 'Invalid host'
       render :new
     elsif user_items.nil?
       flash.now.alert = "Something went wrong - please #{support_mailto}."
@@ -76,8 +80,8 @@ class PasswordResetController < ApplicationController
       flash.now.alert = 'Password does not match confirmation'
       ga_event!('passwords', 'confirmation')
       render :show
-    elsif !password_valid?(@reset.user_name, @captcha.values['password'])
-      flash.now.alert = 'Your password is weak!  Beef it up a bit, eh?'
+    elsif msg = invalid_password_msg(@reset.user_name, @captcha.values['password'])
+      flash.now.alert = msg
       ga_event!('passwords', 'weak')
       render :show
     else
@@ -127,15 +131,9 @@ protected
     "<a href='mailto:support@publicmediaplatform.org'>contact support</a>"
   end
 
-  # check password strength
-  def password_valid?(uname, pwd)
-    strength = PasswordStrength.test(uname, pwd)
-    strength.valid?(:good)
-  end
-
   def get_contact_email(doc)
     if doc.emails.present?
-      eml = doc.emails.find { |e| e['type'] == 'primary' } || docs.emails.first
+      eml = doc.emails.find { |e| e['type'] == 'primary' } || doc.emails.first
       eml['email']
     else
       doc.email

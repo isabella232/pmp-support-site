@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # user sessions
   get  'login'       => 'sessions#login'
   get  'add_account' => 'sessions#add_account'
-  get  'switch/:id'  => 'sessions#switch', as: :switch
+  get  'switch/:key' => 'sessions#switch', as: :switch, key: /[^\/]+/
   get  'logout'      => 'sessions#logout'
   post 'login'       => 'sessions#do_login'
   post 'add_account' => 'sessions#do_add_account'

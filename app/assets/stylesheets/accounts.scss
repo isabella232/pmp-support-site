@@ -3,9 +3,47 @@
 //
 body.accounts {
 
+  .table th {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding: 16px 8px 12px;
+    font-size: 18px;
+  }
   .table-label {
     width: 1px;
     font-weight: bold;
   }
+
+  .form-horizontal {
+    h1 {
+      padding: 0;
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .change-password {
+    a {
+      display: block;
+      padding-top: 10px;
+      height: 40px;
+    }
+    .form-control {
+      display: none;
+    }
+
+    &.changing {
+      a {
+        display: none;
+      }
+      .form-control {
+        display: block;
+      }
+    }
+
+  }
+
 
 }

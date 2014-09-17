@@ -30,3 +30,10 @@ $(document).on 'page:load ready', ->
   $('body').on 'show.bs.modal', '.modal', ->
     $(this).css top: '50%', 'margin-top': -> -($(this).height() / 2)
 
+  # logout modal
+  $('.navbar .logout').on 'click', ->
+    bootbox.dialog
+      message: '<h3><i class="fa fa-spinner fa-spin"></i> Logging Out</h3>'
+      closeButton: false
+      className: 'bootbox-logout'
+      animate: false

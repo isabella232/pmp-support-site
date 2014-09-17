@@ -16,4 +16,16 @@ class PasswordReset < ActiveRecord::Base
     UserMailer.password_reset_email(self).deliver
   end
 
+  def host_url
+    if Rails.application.secrets.pmp_hosts[self.host]
+      Rails.application.secrets.pmp_hosts[self.host]['host']
+    else
+      'unknown'
+    end
+  end
+
+  def host_title
+    self.host_url.gsub(/^https?:\/\/|\/$/, '')
+  end
+
 end

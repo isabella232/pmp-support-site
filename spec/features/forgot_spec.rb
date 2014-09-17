@@ -100,7 +100,7 @@ feature 'forgot password' do
     fill_in 'New password', with: '4'
     fill_in 'Confirm new password', with: '4'
     click_button 'Change password'
-    expect(page).to have_content('Your password is weak')
+    expect(page).to have_content('That password is weak')
     expect(PasswordReset.count).to eq(1)
   end
 
@@ -116,7 +116,7 @@ feature 'forgot password' do
 
     expect(mails.count).to eq(1)
     expect(first_mail.from).to include('support@publicmediaplatform.org')
-    expect(first_mail.subject).to eq("Reset your #{pmp_host} password")
+    expect(first_mail.subject).to eq("Reset your #{PasswordReset.first.host_title} password")
     expect(first_mail.body).to include(PasswordReset.first.token)
 
     visit reset_password_path(PasswordReset.first.token)
