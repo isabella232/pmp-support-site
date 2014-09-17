@@ -35,7 +35,7 @@ protected
 
   # fetch user cdoc
   def my_user_doc
-    current_pmp.root.query['urn:collectiondoc:hreftpl:users'].where(guid: 'me').retrieve
+    current_pmp.query['urn:collectiondoc:hreftpl:users'].where(guid: 'me').retrieve
   end
 
   # require / slice params

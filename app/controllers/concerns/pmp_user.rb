@@ -30,9 +30,10 @@ module PmpUser
   def current_pmp
     if @current_pmp_user_key != current_user
       @current_pmp_user_key = current_user['key']
-      @current_pmp_client = get_pmp_client(current_user, true)
+      @current_pmp_root = get_pmp_client(current_user, true).root
+      @current_pmp_root.guid # force load
     end
-    @current_pmp_client
+    @current_pmp_root
   end
 
   # pmp client with user auth
@@ -106,9 +107,10 @@ module PmpUser
 
   # log out all accounts
   def user_destroy_all
-    destroy_support_clients!
     session[:users] = []
     session[:current_user] = nil
+    @current_pmp_user_key = nil
+    @current_auth_user_key = nil
   end
 
 protected
@@ -145,9 +147,11 @@ protected
   # catch global 401's
   def logout_on_401(e)
     if e.response && e.response[:status] == 401
-      destroy_support_clients!
+      binding.pry
       session[:users] = []
       session[:current_user] = nil
+      @current_pmp_user_key = nil
+      @current_auth_user_key = nil
       redirect_to login_path, notice: 'Unauthorized! Please login again.'
     else
       raise e

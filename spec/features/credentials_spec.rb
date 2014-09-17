@@ -5,7 +5,7 @@ feature 'client credentials' do
 
   before(:each) { do_login! }
 
-  scenario 'adds a new client on every login' do
+  scenario 'ensures a support-app client on login' do
     visit credentials_path
     expect(page).to have_content('pmp-support-app')
     row = page.find('tr', text: 'pmp-support-app')
@@ -20,7 +20,7 @@ feature 'client credentials' do
     row = page.find('tr', text: 'pmp-support-app')
     new_client_id = row.find('.client-id').text
 
-    expect(new_client_id).not_to eq(client_id)
+    expect(new_client_id).to eq(client_id)
   end
 
   scenario 'cancels adding a credential', js: true do

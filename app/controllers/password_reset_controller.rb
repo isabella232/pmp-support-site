@@ -111,8 +111,8 @@ protected
   def user_items
     unless @user_its
       pmp = admin_pmp(@captcha.values[:host])
-      href = "#{pmp.endpoint}/users?auth_user=" + CGI::escape(@captcha.values[:username])
-      @user_its = PMP::CollectionDocument.new(pmp.options.merge(href: href, root: pmp.root)).items
+      href = "#{pmp.query['urn:collectiondoc:query:users'].url}?auth_user=" + CGI::escape(@captcha.values[:username])
+      @user_its = PMP::CollectionDocument.new(pmp.options.merge(href: href, root: pmp)).items
     end
     @user_its
   rescue
@@ -122,8 +122,7 @@ protected
   # find user from a password reset model
   def find_by_reset(reset)
     pmp = admin_pmp(reset.host)
-    href = "#{pmp.endpoint}/docs/#{reset.user_guid}"
-    PMP::CollectionDocument.new(pmp.options.merge(href: href, root: pmp.root))
+    pmp.query['urn:collectiondoc:hreftpl:users'].where(guid: reset.user_guid).retrieve
   end
 
   # link to support
