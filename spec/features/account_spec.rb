@@ -8,10 +8,6 @@ feature 'user account' do
     visit account_path
   end
 
-  after(:all) do
-    # reset username and password
-  end
-
   scenario 'displays account info' do
     expect(page).to have_content(pmp_username)
     expect(page).to have_content(pmp_host)
