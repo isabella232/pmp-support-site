@@ -8,6 +8,8 @@ Normally, you should use the [support site](http://support.pmp.io/credentials). 
 
 ## Credential List
 
+See `urn:collectiondoc:form:listcredentials` in [the home doc](https://api.pmp.io).
+
 ```shell
 curl -u "username:password" -X GET "https://api.pmp.io/auth/credentials"
 
