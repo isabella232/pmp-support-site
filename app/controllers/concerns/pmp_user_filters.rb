@@ -6,22 +6,34 @@ require 'active_support/concern'
 module PmpUserFilters
   extend ActiveSupport::Concern
 
+  SESSION_TIMEOUT = 24.hours
+
+  included do
+    before_filter :check_last_seen_at
+  end
+
 protected
+
+  # record every time user is seen
+  def check_last_seen_at
+    if session[:last_seen_at] && session[:last_seen_at].to_i < SESSION_TIMEOUT.ago.to_i
+      session[:last_seen_at] = nil
+      user_destroy_all
+      @user_session_expired = true
+    else
+      session[:last_seen_at] = Time.now.to_i
+      @user_session_expired = false
+    end
+  end
 
   # force login
   def require_login!
-    if current_user
-      if session[:last_seen_at] && session[:last_seen_at] < 24.hours.ago
-        session[:last_seen_at] = nil
-        session[:users] = nil
-        session[:current_user] = nil
-        ga_event!('sessions', 'timeout')
+    unless current_user
+      if @user_session_expired
         redirect_to login_path, notice: 'Your session has expired - please login'
       else
-        session[:last_seen_at] = Time.now
+        redirect_to login_path, notice: 'You must login first'
       end
-    else
-      redirect_to login_path, notice: 'You must login first'
     end
   end
 
