@@ -1,40 +1,50 @@
 class ProxyController < ApplicationController
-  before_filter :require_login!, only: :current_pmp
-
-  include PMP::Connection
 
   # GET /proxy/public/...
   def public_proxy
-
+    resp = make_request(get_public_user)
+    render json: resp.body, content_type: resp.headers['content-type'], status: resp.status
   end
 
   # GET /proxy/current/...
   def current_user_proxy
-    binding.pry
-    # raw = connection()
+    if current_user
+      resp = make_request(current_user)
+      render json: resp.body, content_type: resp.headers['content-type'], status: resp.status
+    else
+      render text: 'Unauthorized', status: 401
+    end
+  end
 
-    # begin
-    #   raw = connection(current_options.merge({url: url})).send(method) do |request|
-    #     if [:post, :put].include?(method.to_sym) && !body.blank?
-    #       request.body = PMP::CollectionDocument.to_persist_json(body)
-    #     end
-    #   end
-    # rescue Faraday::Error::ResourceNotFound=>not_found_ex
-    #   if (method.to_sym == :get)
-    #     raw = OpenStruct.new(body: nil, status: 404)
-    #   else
-    #     raise not_found_ex
-    #   end
-    # end
+protected
 
-    # conn = Faraday.new(:url => 'http://sushi.com') do |faraday|
-    #   faraday.request  :url_encoded             # form-encode POST params
-    #   faraday.response :logger                  # log requests to STDOUT
-    #   faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-    # end
+  # make a request as a remote user
+  def make_request(remote_user)
+    opts = {
+      url: remote_user.host,
+      headers: {
+        'User-Agent'    => 'pmp-support-app',
+        'Accept'        => 'application/vnd.collection.doc+json',
+        'Content-Type'  => 'application/vnd.collection.doc+json',
+        'Authorization' => "Bearer #{remote_user.token}",
+      },
+      ssl: {verify: false},
+    }
+    path = (params[:other] || '')
+    path << '?' + request.query_string if request.query_string.present?
+    Faraday.new(opts).get(path)
+  end
 
-    token = current_pmp.current_options[:oauth_token]
-
+  # session-cache the public proxy token
+  def get_public_user
+    if session[:public_user].is_a?(Hash)
+      Remote::User.new(session[:public_user])
+    else
+      cfg = Rails.application.secrets.pmp_hosts['production']
+      u = Remote::User.new(env: 'production', client_id: cfg['public_id'], client_secret: cfg['public_secret'])
+      session[:public_user] = u.as_json
+      u
+    end
   end
 
 end

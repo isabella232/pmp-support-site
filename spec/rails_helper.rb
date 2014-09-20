@@ -26,18 +26,4 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  # allow skipping specs that require admin credentials
-  config.before admin: true do
-    if ENV['PMP_HOST'].blank?
-      skip 'No PMP admin credentials set for ENV (no host given)'
-    else
-      name, cfg = Rails.application.secrets.pmp_hosts.find do |name, cfg|
-        ENV['PMP_HOST'].gsub(/\/$/, '') == cfg['host'].gsub(/\/$/, '')
-      end
-      if cfg.blank? || cfg['client_id'].blank? || cfg['client_secret'].blank?
-        skip "No PMP admin credentials set for ENV (#{ENV['PMP_HOST']})"
-      end
-    end
-  end
-
 end

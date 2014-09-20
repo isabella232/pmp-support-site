@@ -84,8 +84,7 @@ module PmpUser
 
   # log out all accounts
   def user_destroy_all
-    session[:users] = []
-    session[:user_key] = nil
+    reset_session
     @current_remote_usr = nil
     @current_remote_usrs = nil
   end
