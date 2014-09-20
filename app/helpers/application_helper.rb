@@ -5,16 +5,6 @@ module ApplicationHelper
     path.include?(request.path) ? 'active' : ''
   end
 
-  # get full hostname
-  def full_host(user)
-    name = user['host']
-    if Rails.application.secrets.pmp_hosts[name]
-      Rails.application.secrets.pmp_hosts[name]['host']
-    else
-      name
-    end
-  end
-
   # find a contact email in a cdoc
   def doc_email(doc)
     if doc.emails.present?

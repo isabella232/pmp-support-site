@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   def switch
     if user_switch(params[:key])
       ga_event!('sessions', 'switch')
-      redirect_to credentials_path, notice: "Switched to account #{current_user['key']}"
+      redirect_to credentials_path, notice: "Switched to account #{current_user.key}"
     else
       redirect_to root_path, alert: 'Unknown account'
     end
@@ -55,7 +55,7 @@ class SessionsController < ApplicationController
         render :add_account
       elsif user_add(host, user, pass)
         ga_event!('sessions', 'add_account')
-        redirect_to credentials_path, notice: "Switched to account #{current_user['key']}"
+        redirect_to credentials_path, notice: "Switched to account #{current_user.key}"
       else
         ga_event!('sessions', 'invalid')
         flash.now.alert = 'Invalid username/password'

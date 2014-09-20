@@ -11,7 +11,7 @@
     - if current_user
       %li.dropdown
         %a.dropdown-toggle{href: '#', 'data-toggle' => 'dropdown'}
-          = current_user['key']
+          = current_user.key
           %span.caret
         %ul.dropdown-menu
           %li
@@ -22,8 +22,8 @@
           %li.dropdown-header Switch accounts
           - current_users.each do |user|
             %li
-              %a{href: switch_path(user['key'])}
-                = user['key']
+              %a{href: switch_path(user.key)}
+                = user.key
     - else
       %li{class: active_tab(login_path, register_path, forgot_path)}
         = link_to 'Login', login_path
