@@ -23,7 +23,7 @@ module PmpSupport
     # include libs
     config.autoload_paths << Rails.root.join('lib')
 
-    config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors" do
+    config.middleware.insert_before "Rack::Sendfile", "Rack::Cors" do
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :options]
