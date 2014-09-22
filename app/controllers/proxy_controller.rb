@@ -37,12 +37,14 @@ protected
 
   # session-cache the public proxy token
   def get_public_user
-    if session[:public_user].is_a?(Hash)
-      Remote::User.new(session[:public_user])
+    proxy_env = params['proxy_env'] || 'production'
+    if session["#{proxy_env}_public_user"].is_a?(Hash)
+      Remote::User.new(session["#{proxy_env}_public_user"])
     else
-      cfg = Rails.application.secrets.pmp_hosts['production']
-      u = Remote::User.new(env: 'production', client_id: cfg['public_id'], client_secret: cfg['public_secret'])
-      session[:public_user] = u.as_json
+      cfg = Rails.application.secrets.pmp_hosts[proxy_env]
+      logger.debug("pmp:hosts[#{proxy_env}]: #{cfg.inspect}")
+      u = Remote::User.new(env: proxy_env, client_id: cfg['public_id'], client_secret: cfg['public_secret'])
+      session["#{proxy_env}_public_user"] = u.as_json
       u
     end
   end

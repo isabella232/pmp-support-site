@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   resources :credentials, only: [:index, :create, :destroy]
 
   # pmp api proxy
-  get 'proxy/public(/*other)'  => 'proxy#public_proxy',       as: :public_proxy
+  get 'proxy/sandbox(/*other)' => 'proxy#public_proxy',       as: :sandbox_proxy, defaults: { proxy_env: 'sandbox' }
+  get 'proxy/public(/*other)'  => 'proxy#public_proxy',       as: :public_proxy, defaults: { proxy_env: 'production' }
   get 'proxy/current(/*other)' => 'proxy#current_user_proxy', as: :user_proxy
 
 end
