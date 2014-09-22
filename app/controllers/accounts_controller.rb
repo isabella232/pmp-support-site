@@ -1,6 +1,8 @@
 class AccountsController < ApplicationController
   include PmpPassword
 
+  before_filter :require_login!
+
   EMAIL_REGEX = /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
 
   # GET /account
@@ -35,7 +37,7 @@ protected
 
   # fetch user cdoc
   def my_user_doc
-    current_pmp.query['urn:collectiondoc:hreftpl:users'].where(guid: 'me').retrieve
+    current_user.pmp_client.root.query['urn:collectiondoc:hreftpl:users'].where(guid: 'me').retrieve
   end
 
   # require / slice params

@@ -11,7 +11,7 @@
           %td.table-label
             Host
           %td
-            = link_to full_host(current_user).gsub(/\/$/, ''), full_host(current_user)
+            = link_to current_user.host, current_user.host
         %tr
           %td.table-label
             GUID

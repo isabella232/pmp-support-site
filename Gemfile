@@ -17,6 +17,8 @@ gem 'rest-client'
 gem 'redcarpet'
 gem 'rouge'
 
+gem 'rack-cors', :require => 'rack/cors'
+
 group :test, :development do
   gem 'pry', require: true
   gem 'spring'
