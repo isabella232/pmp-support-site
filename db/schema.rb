@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804213328) do
+ActiveRecord::Schema.define(version: 20140927201914) do
 
   create_table "password_resets", force: true do |t|
     t.string   "token"
@@ -21,6 +21,28 @@ ActiveRecord::Schema.define(version: 20140804213328) do
     t.string   "host"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "recent_stories", force: true do |t|
+    t.string   "story_guid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "title"
+    t.string   "permalink"
+    t.string   "image_url"
+    t.string   "creator_name"
+    t.string   "show_name"
+    t.date     "published_date"
+  end
+
+  create_table "user_stats", force: true do |t|
+    t.string   "user_guid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "story_count", default: 0
+    t.integer  "image_count", default: 0
+    t.integer  "audio_count", default: 0
+    t.integer  "video_count", default: 0
   end
 
 end
