@@ -3,6 +3,7 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery.dotdotdot
 #= require turbolinks
 #= require bootstrap
 #= require bootbox
@@ -37,3 +38,7 @@ $(document).on 'page:load ready', ->
       closeButton: false
       className: 'bootbox-logout'
       animate: false
+
+  # dot dot dot
+  $('.ellipsis').dotdotdot
+    watch: 'window'

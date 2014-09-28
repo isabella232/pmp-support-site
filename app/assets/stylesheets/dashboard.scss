@@ -1,0 +1,97 @@
+//
+// dashboard page
+//
+body.dashboard {
+
+  overflow-x: hidden;
+
+  // item counts
+  .partner-stats {
+    text-align: center;
+    background: #fff;
+    position: relative;
+    padding: 20px 0 20px;
+    margin: 30px 0 0;
+
+    h3 {
+      vertical-align: bottom;
+      img {
+        height: 30px;
+      }
+    }
+
+    table {
+      .count {
+        text-align: right;
+        font-weight: bold;
+        padding-right: 0;
+        width: 60px;
+      }
+      .type {
+        text-align: left;
+      }
+    }
+  }
+
+  // recently added stuff
+  .recent-content {
+
+    h2.title {
+      text-align: center;
+      margin: 40px 0 25px;
+    }
+
+    .thumbnail {
+      position: relative;
+      padding: 0;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      border-radius: 0px;
+      border: 0 none;
+      margin-bottom: 30px;
+
+      // cover img tag with background-image, if supported
+      img {
+        height: 120px;
+      }
+      .img-cover {
+        height: 120px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+      }
+
+      // fix total thumb height by locking caption height
+      .caption {
+        height: 120px;
+        overflow: hidden;
+        .show {
+          color: #666;
+          font-weight: 500;
+        }
+        .date {
+          float: right;
+          color: #bababa;
+        }
+        h3 {
+          font-size: 20px;
+          margin: 12px 0 6px;
+        }
+      }
+
+      // use entire thumb as a link
+      &:hover, &:focus {
+        text-decoration: none;
+        box-shadow: 0 0 2px 1px #189D98;
+        -moz-transition: none;
+        -webkit-transition: none;
+        -o-transition: none;
+        transition: none;
+      }
+    }
+  }
+
+}
