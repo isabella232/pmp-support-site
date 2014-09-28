@@ -81,16 +81,16 @@ body.dashboard {
           margin: 12px 0 6px;
         }
       }
+    }
 
-      // use entire thumb as a link
-      &:hover, &:focus {
-        text-decoration: none;
-        box-shadow: 0 0 2px 1px #189D98;
-        -moz-transition: none;
-        -webkit-transition: none;
-        -o-transition: none;
-        transition: none;
-      }
+    // use entire thumb as a link
+    a.thumbnail:hover, a.thumbnail:focus {
+      text-decoration: none;
+      box-shadow: 0 0 2px 1px #189D98;
+      -moz-transition: none;
+      -webkit-transition: none;
+      -o-transition: none;
+      transition: none;
     }
   }
 

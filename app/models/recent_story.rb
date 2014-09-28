@@ -19,7 +19,7 @@ class RecentStory < ActiveRecord::Base
 
     # bring up to limit, and re-sort
     rich.concat oversample.slice(0, limit - rich.count)
-    rich.sort { |a, b| a.published_date <=> b.published_date }
+    rich.sort { |a, b| b.published_date <=> a.published_date }
   end
 
 end
