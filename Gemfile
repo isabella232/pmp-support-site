@@ -6,6 +6,7 @@ gem 'turbolinks'
 gem 'negative_captcha'
 gem 'password_strength'
 gem 'pmp', '>= 0.4.1', require: true
+gem 'whenever', require: false
 
 gem 'haml'
 gem 'sass-rails', '~> 4.0.3'
