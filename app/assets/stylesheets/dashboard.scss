@@ -3,7 +3,30 @@
 //
 body.dashboard {
 
-  overflow-x: hidden;
+  h2.title {
+    text-align: center;
+    margin: 40px 0 25px;
+  }
+
+  // search form
+  .search-pmp {
+    ::-webkit-input-placeholder { color: #bababa; }
+    :-moz-placeholder           { color: #bababa; }
+    ::-moz-placeholder          { color: #bababa; }
+    :-ms-input-placeholder      { color: #bababa; }
+
+    .btn-success {
+      padding: 9px 20px;
+    }
+    .advanced {
+      text-align: center;
+      margin: 20px 0;
+      .toggle {
+        color: #bababa;
+        font-size: 18px;
+      }
+    }
+  }
 
   // item counts
   .partner-stats {
@@ -36,11 +59,6 @@ body.dashboard {
   // recently added stuff
   .recent-content {
 
-    h2.title {
-      text-align: center;
-      margin: 40px 0 25px;
-    }
-
     .thumbnail {
       position: relative;
       padding: 0;
@@ -52,10 +70,10 @@ body.dashboard {
 
       // cover img tag with background-image, if supported
       img {
-        height: 120px;
+        height: 160px;
       }
       .img-cover {
-        height: 120px;
+        height: 160px;
         position: absolute;
         top: 0;
         width: 100%;
@@ -66,7 +84,7 @@ body.dashboard {
 
       // fix total thumb height by locking caption height
       .caption {
-        height: 120px;
+        height: 130px;
         overflow: hidden;
         .show {
           color: #666;
@@ -81,16 +99,18 @@ body.dashboard {
           margin: 12px 0 6px;
         }
       }
+
+      // quick shadow hovers
+      -webkit-transition: box-shadow 0s;
+      -moz-transition: box-shadow 0s;
+      -o-transition: box-shadow 0s;
+      transition: box-shadow 0s;
     }
 
     // use entire thumb as a link
     a.thumbnail:hover, a.thumbnail:focus {
       text-decoration: none;
       box-shadow: 0 0 2px 1px #189D98;
-      -moz-transition: none;
-      -webkit-transition: none;
-      -o-transition: none;
-      transition: none;
     }
   }
 

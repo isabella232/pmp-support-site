@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   # client credentials
   resources :credentials, only: [:index, :create, :destroy]
 
+  # pmp search engine
+  get 'search' => 'search#public_search', as: :public_search
+
   # pmp api proxy
   get 'proxy/sandbox(/*other)' => 'proxy#public_proxy',       as: :sandbox_proxy, defaults: { proxy_env: 'sandbox' }
   get 'proxy/public(/*other)'  => 'proxy#public_proxy',       as: :public_proxy, defaults: { proxy_env: 'production' }
