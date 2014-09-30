@@ -3,14 +3,15 @@
     %h2.title
       Search the Platform
     .col-md-6.col-md-offset-3
-      .input-group
-        %input.form-control{type: 'text', placeholder: 'Enter keywords'}
-        %span.input-group-btn
-          %button.btn.btn-md.btn-success{type: 'button'}
-            Search
-      .advanced
-        %a.toggle{href: '#'}
-          Advanced Search
+      %form
+        .input-group
+          %input.form-control{type: 'text', placeholder: 'Enter keywords', name: 'text', value: params[:text]}
+          %span.input-group-btn
+            %button.btn.btn-md.btn-success{type: 'submit'}
+              Search
+        .advanced
+          %a.toggle{href: '#'}
+            Advanced Search
   .row
     .col-md-10.col-md-offset-1.well
       .results-header
@@ -21,55 +22,9 @@
           %a{href: '#'} Most Recent
         %h3
           Search Results
-          %span.count
-            (2,623)
+          %span.count.hide
+            (0)
       .results-list
-        .media
-          %a.pull-left{href: '#'}
-            %img.media-object{src: 'http://lorempixel.com/500/900/city'}
-          .media-body
-            %h4.media-heading
-              %span.series Marketplace
-              %span.date Sept. 21, 2014
-              %span.type.story Story
-            %h3.media-title
-              %a{href: '#'}
-                What's the new normal for the housing market?
-            %p.content
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            .meta
-              .author By Lizzie O'Leary
-              .attachments 2 Images
-        .media
-          .media-body
-            %h4.media-heading
-              %span.series PBS NewsHour
-              %span.date Apr. 27, 2014
-              %span.type.video
-                Video
-                .length 3:15
-            %h3.media-title
-              %a{href: '#'}
-                New reports suggest slow down in housing market recovery
-            %p.content
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            .meta
-              .author By Allison Stewart
-        .media
-          %a.pull-left{href: '#'}
-            %img.media-object{src: 'http://lorempixel.com/1200/800/people'}
-          .media-body
-            %h4.media-heading
-              %span.series Minnesota Public Radio
-              %span.date Apr. 30, 2013
-              %span.type.story.audio Story + Audio
-            %h3.media-title
-              %a{href: '#'}
-                Housing market recovery accelerating
-            %p.content
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            .meta
-              .author By Annie Baxter
-              .attachments 2 Images
-              .attachments 1 Audio Clip (2:40)
-
+        .results-placeholder
+          %h3 Enter some search terms to get started
+        -# handlebars renders here
