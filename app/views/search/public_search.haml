@@ -10,12 +10,12 @@
       .results-header
         .sorts
           Sort by
-          %a.active{href: '#'} Most Relevant
+          %a.sort-relevance{href: '#', class: params[:searchsort] == 'relevance' ? 'active' : ''} Most Relevant
           \/
-          %a{href: '#'} Most Recent
+          %a.sort-date{href: '#', class: params[:searchsort] == 'relevance' ? '' : 'active'} Most Recent
         %h3
           Search Results
-          %span.count.hide
+          %span.search-total
             (0)
       .results-list
         .results-placeholder

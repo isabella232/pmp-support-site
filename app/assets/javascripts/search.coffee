@@ -18,6 +18,7 @@ PMP.search =
 
   # run a remote search (debounced)
   loadSearch: (queryString) ->
+    $('.search-total').hide()
     PMP.search.template('working')
     $.get("#{PMP.search.proxyRoot()}/docs?#{queryString}")
       .fail(_.debounce(PMP.search.remoteFailure, 500))
@@ -26,13 +27,20 @@ PMP.search =
   # something went wrong
   remoteFailure: (xhr, text, err) ->
     if xhr.status == 404
+      $('.search-total').html('(0)').show()
       PMP.search.template('empty')
     else
+      $('.search-total').hide()
       PMP.search.template('error', status: xhr.status, msg: err)
 
   # render results
   remoteSuccess: (data, text, xhr) ->
+    if selfLink = _.find(data.links.navigation, (link) -> _.contains(link.rels, 'self'))
+      $('.search-total').html("(#{selfLink.totalitems || 'unknown'})").show()
+    else
+      $('.search-total').html('(unknown)').show()
     PMP.search.template('row', data)
+
     linkDependencies = []
     _.each data.items, (item) ->
       linkDependencies.push PMP.search.loadLink(item.links.creator[0].href)

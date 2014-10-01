@@ -58,7 +58,8 @@
 
   // results
   .results-header {
-    .count {
+    .search-total {
+      display: none;
       color: #bababa;
       margin-left: 10px;
     }

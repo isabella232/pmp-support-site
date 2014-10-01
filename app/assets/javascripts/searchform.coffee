@@ -39,12 +39,13 @@ $(document).on 'page:load ready', ->
     getChecks = (name, valFn) ->
       _.map $(".pmp-search-form input[name=#{name}]:checked"), valFn
     params =
-      advanced: if $('.pmp-search-form .advanced').hasClass('show-all') && !forProxy then '1'
-      text:     $('.pmp-search-form input[name=text]').val()
-      tag:      $('.pmp-search-form input[name=tag]').val()
-      profile:  getChecks 'profile', (el) -> $(el).val()
-      has:      getChecks 'has', (el) -> $(el).val()
-      creator:  getChecks 'creator', (el) -> if forProxy then $(el).data('guid') else $(el).val()
+      advanced:   if $('.pmp-search-form .advanced.show-all').length && !forProxy then '1'
+      searchsort: if $('.pmp-search-form .sort-relevance.active').length then 'relevance'
+      text:       $('.pmp-search-form input[name=text]').val()
+      tag:        $('.pmp-search-form input[name=tag]').val()
+      profile:    getChecks 'profile', (el) -> $(el).val()
+      has:        getChecks 'has', (el) -> $(el).val()
+      creator:    getChecks 'creator', (el) -> if forProxy then $(el).data('guid') else $(el).val()
     _.each params, (val, key) ->
       if _.isEmpty(val)
         delete params[key]
@@ -63,6 +64,20 @@ $(document).on 'page:load ready', ->
   $('.advanced input[name=profile]').change (e) ->
     e.preventDefault()
     updateHasCheckboxes()
+
+  # sorting
+  $('.pmp-search-form .sort-relevance').click (e) ->
+    e.preventDefault()
+    unless $(this).hasClass('active')
+      $('.pmp-search-form .sort-date').removeClass('active')
+      $(this).addClass('active')
+      $('.pmp-search-form form').submit()
+  $('.pmp-search-form .sort-date').click (e) ->
+    e.preventDefault()
+    unless $(this).hasClass('active')
+      $('.pmp-search-form .sort-relevance').removeClass('active')
+      $(this).addClass('active')
+      $('.pmp-search-form form').submit()
 
   # dashboard specific defaults
   $('body.dashboard input[name=profile][value=story]').prop('checked', true)
