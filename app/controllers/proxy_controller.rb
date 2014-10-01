@@ -2,7 +2,7 @@ class ProxyController < ApplicationController
 
   # GET /proxy/public/...
   def public_proxy
-    resp = make_request(get_public_user)
+    resp = make_request(get_public_user, true)
     render json: resp.body, content_type: resp.headers['content-type'], status: resp.status
   end
 
@@ -19,7 +19,7 @@ class ProxyController < ApplicationController
 protected
 
   # make a request as a remote user
-  def make_request(remote_user)
+  def make_request(remote_user, is_cached = false)
     opts = {
       url: remote_user.host,
       headers: {
@@ -32,7 +32,16 @@ protected
     }
     path = (params[:other] || '')
     path << '?' + request.query_string if request.query_string.present?
-    Faraday.new(opts).get(path)
+
+    # cache remote call
+    if is_cached
+      key = [remote_user.env, remote_user.client_id, path]
+      Rails.cache.fetch key, expires_in: 5.minutes, race_condition_ttl: 20.seconds do
+        Faraday.new(opts).get(path)
+      end
+    else
+      Faraday.new(opts).get(path)
+    end
   end
 
   # session-cache the public proxy token

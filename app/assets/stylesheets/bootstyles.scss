@@ -126,15 +126,15 @@ a:hover, a:focus {
 
 // pmp style navbar
 .navbar-pmp {
-  background-image: -webkit-linear-gradient(top, #12B8B2 0%, #189D98 100%);
-  background-image: -o-linear-gradient(top, #12B8B2 0%, #189D98 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#12B8B2), to(#189D98));
-  background-image: linear-gradient(to bottom, #12B8B2 0%, #189D98 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF12B8B2', endColorstr='#FF189D98', GradientType=0);
+  background-image: -webkit-linear-gradient(top, #494D53 0%, #53585F 100%);
+  background-image: -o-linear-gradient(top, #494D53 0%, #53585F 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#494D53), to(#53585F));
+  background-image: linear-gradient(to bottom, #494D53 0%, #53585F 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF494D53', endColorstr='#FF53585F', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
   background-repeat: repeat-x;
-  background-color: #189D98;
-  border-color: #189D98;
+  background-color: #53585F;
+  border-color: #53585F;
   color: #fff;
   .navbar-toggle {
     background-color: #16908D;
@@ -170,16 +170,16 @@ a:hover, a:focus {
   }
   .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
-    background-color: #16726F;
+    background-color: #54575C;
   }
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #16726F;
-    border-color: #16726F;
+    background-color: #54575C;
+    border-color: #54575C;
   }
   .navbar-nav > .active {
     a, a:hover, a:focus {
       text-decoration: none;
-      background-color: #16908D;
+      background-color: #5B6068;
     }
   }
 }

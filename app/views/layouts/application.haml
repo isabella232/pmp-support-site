@@ -30,17 +30,19 @@
         = render 'layouts/navbar'
 
     -# main content
-    #main.container
+    #main
       - if content_for?(:logbox)
         = render 'layouts/logbox'
       - elsif flash.alert
-        .alert.alert-pmp.alert-dismissable
-          %button.close{'data-dismiss' => 'alert'} &times;
-          = flash.alert
+        .container
+          .alert.alert-pmp.alert-dismissable
+            %button.close{'data-dismiss' => 'alert'} &times;
+            = flash.alert
       - elsif flash.notice
-        .alert.alert-primary.alert-dismissable
-          %button.close{'data-dismiss' => 'alert'} &times;
-          = flash.notice
+        .container
+          .alert.alert-primary.alert-dismissable
+            %button.close{'data-dismiss' => 'alert'} &times;
+            = flash.notice
       = yield
 
     -# sticky footer

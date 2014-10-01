@@ -3,12 +3,20 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery.dotdotdot
 #= require turbolinks
+#= require underscore
 #= require bootstrap
 #= require bootbox
+#= require handlebars.runtime
+#= require handlebars
+#= require_tree ./templates
 #= require_self
 #= require_tree .
 #
+
+# global stuff
+window.PMP = {}
 
 # turbolinks + google analytics workaround
 if window.history?.pushState and window.history.replaceState
@@ -37,3 +45,7 @@ $(document).on 'page:load ready', ->
       closeButton: false
       className: 'bootbox-logout'
       animate: false
+
+  # dot dot dot
+  $('.ellipsis').dotdotdot
+    watch: 'window'

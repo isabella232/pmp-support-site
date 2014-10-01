@@ -6,12 +6,14 @@ gem 'turbolinks'
 gem 'negative_captcha'
 gem 'password_strength'
 gem 'pmp', '>= 0.4.1', require: true
+gem 'whenever', require: false
 
 gem 'haml'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'handlebars_assets'
 gem 'font-awesome-rails'
 gem 'rest-client'
 gem 'redcarpet'

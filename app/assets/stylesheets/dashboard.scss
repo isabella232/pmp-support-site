@@ -1,0 +1,117 @@
+//
+// dashboard page
+//
+body.dashboard {
+
+  h2.title {
+    text-align: center;
+    margin: 40px 0 25px;
+  }
+
+  // search form
+  .search-pmp {
+    ::-webkit-input-placeholder { color: #bababa; }
+    :-moz-placeholder           { color: #bababa; }
+    ::-moz-placeholder          { color: #bababa; }
+    :-ms-input-placeholder      { color: #bababa; }
+
+    .btn-success {
+      padding: 9px 20px;
+    }
+    .advanced {
+      text-align: center;
+      margin: 20px 0;
+      .toggle {
+        color: #bababa;
+        font-size: 18px;
+      }
+    }
+  }
+
+  // item counts
+  .partner-stats {
+    text-align: center;
+    background: #fff;
+    position: relative;
+    padding: 20px 0 20px;
+    margin: 30px 0 0;
+
+    h3 {
+      vertical-align: bottom;
+      img {
+        height: 30px;
+      }
+    }
+
+    table {
+      .count {
+        text-align: right;
+        font-weight: bold;
+        padding-right: 0;
+        width: 60px;
+      }
+      .type {
+        text-align: left;
+      }
+    }
+  }
+
+  // recently added stuff
+  .recent-content {
+
+    .thumbnail {
+      position: relative;
+      padding: 0;
+      -webkit-border-radius: 0px;
+      -moz-border-radius: 0px;
+      border-radius: 0px;
+      border: 0 none;
+      margin-bottom: 30px;
+
+      // cover img tag with background-image, if supported
+      img {
+        height: 160px;
+      }
+      .img-cover {
+        height: 160px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+      }
+
+      // fix total thumb height by locking caption height
+      .caption {
+        height: 130px;
+        overflow: hidden;
+        .show {
+          color: #666;
+          font-weight: 500;
+        }
+        .date {
+          float: right;
+          color: #bababa;
+        }
+        h3 {
+          font-size: 20px;
+          margin: 12px 0 6px;
+        }
+      }
+
+      // quick shadow hovers
+      -webkit-transition: box-shadow 0s;
+      -moz-transition: box-shadow 0s;
+      -o-transition: box-shadow 0s;
+      transition: box-shadow 0s;
+    }
+
+    // use entire thumb as a link
+    a.thumbnail:hover, a.thumbnail:focus {
+      text-decoration: none;
+      box-shadow: 0 0 2px 1px #189D98;
+    }
+  }
+
+}

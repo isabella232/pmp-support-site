@@ -1,0 +1,23 @@
+.container.pmp-search-form
+  .row
+    %h2.title
+      Search the Platform
+    .col-md-6.col-md-offset-3
+      %form
+        = render partial: 'form'
+  .row
+    .col-md-10.col-md-offset-1.well
+      .results-header
+        .sorts
+          Sort by
+          %a.sort-relevance{href: '#', class: params[:searchsort] == 'relevance' ? 'active' : ''} Most Relevant
+          \/
+          %a.sort-date{href: '#', class: params[:searchsort] == 'relevance' ? '' : 'active'} Most Recent
+        %h3
+          Search Results
+          %span.search-total
+            (0)
+      .results-list
+        .results-placeholder
+          %h3 Enter some search terms to get started
+        -# handlebars renders here
