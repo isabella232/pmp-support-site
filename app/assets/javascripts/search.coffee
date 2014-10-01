@@ -1,65 +1,48 @@
 #
-# pmp searcher
+# pmp searcher utilities
 #
-
-# root url for whichever proxy we're using
-proxyRoot = ->
-  '/proxy/public'
-
-# cache search dependencies by href
 PMP.cache = {}
-loadLink = (href) ->
-  unless _.has(PMP.cache, href)
-    PMP.cache[href] = false # loading indicator
-    $.get("#{proxyRoot()}/#{href.replace(/http(s):\/\/[^\/]+\//, '')}")
-      .fail (xhr, text, err) -> delete PMP.cache[href]
-      .done (data, text, xhr) -> PMP.cache[href] = data
+PMP.search =
 
-# run a remote search (debounced)
-loadSearch = (queryString) ->
-  template('working')
-  $.get("#{proxyRoot()}/docs#{queryString}")
-    .fail(_.debounce(remoteFailure, 500))
-    .done(_.debounce(remoteSuccess, 500))
+  # root url for whichever proxy we're using
+  proxyRoot: ->
+    '/proxy/public'
 
-# something went wrong
-remoteFailure = (xhr, text, err) ->
-  if xhr.status == 404
-    template('empty')
-  else
-    template('error', status: xhr.status, msg: err)
+  # cache search dependencies by href
+  loadLink: (href) ->
+    unless _.has(PMP.cache, href)
+      PMP.cache[href] = false # loading indicator
+      $.get("#{PMP.search.proxyRoot()}/#{href.replace(/http(s):\/\/[^\/]+\//, '')}")
+        .fail (xhr, text, err) -> delete PMP.cache[href]
+        .done (data, text, xhr) -> PMP.cache[href] = data
 
-# render results
-remoteSuccess = (data, text, xhr) ->
-  template('row', data)
-  linkDependencies = []
-  _.each data.items, (item) ->
-    linkDependencies.push loadLink(item.links.creator[0].href)
-    if series = _.find(item.links.collection, (link) -> _.contains(link.rels, 'urn:collectiondoc:collection:series'))
-      linkDependencies.push loadLink(series.href)
-    if prop = _.find(item.links.collection, (link) -> _.contains(link.rels, 'urn:collectiondoc:collection:property'))
-      linkDependencies.push loadLink(prop.href)
-  $.when.apply($, linkDependencies).done ->
-    template('row', data) # refresh with dependencies
+  # run a remote search (debounced)
+  loadSearch: (queryString) ->
+    PMP.search.template('working')
+    $.get("#{PMP.search.proxyRoot()}/docs?#{queryString}")
+      .fail(_.debounce(PMP.search.remoteFailure, 500))
+      .done(_.debounce(PMP.search.remoteSuccess, 500))
 
-# render something
-template = (tpl, context) ->
-  $('.results-list').html HandlebarsTemplates["search/#{tpl}"](context)
+  # something went wrong
+  remoteFailure: (xhr, text, err) ->
+    if xhr.status == 404
+      PMP.search.template('empty')
+    else
+      PMP.search.template('error', status: xhr.status, msg: err)
 
-# ready?
-$(document).on 'page:load ready', ->
-  return unless $('body.search').length > 0
+  # render results
+  remoteSuccess: (data, text, xhr) ->
+    PMP.search.template('row', data)
+    linkDependencies = []
+    _.each data.items, (item) ->
+      linkDependencies.push PMP.search.loadLink(item.links.creator[0].href)
+      if series = _.find(item.links.collection, (link) -> _.contains(link.rels, 'urn:collectiondoc:collection:series'))
+        linkDependencies.push PMP.search.loadLink(series.href)
+      if prop = _.find(item.links.collection, (link) -> _.contains(link.rels, 'urn:collectiondoc:collection:property'))
+        linkDependencies.push PMP.search.loadLink(prop.href)
+    $.when.apply($, linkDependencies).done ->
+      PMP.search.template('row', data) # refresh with dependencies
 
-  # assemble the query string
-  getQueryString = ->
-    inputs = {}
-    if txt = $('input[name="text"]').val()
-      inputs['text'] = txt
-    inputs = _.map inputs, (val, key) -> "#{key}=#{encodeURIComponent(val)}"
-    if inputs.length > 0 then "?#{inputs.join('&')}" else ''
-
-  # searching
-  $('form').submit (e) ->
-    e.preventDefault()
-    loadSearch(getQueryString())
-  loadSearch(getQueryString())
+  # render something
+  template: (tpl, context) ->
+    $('.results-list').html HandlebarsTemplates["search/#{tpl}"](context)

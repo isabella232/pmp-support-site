@@ -1,0 +1,68 @@
+-# interior of PMP search form
+.input-group
+  %input.form-control{type: 'text', placeholder: 'Enter keywords', name: 'text', value: params[:text]}
+  %span.input-group-btn
+    %button.btn.btn-md.btn-success{type: 'submit'}
+      Search
+
+.advanced{class: params[:advanced].present? ? 'show-all' : ''}
+
+  .fields
+
+    -# restrict profiles
+    .form-group
+      %label.control-label Type
+      .checks.well
+        %label.checkbox-inline
+          %input{type: 'checkbox', name: 'profile', value: 'story'} Story
+        %label.checkbox-inline
+          %input{type: 'checkbox', name: 'profile', value: 'audio'} Audio
+        %label.checkbox-inline
+          %input{type: 'checkbox', name: 'profile', value: 'video'} Video
+        %label.checkbox-inline
+          %input{type: 'checkbox', name: 'profile', value: 'image'} Image
+        %label.checkbox-inline
+          %input{type: 'checkbox', name: 'profile', value: 'series'} Series
+        %label.checkbox-inline
+          %input{type: 'checkbox', name: 'profile', value: 'episode'} Episode
+      .contains
+        %label.control-label Contains
+        .checks
+          %label.checkbox-inline
+            %input{type: 'checkbox', name: 'has', value: 'audio'} Audio
+          %label.checkbox-inline
+            %input{type: 'checkbox', name: 'has', value: 'video'} Video
+          %label.checkbox-inline
+            %input{type: 'checkbox', name: 'has', value: 'image'} Image
+
+    -# restrict creators
+    .form-group
+      %label.control-label Source
+      .checks.well
+        - UserStat::KNOWN_USERS.each do |key, guid|
+          %label.checkbox-inline
+            %input{type: 'checkbox', name: 'creator', value: key, 'data-guid' => guid}
+              = key.upcase
+
+    -# some tags
+    .form-group
+      %label.control-label{for: 'input-tags'}
+        Tags
+        %span.text-muted (comma separated OR list)
+      %input#input-tags.form-control{type: 'text', name: 'tag'}
+
+    -# dates
+    .form-group
+      .row
+        .col-md-6
+          %label.control-label{for: 'input-startdate'} Published After
+          %input#input-startdate.form-control{type: 'text', name: 'startdate'}
+        .col-md-6
+          %label.control-label{for: 'input-enddate'} Published Before
+          %input#input-enddate.form-control{type: 'text', name: 'enddate'}
+
+  %a.toggle{href: '#'}
+    %span.show-text
+      Advanced Search
+    %span.hide-text
+      Hide Advanced

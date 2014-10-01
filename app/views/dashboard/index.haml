@@ -4,14 +4,7 @@
       Search the Platform
     .col-md-6.col-md-offset-3
       %form{method: 'get', action: public_search_path}
-        .input-group
-          %input.form-control{type: 'text', placeholder: 'Enter keywords', name: 'text'}
-          %span.input-group-btn
-            %button.btn.btn-success{type: 'submit'}
-              Search
-        .advanced
-          %a.toggle{href: public_search_path}
-            Advanced Search
+        = render partial: 'search/form'
 .partner-stats
   .container
     .row

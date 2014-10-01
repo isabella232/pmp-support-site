@@ -17,11 +17,38 @@
     padding: 9px 20px;
   }
   .advanced {
-    text-align: center;
     margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+
+    .fields {
+      display: none;
+    }
     .toggle {
+      display: block;
+      text-align: center;
       color: #bababa;
       font-size: 18px;
+      .hide-text { display: none; }
+    }
+    .well {
+      margin: 0;
+      padding: 7px 14px;
+    }
+    .contains {
+      margin-top: 12px;
+      margin-left: 30px;
+      padding-left: 10px;
+      border-left: 6px solid #cecece;
+    }
+    .text-muted {
+      color: #bababa;
+      font-weight: normal;
+    }
+    &.show-all {
+      .fields { display: block; }
+      .toggle .show-text { display: none; }
+      .toggle .hide-text { display: inline; }
     }
   }
   .well {
