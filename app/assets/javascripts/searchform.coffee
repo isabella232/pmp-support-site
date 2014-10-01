@@ -49,7 +49,7 @@ $(document).on 'page:load ready', ->
       if _.isEmpty(val)
         delete params[key]
       else if _.isArray(val)
-        params[key] = val.join(',')
+        params[key] = val.join(';')
     encoded = _.map params, (val, key) -> "#{key}=#{encodeURIComponent(val)}"
     encoded.join('&')
 
