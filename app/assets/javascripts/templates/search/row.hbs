@@ -1,34 +1,56 @@
-{{#each items}}
-<div class="media">
-  {{#item-img}}
-  <a href="#" class="pull-left">
-    <img src="{{img-thumb links.enclosure}}" class="media-object"/>
-  </a>
-  {{/item-img}}
-  <div class="media-body">
-    <h4 class="media-heading">
-      {{#item-series}}
-      <span class="series">{{title}}</span>
-      {{else}}
-      <span class="series text-muted">(Unknown)</span>
-      {{/item-series}}
-      <span class="date">{{fancy-date attributes.published}}</span>
-      {{#item-types}}
-      <span class="type {{classes}}">{{label}}{{#if length}}<div class="length">{{length}}</div>{{/if}}</span>
-      {{/item-types}}
-    </h4>
-    <h3 class="media-title">
-      <a href="#">{{attributes.title}}</a>
-    </h3>
-    <p class="content">{{description attributes}}</p>
-    <div class="meta">
-      {{#item-author}}
-      <div class="author">By {{name}}</div>
-      {{/item-author}}
-      {{#item-attachments}}
-      <div class="attachments">{{count}} {{type}}</div>
-      {{/item-attachments}}
+<div class="page" data-href="{{href}}">
+  {{#each items}}
+  <div class="media" data-guid="{{attributes.guid}}">
+    {{#item-img}}
+    <a href="#" data-pmp="{{proxy href}}" class="pull-left expander image">
+      <img src="{{img-thumb links.enclosure}}" alt="{{attributes.title}}" class="media-object"/>
+    </a>
+    {{/item-img}}
+    <div class="media-body">
+      <h4 class="media-heading clearfix">
+        {{#item-series}}
+        <span class="series" data-pmp="{{proxy href}}">{{title}}</span>
+        {{else}}
+        <span class="series text-muted">(Unknown)</span>
+        {{/item-series}}
+        <span class="date">{{fancy-date attributes.published}}</span>
+        {{#item-types}}
+        <span class="type {{classes}}">{{label}}{{#if length}}<div class="length">{{length}}</div>{{/if}}</span>
+        {{/item-types}}
+      </h4>
+      <h3 class="media-title">
+        {{#item-alt}}
+        <a href="{{href}}" target="_blank" data-pmp="{{proxy ../href}}">{{../attributes.title}}</a>
+        {{else}}
+        <span data-pmp="{{proxy href}}">{{attributes.title}}</span>
+        {{/item-alt}}
+      </h3>
+      <p class="content">{{description attributes}}</p>
+      <div class="meta">
+        {{#item-author}}
+        <div class="author">By {{name}}</div>
+        {{/item-author}}
+        {{#item-attachments}}
+        <div class="attachments">
+          {{#if expandable}}
+          <a href="#" class="expander {{type}}">{{count}} {{label}}</a>
+          {{else}}
+          <p>{{count}} {{label}}</p>
+          {{/if}}
+        </div>
+        {{/item-attachments}}
+      </div>
+    </div>
+    <div class="media-expanders">
+      {{#expander-images}}
+      <a class="image" href="{{img-normal links.enclosure}}" title="{{attributes.title}}"></a>
+      {{/expander-images}}
     </div>
   </div>
+  {{/each}}
+  {{#item-next}}
+  <div class="media load-next-page" data-href="{{href}}">
+    <h3><i class="fa fa-spinner fa-spin"></i> Loading More</h3>
+  </div>
+  {{/item-next}}
 </div>
-{{/each}}

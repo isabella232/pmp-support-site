@@ -12,9 +12,9 @@ $(document).on 'page:load ready', ->
     else
       ''
 
-  decomma = (name, fn) ->
+  splitter = (name, fn) ->
     if raw = getParam(name)
-      _.each raw.split(name), fn
+      _.each raw.split(';'), fn
 
   updateHasCheckboxes = ->
     profs = _.map $('.advanced input[name=profile]:checked'), (el) -> $(el).val()
@@ -27,11 +27,11 @@ $(document).on 'page:load ready', ->
   queryToForm = ->
     $('input[name=text]').val getParam('text')
     $('input[name=tag]').val getParam('tag')
-    decomma 'profile', (type) ->
+    splitter 'profile', (type) ->
       $("input[name=profile][value=#{type}]").prop('checked', true)
-    decomma 'has', (type) ->
+    splitter 'has', (type) ->
       $("input[name=has][value=#{type}]").prop('checked', true)
-    decomma 'creator', (name) ->
+    splitter 'creator', (name) ->
       $("input[name=creator][value=#{name}]").prop('checked', true)
     updateHasCheckboxes()
 
@@ -54,13 +54,22 @@ $(document).on 'page:load ready', ->
     encoded = _.map params, (val, key) -> "#{key}=#{encodeURIComponent(val)}"
     encoded.join('&')
 
+  # push the url (if supported)
+  setUrl = (makeNew = false) ->
+    goto = window.location.href.split('?')[0] + '?' + formToQuery()
+    if makeNew && history && history.pushState
+      window.history.pushState({path: goto}, '', goto)
+    else if history && history.replaceState
+      window.history.replaceState({path: goto}, '', goto)
+
   # form handlers
   $('.advanced .toggle').click (e) ->
     e.preventDefault()
     if $('.advanced').hasClass('show-all')
-      $('.advanced .fields').slideUp(300).promise().done( -> $('.advanced').removeClass('show-all'))
+      $('.advanced').removeClass('show-all')
     else
-      $('.advanced .fields').slideDown(300).promise().done(-> $('.advanced').addClass('show-all'))
+      $('.advanced').addClass('show-all')
+    setUrl()
   $('.advanced input[name=profile]').change (e) ->
     e.preventDefault()
     updateHasCheckboxes()
@@ -91,14 +100,32 @@ $(document).on 'page:load ready', ->
   # search specific handler (search without redirect)
   $('body.search .pmp-search-form form').submit (e) ->
     e.preventDefault()
-    goto = window.location.href.split('?')[0] + '?' + formToQuery()
-    if history && history.pushState
-      window.history.pushState({path: goto}, '', goto)
-    else
-      # whatev
+    setUrl(true)
     PMP.search.loadSearch(formToQuery(true))
 
-  # kick off initial search
+  # search page handlers!
   if $('body.search').length > 0
+
+    # infinite scrolling on the search results page
+    $(window).scroll ->
+      if PMP.search.loadNextTop
+        if $(window).scrollTop() + $(window).height() >= PMP.search.loadNextTop
+          PMP.search.loadNextTop = false
+          PMP.search.loadNext()
+
+    # colorbox
+    $('.pmp-search-form .results-list').on 'click', '.expander.image', (e) ->
+      e.preventDefault()
+      $media = $(this).closest('.media')
+      $media.find('.media-expanders a.image').colorbox
+        rel: $media.data('guid')
+        maxWidth: '80%'
+        maxHeight: '90%'
+        open: true
+        close: '<i class="fa fa-times"></i>'
+        next: '<i class="fa fa-arrow-circle-o-right"></i>'
+        previous: '<i class="fa fa-arrow-circle-o-left"></i>'
+
+    # kick off initial search
     queryToForm()
     PMP.search.loadSearch(formToQuery(true))

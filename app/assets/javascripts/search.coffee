@@ -8,49 +8,82 @@ PMP.search =
   proxyRoot: ->
     '/proxy/public'
 
+  # find a link by urn
+  findLink: (item, urn) ->
+    _.find _.flatten(_.values(item.links)), (link) ->
+      _.contains(link.rels, urn)
+
+  # attempt to get a proxy url
+  proxyHref: (href) ->
+    PMP.search.proxyRoot() + '/' + href.replace(/^http(s):\/\/[^\/]+\//, '')
+
+  # attempt to get a total
+  findTotalString: (item) ->
+    selfLink = PMP.search.findLink(item, 'self')
+    if selfLink && selfLink.totalitems?
+      selfLink.totalitems.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    else
+      'unknown'
+
   # cache search dependencies by href
   loadLink: (href) ->
     unless _.has(PMP.cache, href)
       PMP.cache[href] = false # loading indicator
-      $.get("#{PMP.search.proxyRoot()}/#{href.replace(/http(s):\/\/[^\/]+\//, '')}")
+      $.get(PMP.search.proxyHref(href))
         .fail (xhr, text, err) -> delete PMP.cache[href]
         .done (data, text, xhr) -> PMP.cache[href] = data
 
   # run a remote search (debounced)
   loadSearch: (queryString) ->
     $('.search-total').hide()
-    PMP.search.template('working')
-    $.get("#{PMP.search.proxyRoot()}/docs?#{queryString}")
-      .fail(_.debounce(PMP.search.remoteFailure, 500))
-      .done(_.debounce(PMP.search.remoteSuccess, 500))
+    $('.results-list').html HandlebarsTemplates['search/working']()
+    $.get(PMP.search.proxyHref("/docs?#{queryString}"))
+      .fail(_.debounce(PMP.search.remoteFailure(), 500))
+      .done(_.debounce(PMP.search.remoteSuccess(), 500))
+
+  # load the next page (if it exists)
+  loadNext: ->
+    if $nextEl = $('.load-next-page').not('.loading')
+      $nextEl.addClass('loading')
+      href = $nextEl.data('href')
+      $.get(PMP.search.proxyHref(href))
+        .fail(PMP.search.remoteFailure(true))
+        .done(PMP.search.remoteSuccess(true))
 
   # something went wrong
-  remoteFailure: (xhr, text, err) ->
-    if xhr.status == 404
-      $('.search-total').html('(0)').show()
-      PMP.search.template('empty')
-    else
-      $('.search-total').hide()
-      PMP.search.template('error', status: xhr.status, msg: err)
+  remoteFailure: (append = false) ->
+    (xhr, text, err) ->
+      if append
+        $('.load-next-page').remove()
+        $('.results-list').append HandlebarsTemplates['search/error'](status: xhr.status, msg: err, asMedia: true)
+      else
+        if xhr.status == 404
+          $('.search-total').html('(0)').show()
+          $('.results-list').html HandlebarsTemplates['search/empty']()
+        else
+          $('.search-total').hide()
+          $('.results-list').html HandlebarsTemplates['search/error'](status: xhr.status, msg: err)
 
   # render results
-  remoteSuccess: (data, text, xhr) ->
-    if selfLink = _.find(data.links.navigation, (link) -> _.contains(link.rels, 'self'))
-      $('.search-total').html("(#{selfLink.totalitems || 'unknown'})").show()
-    else
-      $('.search-total').html('(unknown)').show()
-    PMP.search.template('row', data)
+  remoteSuccess: (append = false) ->
+    (data, text, xhr) ->
+      if append
+        $('.load-next-page').remove()
+      else
+        $('.search-total').html('(' + PMP.search.findTotalString(data) + ')').show()
+        $('.results-list').html('')
 
-    linkDependencies = []
-    _.each data.items, (item) ->
-      linkDependencies.push PMP.search.loadLink(item.links.creator[0].href)
-      if series = _.find(item.links.collection, (link) -> _.contains(link.rels, 'urn:collectiondoc:collection:series'))
-        linkDependencies.push PMP.search.loadLink(series.href)
-      if prop = _.find(item.links.collection, (link) -> _.contains(link.rels, 'urn:collectiondoc:collection:property'))
-        linkDependencies.push PMP.search.loadLink(prop.href)
-    $.when.apply($, linkDependencies).done ->
-      PMP.search.template('row', data) # refresh with dependencies
+      # render what we have now
+      $el = $(HandlebarsTemplates['search/row'](data)).appendTo('.results-list')
+      PMP.search.loadNextTop = $('.load-next-page').offset().top
 
-  # render something
-  template: (tpl, context) ->
-    $('.results-list').html HandlebarsTemplates["search/#{tpl}"](context)
+      # load dependencies and re-render
+      linkDependencies = []
+      _.each data.items, (item) ->
+        linkDependencies.push PMP.search.loadLink(item.links.creator[0].href)
+        if series = PMP.search.findLink(this, 'urn:collectiondoc:collection:series')
+          linkDependencies.push PMP.search.loadLink(series.href)
+        if prop = PMP.search.findLink(this, 'urn:collectiondoc:collection:property')
+          linkDependencies.push PMP.search.loadLink(prop.href)
+      $.when.apply($, linkDependencies).always ->
+        $el.replaceWith(HandlebarsTemplates['search/row'](data))

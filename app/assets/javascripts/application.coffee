@@ -6,8 +6,10 @@
 #= require jquery.dotdotdot
 #= require turbolinks
 #= require underscore
+#= require moment
 #= require bootstrap
 #= require bootbox
+#= require jquery.colorbox
 #= require handlebars.runtime
 #= require handlebars
 #= require_tree ./templates
