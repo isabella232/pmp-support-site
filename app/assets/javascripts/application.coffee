@@ -9,6 +9,7 @@
 #= require moment
 #= require bootstrap
 #= require bootbox
+#= require jquery.colorbox
 #= require handlebars.runtime
 #= require handlebars
 #= require_tree ./templates

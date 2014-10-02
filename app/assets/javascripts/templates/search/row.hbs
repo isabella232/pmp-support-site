@@ -1,9 +1,9 @@
 <div class="page" data-href="{{href}}">
   {{#each items}}
-  <div class="media">
+  <div class="media" data-guid="{{attributes.guid}}">
     {{#item-img}}
-    <a href="#" data-pmp="{{proxy href}}" class="pull-left">
-      <img src="{{img-thumb links.enclosure}}" class="media-object"/>
+    <a href="#" data-pmp="{{proxy href}}" class="pull-left expander image">
+      <img src="{{img-thumb links.enclosure}}" alt="{{attributes.title}}" class="media-object"/>
     </a>
     {{/item-img}}
     <div class="media-body">
@@ -20,7 +20,7 @@
       </h4>
       <h3 class="media-title">
         {{#item-alt}}
-        <a href="{{href}}" target="_blank" data-pmp="{{proxy href}}">{{../attributes.title}}</a>
+        <a href="{{href}}" target="_blank" data-pmp="{{proxy ../href}}">{{../attributes.title}}</a>
         {{else}}
         <span data-pmp="{{proxy href}}">{{attributes.title}}</span>
         {{/item-alt}}
@@ -31,9 +31,20 @@
         <div class="author">By {{name}}</div>
         {{/item-author}}
         {{#item-attachments}}
-        <div class="attachments">{{count}} {{type}}</div>
+        <div class="attachments">
+          {{#if expandable}}
+          <a href="#" class="expander {{type}}">{{count}} {{label}}</a>
+          {{else}}
+          <p>{{count}} {{label}}</p>
+          {{/if}}
+        </div>
         {{/item-attachments}}
       </div>
+    </div>
+    <div class="media-expanders">
+      {{#expander-images}}
+      <a class="image" href="{{img-normal links.enclosure}}" title="{{attributes.title}}"></a>
+      {{/expander-images}}
     </div>
   </div>
   {{/each}}

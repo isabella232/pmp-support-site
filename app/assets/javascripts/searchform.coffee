@@ -103,15 +103,29 @@ $(document).on 'page:load ready', ->
     setUrl(true)
     PMP.search.loadSearch(formToQuery(true))
 
-  # infinite scrolling on the search results page
+  # search page handlers!
   if $('body.search').length > 0
+
+    # infinite scrolling on the search results page
     $(window).scroll ->
       if PMP.search.loadNextTop
         if $(window).scrollTop() + $(window).height() >= PMP.search.loadNextTop
           PMP.search.loadNextTop = false
           PMP.search.loadNext()
 
-  # kick off initial search
-  if $('body.search').length > 0
+    # colorbox
+    $('.pmp-search-form .results-list').on 'click', '.expander.image', (e) ->
+      e.preventDefault()
+      $media = $(this).closest('.media')
+      $media.find('.media-expanders a.image').colorbox
+        rel: $media.data('guid')
+        maxWidth: '80%'
+        maxHeight: '90%'
+        open: true
+        close: '<i class="fa fa-times"></i>'
+        next: '<i class="fa fa-arrow-circle-o-right"></i>'
+        previous: '<i class="fa fa-arrow-circle-o-left"></i>'
+
+    # kick off initial search
     queryToForm()
     PMP.search.loadSearch(formToQuery(true))
