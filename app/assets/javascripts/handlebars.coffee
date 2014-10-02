@@ -17,10 +17,6 @@ getItemOfProfile = (item, profileType) ->
   else
     _.find(item.items, (child) -> getProfile(child) == profileType)
 
-getLinkOfUrn = (item, urn) ->
-  _.find _.flatten(_.values(item.links)), (link) ->
-    _.contains(link.rels, urn)
-
 getCachedTitle = (link) ->
   if PMP.cache[link.href]
     PMP.cache[link.href].attributes.title
@@ -36,7 +32,13 @@ ellipsis = (str, limit) ->
     str
 
 Handlebars.registerHelper 'proxy', (href, options) ->
-  PMP.search.proxyRoot() + '/' + href.replace(/http(s):\/\/[^\/]+\//, '')
+  PMP.search.proxyHref(href)
+
+Handlebars.registerHelper 'item-next', (options) ->
+  if nextLink = PMP.search.findLink(this, 'next')
+    options.fn(nextLink)
+  else
+    options.inverse(this)
 
 Handlebars.registerHelper 'item-img', (options) ->
   if img = getItemOfProfile(this, 'image')
@@ -53,9 +55,9 @@ Handlebars.registerHelper 'item-alt', (options) ->
 
 Handlebars.registerHelper 'item-series', (options) ->
   best =
-    if series = getLinkOfUrn(this, 'urn:collectiondoc:collection:series')
+    if series = PMP.search.findLink(this, 'urn:collectiondoc:collection:series')
       ['Series', series.href, getCachedTitle(series)]
-    else if prop = getLinkOfUrn(this, 'urn:collectiondoc:collection:property')
+    else if prop = PMP.search.findLink(this, 'urn:collectiondoc:collection:property')
       ['Property', prop.href, getCachedTitle(prop)]
     else if this.links.creator && this.links.creator.length
       ['Creator', this.links.creator[0].href, getCachedTitle(this.links.creator[0])]

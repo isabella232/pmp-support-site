@@ -54,13 +54,22 @@ $(document).on 'page:load ready', ->
     encoded = _.map params, (val, key) -> "#{key}=#{encodeURIComponent(val)}"
     encoded.join('&')
 
+  # push the url (if supported)
+  setUrl = (makeNew = false) ->
+    goto = window.location.href.split('?')[0] + '?' + formToQuery()
+    if makeNew && history && history.pushState
+      window.history.pushState({path: goto}, '', goto)
+    else if history && history.replaceState
+      window.history.replaceState({path: goto}, '', goto)
+
   # form handlers
   $('.advanced .toggle').click (e) ->
     e.preventDefault()
     if $('.advanced').hasClass('show-all')
-      $('.advanced .fields').slideUp(300).promise().done( -> $('.advanced').removeClass('show-all'))
+      $('.advanced').removeClass('show-all')
     else
-      $('.advanced .fields').slideDown(300).promise().done(-> $('.advanced').addClass('show-all'))
+      $('.advanced').addClass('show-all')
+    setUrl()
   $('.advanced input[name=profile]').change (e) ->
     e.preventDefault()
     updateHasCheckboxes()
@@ -91,12 +100,16 @@ $(document).on 'page:load ready', ->
   # search specific handler (search without redirect)
   $('body.search .pmp-search-form form').submit (e) ->
     e.preventDefault()
-    goto = window.location.href.split('?')[0] + '?' + formToQuery()
-    if history && history.pushState
-      window.history.pushState({path: goto}, '', goto)
-    else
-      # whatev
+    setUrl(true)
     PMP.search.loadSearch(formToQuery(true))
+
+  # infinite scrolling on the search results page
+  if $('body.search').length > 0
+    $(window).scroll ->
+      if PMP.search.loadNextTop
+        if $(window).scrollTop() + $(window).height() >= PMP.search.loadNextTop
+          PMP.search.loadNextTop = false
+          PMP.search.loadNext()
 
   # kick off initial search
   if $('body.search').length > 0
