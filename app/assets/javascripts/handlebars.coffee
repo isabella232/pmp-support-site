@@ -35,6 +35,9 @@ ellipsis = (str, limit) ->
   else
     str
 
+Handlebars.registerHelper 'proxy', (href, options) ->
+  PMP.search.proxyRoot() + '/' + href.replace(/http(s):\/\/[^\/]+\//, '')
+
 Handlebars.registerHelper 'item-img', (options) ->
   if img = getItemOfProfile(this, 'image')
     options.fn(img)

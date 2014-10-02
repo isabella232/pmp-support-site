@@ -33,7 +33,7 @@
     - @recents.each do |rs|
       .col-lg-3.col-md-4.col-sm-6
         - if rs.permalink
-          %a.thumbnail{href: rs.permalink, 'data-id' => rs.story_guid}
+          %a.thumbnail{href: rs.permalink, 'data-pmp' => public_proxy_path + '/docs/' + rs.story_guid}
             %img{src: rs.image_url, alt: rs.title}
             .img-cover{style: "background-image: url(#{rs.image_url})"}
             .caption.ellipsis
@@ -42,7 +42,7 @@
                 %span.show= rs.show_name || rs.creator_name.upcase
               %h3= rs.title
         - else
-          .thumbnail{'data-id' => rs.story_guid}
+          .thumbnail{'data-pmp' => public_proxy_path + '/docs/' + rs.story_guid}
             %img{src: rs.image_url, alt: rs.title}
             .img-cover{style: "background-image: url(#{rs.image_url})"}
             .caption.ellipsis

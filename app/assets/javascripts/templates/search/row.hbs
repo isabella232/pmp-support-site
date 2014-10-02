@@ -1,14 +1,14 @@
 {{#each items}}
 <div class="media">
   {{#item-img}}
-  <a href="#" class="pull-left">
+  <a href="#" data-pmp="{{proxy href}}" class="pull-left">
     <img src="{{img-thumb links.enclosure}}" class="media-object"/>
   </a>
   {{/item-img}}
   <div class="media-body">
     <h4 class="media-heading">
       {{#item-series}}
-      <span class="series">{{title}}</span>
+      <span class="series" data-pmp="{{proxy href}}">{{title}}</span>
       {{else}}
       <span class="series text-muted">(Unknown)</span>
       {{/item-series}}
@@ -18,7 +18,7 @@
       {{/item-types}}
     </h4>
     <h3 class="media-title">
-      <a href="#">{{attributes.title}}</a>
+      <a href="#" data-pmp="{{proxy href}}">{{attributes.title}}</a>
     </h3>
     <p class="content">{{description attributes}}</p>
     <div class="meta">

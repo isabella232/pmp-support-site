@@ -48,7 +48,7 @@ PMP.search =
         linkDependencies.push PMP.search.loadLink(series.href)
       if prop = _.find(item.links.collection, (link) -> _.contains(link.rels, 'urn:collectiondoc:collection:property'))
         linkDependencies.push PMP.search.loadLink(prop.href)
-    $.when.apply($, linkDependencies).done ->
+    $.when.apply($, linkDependencies).always ->
       PMP.search.template('row', data) # refresh with dependencies
 
   # render something
