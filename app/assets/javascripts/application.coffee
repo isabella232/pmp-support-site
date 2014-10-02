@@ -6,6 +6,7 @@
 #= require jquery.dotdotdot
 #= require turbolinks
 #= require underscore
+#= require moment
 #= require bootstrap
 #= require bootbox
 #= require handlebars.runtime

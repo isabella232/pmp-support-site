@@ -44,6 +44,13 @@ Handlebars.registerHelper 'item-img', (options) ->
   else
     options.inverse(this)
 
+Handlebars.registerHelper 'item-alt', (options) ->
+  alt = this.links.alternate
+  if alt && alt.length
+    options.fn(alt[0])
+  else
+    options.inverse(this)
+
 Handlebars.registerHelper 'item-series', (options) ->
   best =
     if series = getLinkOfUrn(this, 'urn:collectiondoc:collection:series')
@@ -87,10 +94,7 @@ Handlebars.registerHelper 'item-attachments', (options) ->
   rets.join('')
 
 Handlebars.registerHelper 'fancy-date', (dateStr) ->
-  if date = new Date(dateStr)
-    date.toDateString()
-  else
-    dateStr
+  moment(dateStr).format('MMM. D, YYYY')
 
 Handlebars.registerHelper 'description', (attrs) ->
   if best = attrs.teaser || attrs.description || attrs.contentencoded
