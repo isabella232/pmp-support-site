@@ -12,9 +12,9 @@ $(document).on 'page:load ready', ->
     else
       ''
 
-  decomma = (name, fn) ->
+  splitter = (name, fn) ->
     if raw = getParam(name)
-      _.each raw.split(name), fn
+      _.each raw.split(';'), fn
 
   updateHasCheckboxes = ->
     profs = _.map $('.advanced input[name=profile]:checked'), (el) -> $(el).val()
@@ -27,11 +27,11 @@ $(document).on 'page:load ready', ->
   queryToForm = ->
     $('input[name=text]').val getParam('text')
     $('input[name=tag]').val getParam('tag')
-    decomma 'profile', (type) ->
+    splitter 'profile', (type) ->
       $("input[name=profile][value=#{type}]").prop('checked', true)
-    decomma 'has', (type) ->
+    splitter 'has', (type) ->
       $("input[name=has][value=#{type}]").prop('checked', true)
-    decomma 'creator', (name) ->
+    splitter 'creator', (name) ->
       $("input[name=creator][value=#{name}]").prop('checked', true)
     updateHasCheckboxes()
 
