@@ -12,6 +12,7 @@
         .col-sm-2{class: idx == 0 ? 'col-sm-offset-1' : ''}
           %h3
             = image_tag partner[:image]
+            %br.visible-sm
             = partner[:name]
           %table.table
             %tr
@@ -37,9 +38,9 @@
             %img{src: rs.image_url, alt: rs.title}
             .img-cover{style: "background-image: url(#{rs.image_url})"}
             .caption.ellipsis
-              %p.meta
-                %span.date= rs.published_date.strftime('%b. %e, %Y')
-                %span.show= rs.show_name || rs.creator_name.upcase
+              .meta.clearfix
+                .date= rs.published_date.strftime('%b %e, %Y')
+                .show= rs.show_name || rs.creator_name.upcase
               %h3= rs.title
         - else
           .thumbnail{'data-pmp' => public_proxy_path + '/docs/' + rs.story_guid}
@@ -47,6 +48,6 @@
             .img-cover{style: "background-image: url(#{rs.image_url})"}
             .caption.ellipsis
               %p.meta
-                %span.date= rs.published_date.strftime('%b. %e, %Y')
+                %span.date= rs.published_date.strftime('%b %e, %Y')
                 %span.show= rs.show_name || rs.creator_name.upcase
               %h3= rs.title

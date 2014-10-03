@@ -7,19 +7,24 @@ class RecentStory < ActiveRecord::Base
 
   # attempt to get a diverse sampling of recent stories
   def self.rich_sample(limit = 10)
-    oversample = RecentStory.order('published_date DESC, id DESC').limit(limit * 2).to_a
     rich = []
+    sorter = 'published_date DESC, id DESC'
 
-    # sample from known users first
+    # first, get a sample from each user
     UserStat::KNOWN_USERS.each do |key, guid|
-      if idx = oversample.find_index { |rs| rs.creator_name == key.to_s }
-        rich << oversample.delete_at(idx)
-      end
+      top = RecentStory.where(creator_name: key.to_s).order(sorter)
+      rich.concat top.limit(limit / UserStat::KNOWN_USERS.count)
     end
 
-    # bring up to limit, and re-sort
-    rich.concat oversample.slice(0, limit - rich.count)
-    rich.sort { |a, b| b.published_date <=> a.published_date }
+    # fill in
+    if rich.count < limit
+      ids = rich.map { |r| r.id }
+      more = RecentStory.where('id not in (?)', ids).order(sorter)
+      rich.concat more.limit(limit - rich.count)
+    end
+
+    # re-sort
+    rich.sort_by { |rs| [rs.published_date, rs.id] }.reverse
   end
 
 end

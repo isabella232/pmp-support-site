@@ -48,7 +48,10 @@ body.dashboard {
         text-align: right;
         font-weight: bold;
         padding-right: 0;
-        width: 60px;
+        width: 47%;
+        @media (min-width: 768px) {
+          width: 60px;
+        }
       }
       .type {
         text-align: left;
@@ -93,6 +96,7 @@ body.dashboard {
         .date {
           float: right;
           color: #bababa;
+          margin-left: 4px;
         }
         h3 {
           font-size: 20px;
