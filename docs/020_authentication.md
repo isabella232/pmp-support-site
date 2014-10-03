@@ -38,6 +38,19 @@ sdk.credList(function(resp) {
 });
 ```
 
+```perl
+# currently no way to do this - use support.pmp.io instead
+```
+
+```ruby
+auth = PMP::Client.new(user: 'u', password: 'p', endpoint: 'https://api.pmp.io')
+creds = auth.credentials.list
+
+puts creds.clients.count
+puts creds.clients.first.client_id
+puts creds.clients.first.label
+```
+
 ## Credential Creation
 
 See `urn:collectiondoc:form:createcredentials` in [the home doc](https://api.pmp.io).
@@ -76,6 +89,29 @@ sdk.credCreate('somethingCool', 'read', 999999, function(resp) {
 });
 ```
 
+```perl
+my $auth = Net::PMP::Client->new(host => 'https://api.pmp.io', id => 0, secret => 0);
+my $cred = $auth->create_credentials(
+  username => 'myname',
+  password => 'mypass',
+  scope    => 'read',
+  expires  => 100,
+  label    => 'perltesting',
+);
+
+print $cred->client_id . "\n";
+print $cred->client_secret . "\n";
+```
+
+```ruby
+auth = PMP::Client.new(user: 'u', password: 'p', endpoint: 'https://api.pmp.io')
+cred = auth.credentials.create(scope: 'read', label: 'test', token_expires_in: 100)
+
+puts cred.client_id
+puts cred.label
+```
+
+
 ## Credential Deletion
 
 See `urn:collectiondoc:form:removecredentials` in [the home doc](https://api.pmp.io).
@@ -97,6 +133,20 @@ sdk.credDestroy('405a022e-6274-4170-8eba-67933551c3c3', function(resp) {
   console.log(resp.status);  // 204
   console.log(resp.success); // true
 });
+```
+
+```perl
+my $auth = Net::PMP::Client->new(host => 'https://api.pmp.io', id => 0, secret => 0);
+$auth->delete_credentials(
+  username  => 'myname',
+  password  => 'mypass',
+  client_id => $cred->client_id,
+);
+```
+
+```ruby
+auth = PMP::Client.new(user: 'u', password: 'p', endpoint: 'https://api.pmp.io')
+auth.credentials.destroy('405a022e-6274-4170-8eba-67933551c3c3')
 ```
 
 ## Token Creation
@@ -132,6 +182,19 @@ sdk.token(function(token) {
 });
 ```
 
+```perl
+my $client = Net::PMP::Client->new(id => '1', secret => '2', host => 'https://api.pmp.io');
+my $token = $client->get_token();
+```
+
+```ruby
+pmp = PMP::Client.new(client_id: '1', client_secret: '2', endpoint: 'https://api.pmp.io')
+oauth_token = pmp.token
+# raises Faraday::ConnectionFailed for bad host
+# raises OAuth2::Error if unauthorized
+puts oauth_token.token # the string
+```
+
 In the response, `token_expires_in` is the number seconds until this `access_token` will expire and your client will need to request a new one.  Re-requesting a non-expired token for the same client will return the same `access_token`.  SDK's *should* automatically re-request the token when it expires.
 
 ## Token Deletion
@@ -149,6 +212,15 @@ curl -u "client_id:client" -X DELETE "https://api.pmp.io/auth/access_token"
 
 ```javascript
 // the javascript sdk doesn't provide an explicit way to do this
+```
+
+```perl
+my $client = Net::PMP::Client->new(id => '1', secret => '2', host => 'https://api.pmp.io');
+$client->revoke_token();
+```
+
+```ruby
+# the ruby sdk doesn't provide an explicit way to do this
 ```
 
 ## Usage
@@ -171,4 +243,20 @@ sdk.fetchDoc('04224975-e93c-4b17-9df9-96db37d318f3', (doc, resp) {
   console.log(doc.attributes.guid);  // "04224975-e93c-4b17-9df9-96db37d318f3"
   console.log(doc.attributes.title); // "PMP Home Document"
 });
+```
+
+```perl
+my $client = Net::PMP::Client->new(id => '1', secret => '2', host => 'https://api.pmp.io');
+my $doc = $client->get_doc_by_guid('04224975-e93c-4b17-9df9-96db37d318f3');
+
+print $doc->get_guid . "\n";  # "04224975-e93c-4b17-9df9-96db37d318f3"
+print $doc->get_title . "\n"; # "PMP Home Document"
+```
+
+```ruby
+pmp = PMP::Client.new(client_id: '1', client_secret: '2', endpoint: 'https://api.pmp.io')
+
+doc = pmp.query['urn:collectiondoc:hreftpl:docs'].where(guid: '04224975-e93c-4b17-9df9-96db37d318f3')
+puts doc.guid  # "04224975-e93c-4b17-9df9-96db37d318f3"
+puts doc.title # "PMP Home Document"
 ```
