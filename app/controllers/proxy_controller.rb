@@ -1,5 +1,8 @@
 class ProxyController < ApplicationController
 
+  CACHE_FOR = 5.minutes
+  RACE_CONDITION_TTL = 20.seconds
+
   # GET /proxy/public/...
   def public_proxy
     resp = make_request(get_public_user, true)
@@ -36,8 +39,16 @@ protected
     # cache remote call
     if is_cached
       key = [remote_user.env, remote_user.client_id, path]
-      Rails.cache.fetch key, expires_in: 5.minutes, race_condition_ttl: 20.seconds do
-        Faraday.new(opts).get(path)
+      if cached_resp = Rails.cache.fetch(key, expires_in: CACHE_FOR, race_condition_ttl: RACE_CONDITION_TTL)
+        cached_resp
+      else
+        resp = Faraday.new(opts).get(path)
+        if resp.success?
+          Rails.cache.write(key, resp, expires_in: CACHE_FOR, race_condition_ttl: RACE_CONDITION_TTL)
+        elsif resp.status == 401
+          session.delete("#{proxy_env}_public_user") # re-authorize
+        end
+        resp
       end
     else
       Faraday.new(opts).get(path)
@@ -46,16 +57,19 @@ protected
 
   # session-cache the public proxy token
   def get_public_user
-    proxy_env = params['proxy_env'] || 'production'
     if session["#{proxy_env}_public_user"].is_a?(Hash)
       Remote::User.new(session["#{proxy_env}_public_user"])
     else
       cfg = Rails.application.secrets.pmp_hosts[proxy_env]
-      logger.debug("pmp:hosts[#{proxy_env}]: #{cfg.inspect}")
       u = Remote::User.new(env: proxy_env, client_id: cfg['public_id'], client_secret: cfg['public_secret'])
       session["#{proxy_env}_public_user"] = u.as_json
       u
     end
+  end
+
+  # which env are we proxying
+  def proxy_env
+    params['proxy_env'] || 'production'
   end
 
 end
