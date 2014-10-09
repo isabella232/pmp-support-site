@@ -94,6 +94,7 @@ protected
   # memoize token and expiration
   def ensure_support_token!
     if @token.blank? || @token_expires.blank? || Time.now.to_i >= @token_expires
+      @token = nil
       token_resp = self.pmp_client.token
       @token = token_resp.token
       @token_expires = Time.now.to_i + token_resp.params['token_expires_in'] - TOKEN_BUFFER_SECONDS
