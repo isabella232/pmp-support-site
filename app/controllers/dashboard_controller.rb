@@ -10,6 +10,7 @@ class DashboardController < ApplicationController
       }
     end
     @recents = RecentStory.rich_sample(12)
+    @total = @partners.map { |p| p[:stats].values.inject(:+) }.inject(:+)
   end
 
 protected

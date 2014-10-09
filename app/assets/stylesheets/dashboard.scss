@@ -8,6 +8,27 @@ body.dashboard {
     margin: 40px 0 25px;
   }
 
+  // intro text
+  .intro {
+    margin-top: 16px;
+    font-size: 18px;
+    .links {
+      margin-top: 10px;
+      font-size: 14px;
+      a, p {
+        display: inline-block;
+        padding: 10px 0 10px 10px;
+        margin: 0;
+        color: #999;
+        font-weight: 500;
+        &:hover {
+          color: #464646;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
   // search form
   .search-pmp {
     ::-webkit-input-placeholder { color: #bababa; }

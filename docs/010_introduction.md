@@ -1,3 +1,10 @@
+<div class="alert alert-warning media">
+  <i class="fa fa-bullhorn fa-4x pull-left media-object"></i>
+  <div class="media-body">
+    <p><b>Just so you know...</b><br/>We're in the process of moving our legacy docs here from <a href="http://docs.pmp.io">docs.pmp.io</a>. Check it out if you don't see something here, or just want the messy details. You can also improve these docs by <a href="https://github.com/publicmediaplatform/support.pmp.io/tree/master/docs">contributing back</a> to them.</p>
+  </div>
+</div>
+
 # Getting Started
 
 The Public Media Platform [is a Hypermedia API](http://www.infoq.com/articles/hypermedia-api-tutorial-part-one) that is accessible over HTTP, on the web and lets API clients communicate using [Collection.doc+JSON](http://cdoc.io/spec.html) media type. `Collection.doc+JSON` is a recursive, generic, JSON hypermedia type optimized for flexible exchange of structured content by content providers and consumers.
