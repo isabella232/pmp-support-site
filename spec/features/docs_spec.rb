@@ -4,7 +4,7 @@ feature 'api documentation' do
 
   let(:markdown_titles) do
     Dir.glob("#{Rails.root}/docs/*.md").map do |file|
-      File.open(file, &:gets).gsub(/^#/, '').strip
+      IO.read(file)[/^#.+$/].gsub(/^#/, '').strip
     end
   end
 
