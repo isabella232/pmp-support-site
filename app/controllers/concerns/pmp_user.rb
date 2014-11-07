@@ -83,7 +83,12 @@ module PmpUser
   end
 
   # log out all accounts
-  def user_destroy_all
+  def user_destroy_all(revoke_creds = false)
+    if revoke_creds
+      current_users.each do |u|
+        u.auth_client.credentials.destroy(u.client_id)
+      end
+    end
     reset_session
     @current_remote_usr = nil
     @current_remote_usrs = nil

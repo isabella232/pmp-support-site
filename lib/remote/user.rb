@@ -31,7 +31,14 @@ class Remote::User
 
     # make sure we have credentials
     ensure_support_client!
-    ensure_support_token!
+
+    # make sure we have a token (retry once, in case pmp is lagging)
+    begin
+      ensure_support_token!
+    rescue OAuth2::Error => e
+      sleep 1
+      ensure_support_token!
+    end
   end
 
   # get host url as defined by secrets.yml
