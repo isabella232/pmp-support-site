@@ -28,7 +28,7 @@ getItemsOfProfile = (item, profileType) ->
   if getProfile(item) == profileType
     all.push(item)
   _.each item.items, (child) ->
-    if getProfile(child) == profileType
+    if getProfile(child) == profileType && child && child.href
       all.push(child)
   all
 
