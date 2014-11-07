@@ -11,7 +11,7 @@ feature 'client credentials' do
     row = page.find('tr', text: 'pmp-support-app')
     client_id = row.find('.client-id').text
 
-    visit logout_path
+    visit logout_path(revoke: true)
     expect(page).to have_content('You have been logged out')
 
     do_login!
@@ -20,7 +20,7 @@ feature 'client credentials' do
     row = page.find('tr', text: 'pmp-support-app')
     new_client_id = row.find('.client-id').text
 
-    expect(new_client_id).to eq(client_id)
+    expect(new_client_id).not_to eq(client_id)
   end
 
   scenario 'cancels adding a credential', js: true do

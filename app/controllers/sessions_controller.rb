@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-  before_filter :setup_negative_captcha
   before_filter :require_login!,     only:   [:add_account, :do_add_account, :switch, :logout]
   before_filter :require_not_login!, except: [:add_account, :do_add_account, :switch, :logout]
 
@@ -24,15 +23,15 @@ class SessionsController < ApplicationController
 
   # GET /logout
   def logout
-    user_destroy_all
+    user_destroy_all(params[:revoke] ? true : false)
     ga_event!('sessions', 'logout')
     redirect_to login_path, notice: 'You have been logged out'
   end
 
   # POST /login
   def do_login
-    if negative_captcha_validated?
-      host, user, pass = @captcha.values.slice('host', 'username', 'password').values
+    if user_params_validated?
+      host, user, pass = params.slice('host', 'username', 'password').values
       if user_add(host, user, pass)
         ga_event!('sessions', 'login')
         redirect_to credentials_path, notice: 'You are now logged in'
@@ -48,8 +47,8 @@ class SessionsController < ApplicationController
 
   # POST /add_account
   def do_add_account
-    if negative_captcha_validated?
-      host, user, pass = @captcha.values.slice('host', 'username', 'password').values
+    if user_params_validated?
+      host, user, pass = params.slice('host', 'username', 'password').values
       if user_find(host, user)
         flash.now.alert = 'Already signed in to that account'
         render :add_account
@@ -68,25 +67,12 @@ class SessionsController < ApplicationController
 
 protected
 
-  # negative-captcha gem
-  def setup_negative_captcha
-    @captcha = NegativeCaptcha.new(
-      secret:  Rails.application.secrets.secret_key_base,
-      spinner: request.remote_ip,
-      fields: [:host, :username, :password],
-      params: params
-    )
-  end
-
   # make sure params look okay
-  def negative_captcha_validated?
-    if !@captcha.valid?
-      flash.now.alert = @captcha.error
-      false
-    elsif !%w(host username password).all? { |k| @captcha.values[k].present? }
+  def user_params_validated?
+    if !%w(host username password).all? { |k| params[k].present? }
       flash.now.alert = 'Please fill out all fields'
       false
-    elsif !Rails.application.secrets.pmp_hosts.keys.include?(@captcha.values['host'])
+    elsif !Rails.application.secrets.pmp_hosts.keys.include?(params['host'])
       flash.now.alert = 'Invalid host'
       false
     else

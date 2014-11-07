@@ -27,13 +27,13 @@ feature 'user login' do
     expect(page).to have_content('Invalid username/password')
   end
 
-  scenario 'sets a fancy reverse captcha field' do
+  scenario 'does not use a fancy reverse captcha field' do
     visit login_path
-    fill_in 'Username', with: pmp_username
-    fill_in 'Password', with: pmp_password
+    fill_in 'Username', with: 'Foobar'
     page.find('#password').set(pmp_password)
     click_button 'Sign in'
-    expect(page).to have_content('Hidden form fields were submitted')
+    expect(page).not_to have_content('Please fill out all fields')
+    expect(page).to have_content('Invalid username/password')
   end
 
   scenario 'successful login' do

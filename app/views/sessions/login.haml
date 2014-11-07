@@ -3,7 +3,6 @@
 
   = form_tag(login_path) do
     = hidden_field_tag(:ga_client_id, '', class: 'ga-client-id')
-    = raw negative_captcha(@captcha)
     - if flash.alert
       %span.help-block.text-danger
         != flash.alert
@@ -14,8 +13,8 @@
       %span.help-block
         Please enter your account login and password
     = render partial: 'hoster'
-    = negative_text_field_tag(@captcha, :username, class: 'form-control', autofocus: true, required: true, placeholder: 'Username')
-    = negative_password_field_tag(@captcha, :password, class: 'form-control', required: true, placeholder: 'Password')
+    = text_field_tag(:username, nil, class: 'form-control', autofocus: true, required: true, placeholder: 'Username')
+    = password_field_tag(:password, nil, class: 'form-control', required: true, placeholder: 'Password')
     %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
       Sign in
 

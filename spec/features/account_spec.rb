@@ -63,7 +63,7 @@ feature 'user account' do
 
   scenario 'can make updates' do
     old_title = find_field('Title').value
-    new_title = "#{old_title.gsub(/[0-9]+$/, '')} #{Time.now.to_i}"
+    new_title = "#{old_title.gsub(/\s*\d+$/, '')} #{Time.now.to_i}"
 
     fill_in 'Username', with: pmp_username
     fill_in 'Password', with: pmp_password
