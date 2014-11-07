@@ -86,4 +86,9 @@ PMP.search =
         if prop = PMP.search.findLink(this, 'urn:collectiondoc:collection:property')
           linkDependencies.push PMP.search.loadLink(prop.href)
       $.when.apply($, linkDependencies).always ->
-        $el.replaceWith(HandlebarsTemplates['search/row'](data))
+        $newEl = $(HandlebarsTemplates['search/row'](data))
+        $el.replaceWith($newEl)
+
+        # tooltips
+        $newEl.find('.guid').tooltip().click (e) ->
+          $(this).select().parent().find('.tooltip-inner').html('Ctrl+C to copy')

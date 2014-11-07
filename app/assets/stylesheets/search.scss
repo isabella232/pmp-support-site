@@ -140,6 +140,7 @@
         border-radius: 5px;
         background: #9A9A9A;
         color: #FFF;
+        a { color: #FFF; }
         &.audio             { background: #EE7C22; }
         &.image             { background: #85D9F3; }
         &.video             { background: #B36AE2; }
@@ -171,6 +172,21 @@
       }
       p {
         margin-bottom: 0;
+      }
+      .guid {
+        float: right;
+        width: 74px;
+        height: 28px;
+        font-weight: normal;
+        font-size: 14px;
+        font-family: Consolas, Lucida Console, monospace;
+        padding: 3px 8px 0;
+        margin: -4px 0 0;
+        cursor: pointer;
+      }
+      .tooltip {
+        font-weight: normal;
+        font-size: 12px;
       }
     }
   }

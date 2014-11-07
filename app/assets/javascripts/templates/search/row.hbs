@@ -14,9 +14,14 @@
         <span class="series text-muted">(Unknown)</span>
         {{/item-series}}
         <span class="date">{{fancy-date attributes.published}}</span>
-        {{#item-types}}
-        <span class="type {{classes}}">{{label}}{{#if length}}<div class="length">{{length}}</div>{{/if}}</span>
-        {{/item-types}}
+        <span class="type {{item-type-classes}}">
+          {{#item-types}}
+          <a href="#" data-pmps="{{hrefs}}">{{label}}</a>
+          {{/item-types}}
+          {{#item-length}}
+          <div class="length">{{length}}</div>
+          {{/item-length}}
+        </span>
       </h4>
       <h3 class="media-title">
         {{#item-alt}}
@@ -39,6 +44,7 @@
           {{/if}}
         </div>
         {{/item-attachments}}
+        <input class="guid" type="text" readonly value="{{attributes.guid}}" data-toggle="tooltip" data-placement="bottom" title="Select GUID">
       </div>
     </div>
     <div class="media-expanders">

@@ -23,6 +23,15 @@ getItemOfProfile = (item, profileType) ->
   else
     _.find(item.items, (child) -> getProfile(child) == profileType)
 
+getItemsOfProfile = (item, profileType) ->
+  all = []
+  if getProfile(item) == profileType
+    all.push(item)
+  _.each item.items, (child) ->
+    if getProfile(child) == profileType
+      all.push(child)
+  all
+
 getCachedTitle = (link) ->
   if PMP.cache[link.href]
     PMP.cache[link.href].attributes.title
@@ -72,12 +81,19 @@ Handlebars.registerHelper 'item-series', (options) ->
   else
     options.inverse(this)
 
-Handlebars.registerHelper 'item-types', (options) ->
-  type  = getProfile(this)
-  types = [type].concat _.uniq(_.map(this.items, getProfile)).sort()
-  caps  = _.map types, (t) -> t.charAt(0).toUpperCase() + t.slice(1)
+Handlebars.registerHelper 'item-type-classes', (options) ->
+  types = [getProfile(this)].concat _.uniq(_.map(this.items, getProfile)).sort()
+  types.join(' ')
 
-  # try hard to find any audio/video length
+Handlebars.registerHelper 'item-types', (options) ->
+  types = [getProfile(this)].concat _.uniq(_.map(this.items, getProfile)).sort()
+  rets = _.map types, (type, idx) =>
+    label = type.charAt(0).toUpperCase() + type.slice(1)
+    hrefs = _.map(getItemsOfProfile(this, type), (it) -> PMP.search.proxyHref(it.href))
+    options.fn(label: label, hrefs: hrefs.join('|'))
+  rets.join(' + ')
+
+Handlebars.registerHelper 'item-length', (options) ->
   len = false
   _.each ['audio', 'video'], (type) =>
     if item = getItemOfProfile(this, 'audio')
@@ -89,7 +105,8 @@ Handlebars.registerHelper 'item-types', (options) ->
             minutes = Math.floor(parseInt(encl.meta.duration) / 60)
             seconds = parseInt(encl.meta.duration) - minutes * 60
             len = "#{minutes}:#{seconds}"
-  options.fn(classes: types.join(' '), label: caps.join(' + '), length: false)
+  len = false # TODO: this looks bad
+  options.fn(length: len) if len
 
 Handlebars.registerHelper 'item-author', (options) ->
   if this.attributes.byline
