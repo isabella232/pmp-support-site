@@ -5,7 +5,7 @@ gem 'therubyracer',  platforms: :ruby
 gem 'turbolinks'
 gem 'negative_captcha'
 gem 'password_strength'
-gem 'pmp', '>= 0.4.1', require: true
+gem 'pmp', '>= 0.5.3', require: true
 gem 'whenever', require: false
 
 gem 'haml'

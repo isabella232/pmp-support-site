@@ -48,7 +48,7 @@ GEM
     coffee-script-source (1.7.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    excon (0.39.5)
+    excon (0.39.6)
     execjs (2.2.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
@@ -101,7 +101,7 @@ GEM
     password_strength (0.4.1)
       activerecord
     pg (0.17.1)
-    pmp (0.4.1)
+    pmp (0.5.3)
       activesupport
       excon
       faraday
@@ -224,7 +224,7 @@ DEPENDENCIES
   negative_captcha
   password_strength
   pg
-  pmp (>= 0.4.1)
+  pmp (>= 0.5.3)
   poltergeist
   pry
   quiet_assets
