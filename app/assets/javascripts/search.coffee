@@ -75,7 +75,8 @@ PMP.search =
 
       # render what we have now
       $el = $(HandlebarsTemplates['search/row'](data)).appendTo('.results-list')
-      PMP.search.loadNextTop = $('.load-next-page').offset().top
+      if offset = $('.load-next-page').offset()
+        PMP.search.loadNextTop = offset.top
 
       # load dependencies and re-render
       linkDependencies = []
