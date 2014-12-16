@@ -1,5 +1,7 @@
 # Document Profiles and Schemas
 
+Use the following docs to write this:
+
 https://github.com/publicmediaplatform/pmpdocs/wiki/Profile-Management
 
 [![](http://cav.is/i/pmp.svg)](http://cav.is/i/pmp.svg)
