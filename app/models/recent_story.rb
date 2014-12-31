@@ -25,7 +25,7 @@ class RecentStory < ActiveRecord::Base
 
     # HACK: get a smaller thumbnail for NPR images
     rich.each do |r|
-      if r.creator_name == 'npr' && r.image_url
+      if r.creator_name == 'npr' && r.image_url && r.image_url.match(/media\.npr\.org/)
         r.image_url.gsub!(/\.jpg$/, '-s400-c85.jpg')
       end
     end
