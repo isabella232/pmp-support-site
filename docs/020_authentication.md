@@ -2,9 +2,14 @@
 
 API users are given a `username` and `password`.  These cannot be used directly to authenticate with the PMP - rather they are used to manage multiple API client credentials under a single user account.  The PMP uses an OAuth2 [Client Credentials](http://techblog.hybris.com/2012/07/09/oauth-the-client-credentials-flow/) flow, meaning you'll be generating a separate `client_id` and `client_secret` for each application that will use the API.
 
-Normally, you should use the [support site](http://support.pmp.io/credentials).  This section is for reference, in case you want to manage them manually.
+<div class="alert alert-warning media">
+  <i class="fa fa-bullhorn fa-3x pull-left media-object"></i>
+  <div class="media-body">
+    You should normally use the <a href="http://support.pmp.io/credentials">support site</a> to manage credentials.  This section is for reference, in case you want to manage them manually.
+  </div>
+</div>
 
-<div class="alert alert-warning">You should NEVER use your username/password into an applicaton - just client_id/client_secret!</div>
+Let me just stress that you should **NEVER** be using your PMP username/password directly in an application.  You should be giving each app its own client-id/secret, to use the PMP *on your behalf*.
 
 ## Credential List
 
@@ -40,6 +45,17 @@ sdk.credList(function(resp) {
 
 ```perl
 # currently no way to do this - use support.pmp.io instead
+```
+
+```php
+<?php
+$user = new \Pmp\Sdk\AuthUser('https://api.pmp.io', 'myuser', 'mypassword');
+$clients = $user->listCredentials()->clients();
+
+echo count($clients);
+echo $clients[0]->client_id;
+echo $clients[0]->label;
+?>
 ```
 
 ```ruby
@@ -103,6 +119,17 @@ print $cred->client_id . "\n";
 print $cred->client_secret . "\n";
 ```
 
+```php
+<?php
+$user = new \Pmp\Sdk\AuthUser('https://api.pmp.io', 'myuser', 'mypassword');
+$cred = $user->createCredential('read', 999, 'testlabel');
+
+echo $cred->client_id;
+echo $cred->token_expires_in;
+echo $cred->label;
+?>
+```
+
 ```ruby
 auth = PMP::Client.new(user: 'u', password: 'p', endpoint: 'https://api.pmp.io')
 cred = auth.credentials.create(scope: 'read', label: 'test', token_expires_in: 100)
@@ -142,6 +169,13 @@ $auth->delete_credentials(
   password  => 'mypass',
   client_id => $cred->client_id,
 );
+```
+
+```php
+<?php
+$user = new \Pmp\Sdk\AuthUser('https://api.pmp.io', 'myuser', 'mypassword');
+$user->removeCredential('405a022e-6274-4170-8eba-67933551c3c3');
+?>
 ```
 
 ```ruby
@@ -187,6 +221,16 @@ my $client = Net::PMP::Client->new(id => '1', secret => '2', host => 'https://ap
 my $token = $client->get_token();
 ```
 
+```php
+<?php
+$auth = new \Pmp\Sdk\AuthClient('https://api.pmp.io', 'myid', 'mysecret');
+$token = $auth->getToken();
+
+echo $token->access_token;
+echo $token->token_issue_date;
+?>
+```
+
 ```ruby
 pmp = PMP::Client.new(client_id: '1', client_secret: '2', endpoint: 'https://api.pmp.io')
 oauth_token = pmp.token
@@ -219,44 +263,13 @@ my $client = Net::PMP::Client->new(id => '1', secret => '2', host => 'https://ap
 $client->revoke_token();
 ```
 
+```php
+<?php
+$auth = new \Pmp\Sdk\AuthClient('https://api.pmp.io', 'myid', 'mysecret');
+$auth->revokeToken();
+?>
+```
+
 ```ruby
 # the ruby sdk doesn't provide an explicit way to do this
-```
-
-## Usage
-
-Now that you've completed the OAuth2 flow, you can make authenticated requests against the API.  Just include the header `Authorization: Bearer YOURTOKENHERE`.  For instance, to fetch a document...
-
-```shell
-curl -H "Authorization: Bearer 3f2401ae1a74adf8b14a638a" -X GET "https://api.pmp.io/docs/04224975-e93c-4b17-9df9-96db37d318f3"
-
-# returns a big collection+doc json string
-```
-
-```javascript
-var PmpSdk = require('pmpsdk');
-var sdk = new PmpSdk({client_id: '1', client_secret: '2', host: 'https://api.pmp.io'});
-
-sdk.fetchDoc('04224975-e93c-4b17-9df9-96db37d318f3', (doc, resp) {
-  console.log(resp.status);          // 200
-  console.log(resp.success);         // true
-  console.log(doc.attributes.guid);  // "04224975-e93c-4b17-9df9-96db37d318f3"
-  console.log(doc.attributes.title); // "PMP Home Document"
-});
-```
-
-```perl
-my $client = Net::PMP::Client->new(id => '1', secret => '2', host => 'https://api.pmp.io');
-my $doc = $client->get_doc_by_guid('04224975-e93c-4b17-9df9-96db37d318f3');
-
-print $doc->get_guid . "\n";  # "04224975-e93c-4b17-9df9-96db37d318f3"
-print $doc->get_title . "\n"; # "PMP Home Document"
-```
-
-```ruby
-pmp = PMP::Client.new(client_id: '1', client_secret: '2', endpoint: 'https://api.pmp.io')
-
-doc = pmp.query['urn:collectiondoc:hreftpl:docs'].where(guid: '04224975-e93c-4b17-9df9-96db37d318f3')
-puts doc.guid  # "04224975-e93c-4b17-9df9-96db37d318f3"
-puts doc.title # "PMP Home Document"
 ```

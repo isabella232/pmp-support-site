@@ -9,6 +9,7 @@ $(document).on 'page:load ready', ->
     switch lang
       when 'shell' then 'cURL'
       when 'json' then 'JSON'
+      when 'php' then 'PHP'
       else lang.charAt(0).toUpperCase() + lang.slice(1)
 
   # group adjacent code blocks
