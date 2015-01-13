@@ -43,15 +43,37 @@ An Episode is a sub-type of a Story that indicates the doc is the full episode o
 
 ## Standard and Extended Collections
 
+### Group in your own Series or Property, or with a Contributor
 When appropriate, add your docs to Contributor, Series and/or Property.
 
-Also associate your content to one of the standard Topics.
+You do this by adding a link with relation type `collection`.
+
+The `rels` for the link should include one of the following:
+Property - `urn:collectiondoc:collection:property`
+Series - `urn:collectiondoc:collection:series`
+Contributor - `urn:collectiondoc:collection:contributor`
+
+The `href` for the link should be to the PMP doc for the series, property, or contributor.
+
+The `title` is optional, but a useful attribute to quickly hint the collection without having to look it up.
+
+### Use Topic collections
+
+You can also associate your content to one of the standard Topics.
 
 https://github.com/publicmediaplatform/pmpdocs/wiki/Profiles-vs-collection-and-item-links
 
 ## Linking Documents
 
 Should you use an array of child links in a parent (has one/many), or use a link to the parent in the child (belongs to)?
+
+The array of child links is most useful when the child is abstract from knowing it is part of a collection, such as a curated playlist, or when the collection requires the children to be ordered.
+
+## Other Links
+
+### Alternate
+
+The `alternate` link relation type should be used to provide the url for a web page showing this story on the publisher or producer's site.
 
 ## Searchable Attributes
 
@@ -107,6 +129,9 @@ You may want to use a redirect service such as podtrac to measure each time the 
 ### Embedded Media
 
 Sometimes it is not possible to provide urls to the actual media files.
+
 In that case, the producer can provide the html code to be used to embed a player for the media in a web page, or a link to a page to view/hear the media (e.g. a YouTube URL).
 
+A best practice for how to share embeds has not been established.
 
+Current suggestions include use of oembed type links, a new attribute on the video doc, or using the `contentencoded` attribute for the html to embed.
