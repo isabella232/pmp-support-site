@@ -41,7 +41,7 @@ Notice that this will skip several tests.  To get a full-run, you'll also need t
 
 ## Issues and Contributing
 
-Report any bugs or feature-requests via the [main PMP issue tracker](http://github.com/publicmediaplatform/pmp-issues/issues).  Or send me a fax.  Pull requests welcome!  Thanks.
+Report any bugs or feature-requests via this project's [issue tracker](http://github.com/publicmediaplatform/support.pmp.io/issues).  Or send me a fax.  Pull requests welcome!  Thanks.
 
 ## License
 
