@@ -30,14 +30,16 @@ print $doc->get_title . "\n"; # "Arts Topic"
 
 ```php
 <?php
-$auth = new \Pmp\Sdk\AuthClient('https://api.pmp.io', 'myid', 'mysecret');
-$home = new \Pmp\Sdk\CollectionDocJson('https://api.pmp.io', $auth);
+$sdk = new \Pmp\Sdk('https://api.pmp.io', 'myid', 'mysecret');
+$doc = $sdk->fetchDoc('89944632-fe7c-47df-bc2c-b2036d823f98');
 
-$opts = array('guid' => '89944632-fe7c-47df-bc2c-b2036d823f98');
-$doc = $home->query('urn:collectiondoc:hreftpl:docs')->submit($opts);
-
-echo $doc->attributes->guid;  // "89944632-fe7c-47df-bc2c-b2036d823f98"
-echo $doc->attributes->title; // "Arts Topic"
+if ($doc) {
+    echo "{$doc->attributes->guid}\n";  // "89944632-fe7c-47df-bc2c-b2036d823f98"
+    echo "{$doc->attributes->title}\n"; // "Arts Topic"
+}
+else {
+    echo "failed to fetch the ARTS topic - must have been a 403 or 404.\n";
+}
 ?>
 ```
 
@@ -82,14 +84,16 @@ print $doc->get_title . "\n"; # "Arts Topic"
 
 ```php
 <?php
-$auth = new \Pmp\Sdk\AuthClient('https://api.pmp.io', 'myid', 'mysecret');
-$home = new \Pmp\Sdk\CollectionDocJson('https://api.pmp.io', $auth);
+$sdk = new \Pmp\Sdk('https://api.pmp.io', 'myid', 'mysecret');
+$doc = $sdk->fetchTopic('arts');
 
-$opts = array('guid' => 'arts');
-$doc = $home->query('urn:collectiondoc:hreftpl:topics')->submit($opts);
-
-echo $doc->attributes->guid;  // "89944632-fe7c-47df-bc2c-b2036d823f98"
-echo $doc->attributes->title; // "Arts Topic"
+if ($doc) {
+    echo "{$doc->attributes->guid}\n";  // "89944632-fe7c-47df-bc2c-b2036d823f98"
+    echo "{$doc->attributes->title}\n"; // "Arts Topic"
+}
+else {
+    echo "failed to fetch the ARTS topic - must have been a 403 or 404.\n";
+}
 ?>
 ```
 

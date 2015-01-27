@@ -38,17 +38,20 @@ while ( my $r = $results->next ) {
 
 ```php
 <?php
-$auth = new \Pmp\Sdk\AuthClient('https://api.pmp.io', 'myid', 'mysecret');
+$sdk = new \Pmp\Sdk('https://api.pmp.io', 'myid', 'mysecret');
+$doc = $sdk->queryDocs(array('profile' => 'story', 'text' => 'penmanship'));
 
-$opts = array('profile' => 'story', 'text' => 'penmanship');
-$search = \Pmp\Sdk\CollectionDocJson::search($host, $auth, $opts);
-
-if ($search) {
-    echo count($search->items);
-    echo $search->items()->total();
-    foreach ($search->items()->toArray() as $item) {
-        echo $item->attributes->title;
+if ($doc) {
+    $items = $doc->items();
+    $count = count($items);
+    $total = $items->total();
+    echo "COUNT=$count TOTAL=$total\n";
+    foreach ($items as $item) {
+        echo "  {$item->attributes->title}\n";
     }
+}
+else {
+    echo "got 0 search results back\n";
 }
 ?>
 ```

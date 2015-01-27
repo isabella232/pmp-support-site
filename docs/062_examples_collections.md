@@ -36,17 +36,20 @@ while ( my $r = $results->next ) {
 
 ```php
 <?php
-$auth = new \Pmp\Sdk\AuthClient('https://api.pmp.io', 'myid', 'mysecret');
+$sdk = new \Pmp\Sdk('https://api.pmp.io', 'myid', 'mysecret');
+$doc = $sdk->queryCollection('89944632-fe7c-47df-bc2c-b2036d823f98', array('profile' => 'story'));
 
-$opts = array('collection' => '89944632-fe7c-47df-bc2c-b2036d823f98', 'profile' => 'story');
-$search = \Pmp\Sdk\CollectionDocJson::search($host, $auth, $opts);
-
-if ($search) {
-    echo count($search->items);
-    echo $search->items()->total();
-    foreach ($search->items()->toArray() as $item) {
-        echo $item->attributes->title;
+if ($doc) {
+    $items = $doc->items();
+    $count = count($items);
+    $total = $items->total();
+    echo "COUNT=$count TOTAL=$total\n";
+    foreach ($items as $item) {
+        echo "  {$item->attributes->title}\n";
     }
+}
+else {
+    echo "got 0 search results back\n";
 }
 ?>
 ```
@@ -99,20 +102,20 @@ while ( my $r = $results->next ) {
 
 ```php
 <?php
-$auth = new \Pmp\Sdk\AuthClient('https://api.pmp.io', 'myid', 'mysecret');
-$home = new \Pmp\Sdk\CollectionDocJson('https://api.pmp.io', $auth);
+$sdk = new \Pmp\Sdk('https://api.pmp.io', 'myid', 'mysecret');
+$doc = $sdk->queryCollection('arts', array('profile' => 'story'));
 
-$opts = array('guid' => 'arts', 'profile' => 'story');
-try {
-    $search = $home->query('urn:collectiondoc:query:collection')->submit($opts);
-    foreach ($search->items()->toArray() as $item) {
-        echo $item->attributes->title;
+if ($doc) {
+    $items = $doc->items();
+    $count = count($items);
+    $total = $items->total();
+    echo "COUNT=$count TOTAL=$total\n";
+    foreach ($items as $item) {
+        echo "  {$item->attributes->title}\n";
     }
 }
-catch (Exception $ex) {
-    if ($ex->getCode() == 404) {
-        echo "Got 0 search results back";
-    }
+else {
+    echo "got 0 search results back\n";
 }
 ?>
 ```
