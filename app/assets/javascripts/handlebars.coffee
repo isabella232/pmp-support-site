@@ -148,6 +148,11 @@ Handlebars.registerHelper 'img-thumb', (enclosures, options) ->
     _.find enclosures, (encl) ->
       if encl && encl.meta && encl.meta.crop == cropType
         best = encl.href
+
+  # HACK: get a MUCH smaller thumbnail for NPR images
+  if best && best.match(/media\.npr\.org/)
+    best = best.replace(/\.jpg$/, '-s200-c85.jpg')
+
   new Handlebars.SafeString(best)
 
 Handlebars.registerHelper 'img-normal', (enclosures, options) ->
