@@ -57,7 +57,7 @@ namespace :pmp do
     # attempt to get a couple from each known user
     created = 0
     UserStat::KNOWN_USERS.each do |key, guid|
-      res = query.where(creator: guid, profile: 'story', has: 'image', searchsort: 'date', limit: 2)
+      res = query.where(creator: guid, profile: 'story', has: 'image', searchsort: 'date', limit: 8)
       res.items.each do |item|
         next if RecentStory.where(story_guid: item.guid).first
 
