@@ -26,6 +26,8 @@ $(document).on 'page:load ready', ->
 
   queryToForm = ->
     $('input[name=text]').val getParam('text')
+    $('input[name=guid]').val getParam('guid')
+    $('input[name=collection]').val getParam('collection')
     $('input[name=tag]').val getParam('tag')
     splitter 'profile', (type) ->
       $("input[name=profile][value=#{type}]").prop('checked', true)
@@ -42,6 +44,8 @@ $(document).on 'page:load ready', ->
       advanced:   if $('.pmp-search-form .advanced.show-all').length && !forProxy then '1'
       searchsort: if $('.pmp-search-form .sort-relevance.active').length then 'relevance'
       text:       $('.pmp-search-form input[name=text]').val()
+      guid:       $('.pmp-search-form input[name=guid]').val()
+      collection: $('.pmp-search-form input[name=collection]').val()
       tag:        $('.pmp-search-form input[name=tag]').val()
       profile:    getChecks 'profile', (el) -> $(el).val()
       has:        getChecks 'has', (el) -> $(el).val()

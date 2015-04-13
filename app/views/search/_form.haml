@@ -24,7 +24,7 @@
         %label.checkbox-inline
           %input{type: 'checkbox', name: 'profile', value: 'series'} Series
         %label.checkbox-inline
-          %input{type: 'checkbox', name: 'profile', value: 'episode'} Episode
+          %input{type: 'checkbox', name: 'profile', value: 'property'} Property
       .contains
         %label.control-label Contains
         .checks
@@ -43,6 +43,16 @@
           %label.checkbox-inline
             %input{type: 'checkbox', name: 'creator', value: key, 'data-guid' => guid}
               = key.upcase
+
+    -# guids and collections
+    .form-group
+      .row
+        .col-md-6
+          %label.control-label{for: 'input-guid'} GUID
+          %input#input-guid.form-control{type: 'text', name: 'guid', placeholder: 'Single document guid'}
+        .col-md-6
+          %label.control-label{for: 'input-collection'} Collection
+          %input#input-collection.form-control{type: 'text', name: 'collection', placeholder: 'Series/Property guids'}
 
     -# some tags
     .form-group

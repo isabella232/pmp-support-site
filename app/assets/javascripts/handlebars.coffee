@@ -4,16 +4,17 @@
 
 getProfile = (item) ->
   if item && item.links && item.links.profile && item.links.profile.length
+    lastSegment = _.last(item.links.profile[0].href.split('/'))
     if item.links.profile[0].href.match(/\/profiles\//)
-      _.last(item.links.profile[0].href.split('/'))
-    else if item.links.profile[0].href.match(/ef7f170b-4900-4a20-8b77-3142d4ac07ce/)
-      'audio'
-    else if item.links.profile[0].href.match(/5f4fe868-5065-4aa2-86e6-2387d2c7f1b6/)
-      'image'
-    else if item.links.profile[0].href.match(/85115aa1-df35-4324-9acd-2bb261f8a541/)
-      'video'
+      lastSegment
     else
-      'unknown'
+      switch lastSegment
+        when 'c07bd70c-8644-4c5d-933a-40d5d7032036' then 'series'
+        when '88506918-b124-43a8-9f00-064e732cbe00' then 'property'
+        when 'ef7f170b-4900-4a20-8b77-3142d4ac07ce' then 'audio'
+        when '5f4fe868-5065-4aa2-86e6-2387d2c7f1b6' then 'image'
+        when '85115aa1-df35-4324-9acd-2bb261f8a541' then 'video'
+        else 'unknown'
   else
     'unknown'
 
