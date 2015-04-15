@@ -73,6 +73,10 @@ PMP.search =
         $('.search-total').html('(' + PMP.search.findTotalString(data) + ')').show()
         $('.results-list').html('')
 
+      # handle single-guid searches
+      if data && data.attributes
+        data = {items: [data]}
+
       # render what we have now
       $el = $(HandlebarsTemplates['search/row'](data)).appendTo('.results-list')
       if offset = $('.load-next-page').offset()
