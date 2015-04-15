@@ -30,6 +30,7 @@ protected
         'Accept'        => 'application/vnd.collection.doc+json',
         'Content-Type'  => 'application/vnd.collection.doc+json',
         'Authorization' => "Bearer #{remote_user.token}",
+        'Prefer'        => 'return=minimal',
       },
       ssl: {verify: false},
     }
