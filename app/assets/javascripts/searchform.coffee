@@ -19,6 +19,10 @@ $(document).on 'page:load ready', ->
   updateHasCheckboxes = ->
     profs = _.map $('.advanced input[name=profile]:checked'), (el) -> $(el).val()
     if profs.length == 1 && profs[0] == 'story'
+      $('.contains input[value=story]').prop('checked', false).parent().hide()
+      $('.contains').show()
+    else if profs.length == 1 && profs[0] == 'episode'
+      $('.contains input[value=story]').parent().show()
       $('.contains').show()
     else
       $('.advanced input[name=has]').prop('checked', false)

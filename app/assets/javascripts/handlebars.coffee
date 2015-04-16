@@ -14,9 +14,10 @@ getProfile = (item) ->
         when 'ef7f170b-4900-4a20-8b77-3142d4ac07ce' then 'audio'
         when '5f4fe868-5065-4aa2-86e6-2387d2c7f1b6' then 'image'
         when '85115aa1-df35-4324-9acd-2bb261f8a541' then 'video'
+        when '42448532-7a6f-47fb-a547-f124d5d9053e' then 'episode'
         else 'unknown'
   else
-    'unknown'
+    'null'
 
 getItemOfProfile = (item, profileType) ->
   if getProfile(item) == profileType
