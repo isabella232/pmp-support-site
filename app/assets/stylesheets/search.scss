@@ -173,6 +173,18 @@
       p {
         margin-bottom: 0;
       }
+      .collect {
+        float: right;
+        width: 74px;
+        height: 28px;
+        font-weight: normal;
+        font-size: 14px;
+        font-family: Consolas, Lucida Console, monospace;
+        padding: 4px 10px;
+        margin: -4px 0 0;
+        border: 1px solid #eee;
+        border-right: 0 none;
+      }
       .guid {
         float: right;
         width: 74px;

@@ -45,6 +45,9 @@
         </div>
         {{/item-attachments}}
         <input class="guid" type="text" readonly value="{{attributes.guid}}" data-toggle="tooltip" data-placement="bottom" title="Select GUID">
+        {{#item-collect}}
+        <a class="collect" href="{{href}}">Collect</a>
+        {{/item-collect}}
       </div>
     </div>
     <div class="media-expanders">

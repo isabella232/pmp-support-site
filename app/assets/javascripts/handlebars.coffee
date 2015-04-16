@@ -137,6 +137,10 @@ Handlebars.registerHelper 'item-attachments', (options) ->
     options.fn(count: attachs[type].length, label: label, type: type, items: attachs[type], expandable: canExpand)
   rets.join('')
 
+Handlebars.registerHelper 'item-collect', (options) ->
+  if _.contains ['episode', 'property', 'series', 'base'], getProfile(this)
+    options.fn(href: "/search?advanced=1&collection=#{this.attributes.guid}")
+
 Handlebars.registerHelper 'fancy-date', (dateStr) ->
   moment(dateStr).format('MMM. D, YYYY')
 
