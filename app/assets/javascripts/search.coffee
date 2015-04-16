@@ -20,7 +20,9 @@ PMP.search =
   # attempt to get a total
   findTotalString: (item) ->
     selfLink = PMP.search.findLink(item, 'self')
-    if selfLink && selfLink.totalitems?
+    if item && item.attributes
+      '1'
+    else if selfLink && selfLink.totalitems?
       selfLink.totalitems.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     else
       'unknown'
