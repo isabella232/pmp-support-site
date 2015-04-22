@@ -19,9 +19,9 @@ feature 'user registration' do
     fill_in 'Your name', with: 'Foo Bar'
     fill_in 'Contact email', with: 'foo@bar.com'
     fill_in 'Name of organization', with: 'Foobar Inc'
-    fill_in 'Username requested', with: 'foobar'
+    set_cms_picker ['Drupal', 'Wordpress']
     fill_in 'For what purpose do you intend to use the PMP?', with: 'Profit'
-    page.find('#username').set('foobar')
+    page.find('#email').set('foobar')
     click_button 'Send request'
     expect(page).to have_content('Hidden form fields were submitted')
   end
@@ -32,7 +32,7 @@ feature 'user registration' do
     fill_in 'Your name', with: 'Foo Bar'
     fill_in 'Contact email', with: 'foo@bar.com'
     fill_in 'Name of organization', with: 'Foobar Inc'
-    fill_in 'Username requested', with: 'foobar'
+    set_cms_picker ['Drupal', 'Wordpress']
     fill_in 'For what purpose do you intend to use the PMP?', with: 'Profit'
     click_button 'Send request'
     expect(page).to have_content('your request has been sent')
@@ -41,6 +41,11 @@ feature 'user registration' do
     expect(mails.count).to eq(1)
     expect(first_mail.to).to include('support@publicmediaplatform.org')
     expect(first_mail.subject).to eq('PMP registration request from Foo Bar')
+    expect(first_mail.body).to include('production')
+    expect(first_mail.body).to include('foo@bar.com')
+    expect(first_mail.body).to include('Foobar Inc')
+    expect(first_mail.body).to include('Drupal, Wordpress')
+    expect(first_mail.body).to include('Profit')
   end
 
 end

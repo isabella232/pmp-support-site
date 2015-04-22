@@ -1,6 +1,10 @@
 language: ruby
 rvm:
-  - 2.1.1
+- 2.1.1
 before_install:
-  - bundle config build.nokogiri --use-system-libraries
-bundler_args: --without production
+- bundle config build.nokogiri --use-system-libraries
+bundler_args: "--without production"
+sudo: false
+notifications:
+  slack:
+    secure: UWLKi9OO/NNPSmJnFYGzLTmwqZeym2fma5cInZV/Q8UyxPhIq58GA3nbtX5OgSozr0aX3ciVBrFIhz9Q14D6ynvVizHnXGm6lGOLqbKmp9JPMUTb4JDSEwNobi4uXcRV0c5WmOIun5W8Kl45zOIDkMVkH3wwhNUvFuJIdh3ZugI=

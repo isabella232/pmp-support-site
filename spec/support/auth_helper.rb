@@ -15,12 +15,19 @@ module AuthHelper
     ENV['PMP_PASSWORD'] || raise('You forgot to set PMP_PASSWORD')
   end
 
-  # bypass javascript dropdown
+  # bypass javascript host dropdown
   def set_host_picker(host)
     Rails.application.secrets.pmp_hosts.each do |name, cfg|
       host = name if cfg['host'].include?(host)
     end
-    page.find('.host-picker').all('input', visible: false).first.set(host)
+    find('select[name="host"]', visible: false).find('option[value="' + host + '"]', visible: false).select_option
+  end
+
+  # bypass javascript cms dropdown
+  def set_cms_picker(cms_vals)
+    cms_vals.each do |val|
+      find('select[name="cms[]"]').find('option[value="' + val + '"]').select_option
+    end
   end
 
   # manually log in user

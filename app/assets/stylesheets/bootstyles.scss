@@ -26,6 +26,43 @@
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
+.bootstrap-select {
+  .dropdown-toggle {
+    background: #fff;
+  }
+  &.open {
+    outline: 0;
+  }
+  &.open .dropdown-toggle {
+    outline: 0;
+    background: #f9f9f9;
+    border-color: #189D98;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .dropdown-menu {
+    border-color: #189D98;
+    outline: 0;
+    li a {
+      outline: 0;
+    }
+  }
+  .dropdown-menu {
+    margin-top: -1px;
+    border-top: 0 none;
+    .glyphicon.glyphicon-ok {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      &::before {
+        content: "\f00c";
+      }
+    }
+  }
+}
 .select-ct {
   select.form-control {
     border: 0px none;

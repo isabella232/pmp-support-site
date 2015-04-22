@@ -11,7 +11,7 @@
   <strong>Organization:</strong> <%= @request['organization'] %>
 </p>
 <p>
-  <strong>Requested username:</strong> <%= @request['username'] %>
+  <strong>CMS Used:</strong> <%= Array(@request['cms']).join(', ') %>
 </p>
 <p>
   <strong>Intention:</strong> <%= @request['intention'] %>
