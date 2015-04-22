@@ -9,7 +9,7 @@ body.sessions, body.password_reset, body.register {
 
   .btn {
     height: 40px;
-    padding: 8px 16px;
+    padding: 8px 12px;
   }
 
   .logo {
@@ -26,7 +26,7 @@ body.sessions, body.password_reset, body.register {
     }
   }
 
-  .btn-group {
+  .btn-group.with-prefix {
     display: block;
     margin-bottom: -1px;
     padding-left: 60px;
@@ -40,20 +40,8 @@ body.sessions, body.password_reset, body.register {
       padding: 10px 0 0 14px;
       font-weight: bold;
     }
-    .btn {
-      float: none;
+    .bootstrap-select {
       width: 100%;
-      text-align: left;
-      .caret {
-        float: right;
-        margin-top: 8px;
-      }
-    }
-    .dropdown-menu {
-      left: 60px;
-      margin-top: -1px;
-      border-color: #189D98;
-      outline: 0;
     }
   }
 

@@ -8,6 +8,7 @@
 #= require underscore
 #= require moment
 #= require bootstrap
+#= require bootstrap-select
 #= require bootbox
 #= require jquery.colorbox
 #= require handlebars.runtime

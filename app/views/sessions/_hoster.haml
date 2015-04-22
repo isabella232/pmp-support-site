@@ -1,24 +1,10 @@
 -# host picking dropdown
 - pmp_hosts = Rails.application.secrets.pmp_hosts
 - default_host = pmp_hosts.keys.last
-- current_val = (defined?(@captcha) ? @captcha.values[:host] : params[:host]) || default_host
-- current_obj = pmp_hosts[current_val]
-- unless current_obj
-  - current_val = default_host
-  - current_obj = pmp_hosts[current_val]
-.btn-group.host-picker
+.btn-group.with-prefix
   .prefix.btn-pmp
     Host
-  %button.btn.btn-form.dropdown-toggle{'data-toggle' => 'dropdown'}
-    %span.text
-      = current_obj['host'].gsub(/^https?:\/\/|\/$/, '')
-    %span.caret
-  %ul.dropdown-menu.dropdown-menu-right
+  %select.hostpicker{name: :host}
     - pmp_hosts.each do |name, cfg|
-      %li
-        %a{href: '#', 'data-value' => name}
-          = cfg['host'].gsub(/^https?:\/\/|\/$/, '')
-  - if defined? @captcha
-    = negative_hidden_field_tag(@captcha, :host, value: current_val)
-  - else
-    = hidden_field_tag(:host, current_val)
+      %option{value: name, selected: name == (params[:host] || default_host)}
+        = cfg['host'].gsub(/^https?:\/\/|\/$/, '')

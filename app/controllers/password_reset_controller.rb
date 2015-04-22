@@ -13,10 +13,10 @@ class PasswordResetController < ApplicationController
     if !@captcha.valid?
       flash.now.alert = @captcha.error
       render :new
-    elsif !@captcha.values['host'].present? || !@captcha.values['username'].present?
+    elsif !params['host'].present? || !@captcha.values['username'].present?
       flash.now.alert = 'Please fill out all fields'
       render :new
-    elsif !Rails.application.secrets.pmp_hosts.keys.include?(@captcha.values['host'])
+    elsif !Rails.application.secrets.pmp_hosts.keys.include?(params['host'])
       flash.now.alert = 'Invalid host'
       render :new
     elsif user_items.nil?
@@ -41,7 +41,7 @@ class PasswordResetController < ApplicationController
         email_address: email,
         user_name: @captcha.values[:username],
         user_guid: user_items.first.guid,
-        host: @captcha.values[:host],
+        host: params[:host],
       }
       if PasswordReset.create(reset_params)
         ga_event!('passwords', 'create')
@@ -102,7 +102,7 @@ protected
     @captcha = NegativeCaptcha.new(
       secret:  Rails.application.secrets.secret_key_base,
       spinner: request.remote_ip,
-      fields: [:host, :username, :password, :confirm_password],
+      fields: [:username, :password, :confirm_password],
       params: params
     )
   end
@@ -110,7 +110,7 @@ protected
   # lookup users TODO: this query param not exposed yet
   def user_items
     unless @user_its
-      pmp = admin_pmp(@captcha.values[:host])
+      pmp = admin_pmp(params[:host])
       href = "#{pmp.query['urn:collectiondoc:query:users'].url}?auth_user=" + CGI::escape(@captcha.values[:username])
       @user_its = PMP::CollectionDocument.new(pmp.options.merge(href: href, root: pmp)).items
     end

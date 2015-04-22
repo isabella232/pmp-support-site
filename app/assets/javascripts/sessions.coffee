@@ -3,17 +3,16 @@
 #
 $(document).on 'page:load ready', ->
 
-  # enable host picker
-  $('.host-picker a').click (e) ->
-    e.preventDefault()
-    $target = $(e.target)
-    $target.closest('.host-picker').find('.text').text($target.text())
-    $target.closest('.host-picker').find('input').first().val($target.data('value'))
+  # bootstrap-selects
+  $('.hostpicker').selectpicker()
+  $('.cmspicker').selectpicker()
 
-  # prevent bootstrap dropdown from stealing form-submit events
-  preventDropdown = (e) ->
-    if (e.which == 13)
-      e.preventDefault()
-      $(e.target).closest('form').submit()
-  $('body.sessions form input').keypress(preventDropdown)
-  $('body.password_reset form input').keypress(preventDropdown)
+  # fade the hint text
+  $cmspicker = $('.bootstrap-select.cmspicker')
+  $cmspicktxt = $cmspicker.find('.filter-option').addClass('text-muted')
+  STARTTEXT = $cmspicktxt.text()
+  $cmspicker.on 'show.bs.dropdown hide.bs.dropdown', ->
+    if $cmspicktxt.text() == STARTTEXT
+      $cmspicktxt.addClass('text-muted')
+    else
+      $cmspicktxt.removeClass('text-muted')
