@@ -23,6 +23,35 @@ Key          | Usage
 
 <div class="alert alert-warning">IMPORTANT: Although this structure is defined by the <a href="http://cdoc.io/spec.html">Collection.doc</a> spec, the authoritative PMP implementation can always be found in the <a href="https://api.pmp.io/schemas/core">Core Schema</a>.  Read more about <a>Schemas</a> and <a>Profiles</a> further down.</div>
 
+## Headers
+
+### Content-Type
+
+The primary MIME type used by the PMP is `application/vnd.collection.doc+json`.  You can expect to see this in the `Content-Type` header in responses from the PMP.  And you should be setting the `Content-Type` to this when you're interacting with the PMP.
+
+### Response Sizes
+
+PMP responses include all sorts of boilerplate links.  Clients really only need to get this information once, and can afterwards ignore the information.  To give clients some options for what data they'd like in the response, the PMP utilizes the [HTTP Prefer header](http://tools.ietf.org/html/draft-snell-http-prefer-18).  To assist in caching, variable preferences will also be included in the `Vary` response header.
+
+By default (not specifying a `Prefer` header), you're going to see a response header of `Vary: Prefer, Accept-Encoding`.  And you will get the full set of PMP boilerplate links.
+
+If you want a minimal response, set `Prefer: return=minimal`.  The PMP will include the usual `Vary: Prefer, Accept-Encoding`, plus an additional header to indicate that it did apply your preference: `Preference-Applied: return=minimal`.  This response will NOT include any PMP boilerplate links.
+
+In addition to preferences, you can also get gzipped responses from the PMP by setting `Accept-Encoding: gzip, deflate`.  However, the response will only actually be gzipped if it is large enough that the PMP deems it worthwhile.
+
+### Caching
+
+PMP responses will all set the usual `ETag` and `Last-Modified` headers.
+
+To check for 304-Not-Modified on the client side, send one of these standard HTTP headers:
+
+ * [If-Match](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.24)
+ * [If-Modified-Since](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25)
+ * [If-None-Match](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26)
+ * [If-Unmodified-Since](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.28)
+
+Also be sure to check the `Vary` header - which indicates ways that your response for a resource may be different than another request for the same resource.
+
 ## Core Attributes
 
 ```json
@@ -91,6 +120,7 @@ Key           | Usage
 `edit`        | Links that represent URLs for updates to this document. <span class="badge">readonly</span>
 `item`        | Links that represent documents that are items of this document.
 `navigation`  | Links that represent navigation and pagination for this document. <span class="badge">readonly</span>
+`owner`       | Links that represents users that legally own this document. Defaults to `creator`. <span class="badge badge-red">required</span>
 `permission`  | Links that represent permission groups associated with this document.
 `profile`     | Link that represents the profile of this document. <span class="badge badge-red">required</span>
 `query`       | Links that represent templated queries that can run against this document. <span class="badge">readonly</span>

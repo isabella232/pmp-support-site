@@ -13,7 +13,7 @@ class RegisterController < ApplicationController
       if %w(name email organization intention).all? { |k| @captcha.values[k].present? }
         UserMailer.registration_request(register_params).deliver
         ga_event!('registrations', 'create')
-        redirect_to :login, notice: 'Thank you - your request has been sent.  You should hear back from us within 24 hours.'
+        redirect_to :login, notice: 'Thank you - your request has been sent.  You should hear back from us within 48 hours.'
       else
         flash.now.alert = 'Please fill out all fields'
         render :new

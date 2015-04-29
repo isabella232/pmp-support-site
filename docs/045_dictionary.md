@@ -91,16 +91,18 @@ Key                 | Value
 `title`             | Alt: human-meaningful alternate text for the audio <span class="badge badge-red">required</span>
 `byline`            | Credit: a [rendered byline](#best-practices-bylines) for the audio
 `description`       | Caption: additional text that explains and/or complements the audio
+`contentencoded`    | HTML representation of the binary file, with the audio encoded into the body <span class="badge badge-orange">co-required</span>
 
 ### Audio Links
 
 relType      | Key               | Value
 ------------ | ----------------- | -----------------------
-`enclosure`  | `href`            | Url for the binary audio file <span class="badge badge-red">required</span>
+`enclosure`  | `href`            | Url for the binary audio file <span class="badge badge-orange">co-required</span>
              | `type`            | The MIME-type of the audio file <span class="badge badge-red">required</span>
              | `meta.codec`      | Audio codec
              | `meta.format`     | Audio format
              | `meta.duration`   | Audio duration in seconds
+`oembed`     | `href`            | The url for a valid [oembed](http://www.oembed.com/) object representing this audio <span class="badge badge-orange">co-required</span>
 `copyright`  | `href`            | The url for a web page showing the copyright terms for this audio
              | `type`            | Should be `text/html` (since link is not a doc)
              | `title`           | Text to be displayed for the copyright link
@@ -118,16 +120,18 @@ Key                 | Value
 `title`             | Alt: human-meaningful alternate text for the video <span class="badge badge-red">required</span>
 `byline`            | Credit: a [rendered byline](#best-practices-bylines) for the video
 `description`       | Caption: additional text that explains and/or complements the video
+`contentencoded`    | HTML representation of the binary file, with the video encoded into the body <span class="badge badge-orange">co-required</span>
 
 ### Video Links
 
 relType      | Key               | Value
 ------------ | ----------------- | -----------------------
-`enclosure`  | `href`            | Url for the binary video file <span class="badge badge-red">required</span>
+`enclosure`  | `href`            | Url for the binary video file <span class="badge badge-orange">co-required</span>
              | `type`            | The MIME-type of the video file <span class="badge badge-red">required</span>
              | `meta.codec`      | Video codec
              | `meta.format`     | Video format
              | `meta.duration`   | Video duration in seconds
-`copyright`  | `href`            | The url for a web page showing the copyright terms for this audio
+`oembed`     | `href`            | The url for a valid [oembed](http://www.oembed.com/) object representing this video <span class="badge badge-orange">co-required</span>
+`copyright`  | `href`            | The url for a web page showing the copyright terms for this video
              | `type`            | Should be `text/html` (since link is not a doc)
              | `title`           | Text to be displayed for the copyright link
