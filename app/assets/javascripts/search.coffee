@@ -6,7 +6,9 @@ PMP.search =
 
   # root url for whichever proxy we're using
   proxyRoot: ->
-    '/proxy/public'
+    unless PMP.search._proxyPath
+      PMP.search._proxyPath = $('.pmp-search-form').data('proxy-path') || '/proxy/public'
+    PMP.search._proxyPath
 
   # find a link by urn
   findLink: (item, urn) ->
