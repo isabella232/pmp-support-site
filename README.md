@@ -1,6 +1,6 @@
 # PMP Support Site
 
-[![Build Status](https://travis-ci.org/publicmediaplatform/support.pmp.io.svg?branch=master)](https://travis-ci.org/publicmediaplatform/support.pmp.io.svg?branch=master)
+[![Build Status](https://travis-ci.org/publicmediaplatform/support.pmp.io.svg?branch=master)](https://travis-ci.org/publicmediaplatform/support.pmp.io)
 
 Rails application powering [support.pmp.io](https://support.pmp.io).
 
