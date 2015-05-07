@@ -1,7 +1,13 @@
 .collapse.navbar-collapse
   %ul.nav.navbar-nav
+    %li{class: active_tab(guides_path)}
+      = link_to guides_path do
+        %i.fa.fa-laptop>
+        Users
     %li{class: active_tab(docs_path)}
-      = link_to 'API Docs', docs_path
+      = link_to docs_path do
+        %i.fa.fa-code>
+        Developers
     - if current_user
       %li{class: active_tab(account_path)}
         = link_to 'Account', account_path

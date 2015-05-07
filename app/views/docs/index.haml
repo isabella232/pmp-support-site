@@ -6,6 +6,7 @@
           -# js-generated navigation
     .col-sm-9.panel
       .markdown-content
-        = find_and_preserve do
-          - @markdowns.each do |md_file|
-            = render file: md_file
+        - cache do
+          = find_and_preserve do
+            - @markdowns.each do |md_file|
+              = render file: md_file

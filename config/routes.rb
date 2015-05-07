@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   # documentation
-  get 'docs' => 'docs#index'
+  get 'guides' => 'docs#users'
+  get 'docs'   => 'docs#developers'
 
   # user sessions
   get  'login'       => 'sessions#login'
