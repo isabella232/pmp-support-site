@@ -2,26 +2,37 @@ require 'rails_helper'
 
 feature 'api documentation' do
 
-  let(:markdown_titles) do
-    non_null_titles = []
-    Dir.glob("#{Rails.root}/docs/*.md").map do |file|
-      txt = IO.read(file)
-      hdr = txt[/^#[^#].+$/]
-
-      # must occur before first code block
-      if hdr
-        if !txt.index('```') || txt.index(hdr) < txt.index('```')
-          non_null_titles << hdr.gsub(/^#/, '').strip
-        end
-      end
+  # get the first h1 header from a markdown file
+  def title_from_file(file)
+    txt = IO.read(file)
+    hdr = txt[/^#[^#].+$/]
+    if hdr && (!txt.index('```') || txt.index(hdr) < txt.index('```'))
+      hdr.gsub(/^#/, '').strip
+    else
+      nil # header must be before code blocks
     end
-    non_null_titles
   end
 
-  scenario 'user goes to the docs page' do
+  let(:user_titles) do
+    Dir.glob("#{Rails.root}/docs/users/*.md").map(&method(:title_from_file)).compact
+  end
+
+  let(:developer_titles) do
+    Dir.glob("#{Rails.root}/docs/developers/*.md").map(&method(:title_from_file)).compact
+  end
+
+  scenario 'user goes to the user guides page' do
+    visit guides_path
+    expect(page.all('h1').count).to eq(user_titles.count)
+    user_titles.each do |hdr|
+      expect(page).to have_content(hdr)
+    end
+  end
+
+  scenario 'user goes to the developer docs page' do
     visit docs_path
-    expect(page.all('h1').count).to eq(markdown_titles.count)
-    markdown_titles.each do |hdr|
+    expect(page.all('h1').count).to eq(developer_titles.count)
+    developer_titles.each do |hdr|
       expect(page).to have_content(hdr)
     end
   end
