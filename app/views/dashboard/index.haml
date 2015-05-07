@@ -25,28 +25,28 @@
             Request an API account
       .col-sm-4
         = link_to docs_path do
-          %i.fa.fa-fw.fa-lg.fa-code>
-          Technical docs
-      .col-sm-4
-        = link_to 'http://discuss.pmp.io' do
-          %i.fa.fa-fw.fa-lg.fa-users>
-          Technical discussion
-      .col-sm-4
-        = link_to 'http://status.pmp.io' do
-          %i.fa.fa-fw.fa-lg.fa-area-chart>
-          API Status
+          %i.fa.fa-fw.fa-lg.fa-laptop>
+          User guides
       .col-sm-4
         = link_to 'https://github.com/publicmediaplatform/pmp-issues/issues?state=open' do
           %i.fa.fa-fw.fa-lg.fa-bug>
           Report a problem
       .col-sm-4
-        %p
-          %i.fa.fa-fw.fa-lg.fa-comments>
-          irc.freenode.net <code>#pmp</code>
+        = link_to 'http://status.pmp.io' do
+          %i.fa.fa-fw.fa-lg.fa-area-chart>
+          API Status
+      .col-sm-4
+        = link_to docs_path do
+          %i.fa.fa-fw.fa-lg.fa-code>
+          Developer docs
+      .col-sm-4
+        = link_to 'http://discuss.pmp.io' do
+          %i.fa.fa-fw.fa-lg.fa-comment-o>
+          Technical discussion
       .col-sm-4.col-sm-offset-4
-        = link_to 'http://publicmediaplatform.org' do
-          %i.fa.fa-fw.fa-lg.fa-bookmark>
-          Learn more
+        = link_to 'mailto:support@publicmediaplatform.org', target: '_blank' do
+          %i.fa.fa-fw.fa-lg.fa-envelope-o>
+          Contact Us
 .container.pmp-search-form
   .row
     %h2.title
