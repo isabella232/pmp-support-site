@@ -201,6 +201,9 @@ a:hover, a:focus {
     font-size: 20px;
     text-transform: uppercase;
     font-family: "blue_highwayd", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    i.fa {
+      margin-right: 4px;
+    }
   }
   .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
