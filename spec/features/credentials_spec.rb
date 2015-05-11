@@ -44,14 +44,12 @@ feature 'client credentials' do
     click_button 'New Client'
     fill_in 'your-label-here', with: 'support-app-credentials-spec'
     find(".new-scope").select('read')
-    find(".new-expires").select('1 hour')
     click_button 'Save'
 
     expect(page).to have_content('Created client')
     added_row = page.all('tr', text: 'support-app-credentials-spec').last
     expect(added_row).to have_content('support-app-credentials-spec')
     expect(added_row).to have_content('read')
-    expect(added_row).to have_content('1 hour')
     expect(page.all('#main table tr').count).to eq(start_count + 1)
 
     while row = page.all('tr', text: 'support-app-credentials-spec').first
