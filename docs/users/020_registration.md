@@ -4,13 +4,13 @@ To access the PMP, your station must have credentials. These credentials allow t
 
 Note: Credentials are tool/product specific. If you need to use the PMP for multiple applications, you'll need to set up separate credentials for each.
 
-If you already have an account, you can [log in](http://support.pmp.io/login) to manage your user.
+If you already have an account, you can [log in](/login) to manage your user.
 
 ## Request an account
 
 ![1final](https://cloud.githubusercontent.com/assets/4427754/7566204/8b689d68-f7c3-11e4-9921-20461c2605d5.png)
 
-1. Go to the ["Request an API user for the PMP" site](https://support.pmp.io/register) and fill out and submit the Request an Account form.
+1. Go to the ["Request an API user for the PMP" page](/register) and fill out and submit the Request an Account form.
 2. Host – Select api.pmp.io if you intend to use an existing PMP plugin or Core Publisher. Choose api-sandbox.pmp.io if you are a developer and want an account to test with in a sandbox environment.
 3. Name – Enter your name.
 4. Contact Email - We recommend that stations use a generic email address that isn’t tied to one person’s email account. If there is a change in personnel, you cannot change the email account tied to the API user account.
@@ -26,7 +26,7 @@ Within 24 hours you will receive a reply via email.
 
 Once you receive your email, you will need to set a password for your account.
 
-1. Go to https://support.pmp.io/forgot.
+1. Go to the ["Forgot Password" page](/forgot).
 2. Enter the Host by selection "api.pmp.io" or "api-sandbox.pmp.io" as appropriate from the dropdown menu.
 3. Username field - Enter the username you used to sign up for your PMP account.
 4. Click "Email reset instructions."
@@ -40,7 +40,7 @@ Once you receive your email, you will need to set a password for your account.
 
 Once you have reset your password and are able to login, you are now able to create unique credentials for your PMP account.
 
-1. Go to https://support.pmp.io/credentials.
+1. Go to the ["Login" page](/login).
 2. Enter your username and password and click "Sign In." Once logged in you will see the credentials page.
 3. Click the "+New Client" button.
 4. Next, you will see "write" and a drop down icon in the "Scope" column. Select the "write" option, which is required if you intend to push content into the PMP.
@@ -66,8 +66,8 @@ You will need to copy the credential information you just received in the steps 
 
 The final piece of PMP information you will need to move forward is your GUID, or Globally Unique Identifier. You can find this in your PMP account.
 
-1. Return to your browser window where you are logged into your PMP account. If you've lost the page, you can visit https://support.pmp.io/account.
-2. Select the "Account" option in the gray tool bar at the top of the page.
+1. Return to your browser window where you are logged into your PMP account. If you've lost the page, you can visit [the Account page](/account).
+2. Click on your username in the upper right, and select "Manage User".
 3. On the left-hand side of your screen, you will see a field identified as GUID. The alphanumeric string is the unique GUID for your account.
 4. Using your cursor, highlight the GUID string and copy the selected area.
 5. Open your saved MS Word or text editor document.
