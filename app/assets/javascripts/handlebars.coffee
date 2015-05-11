@@ -76,8 +76,8 @@ Handlebars.registerHelper 'item-series', (options) ->
       ['Series', series.href, getCachedTitle(series)]
     else if prop = PMP.search.findLink(this, 'urn:collectiondoc:collection:property')
       ['Property', prop.href, getCachedTitle(prop)]
-    else if this.links.creator && this.links.creator.length
-      ['Creator', this.links.creator[0].href, getCachedTitle(this.links.creator[0])]
+    else if this.links.owner && this.links.owner.length
+      ['Owner', this.links.owner[0].href, getCachedTitle(this.links.owner[0])]
   if best
     options.fn(type: best[0], href: best[1], title: best[2])
   else

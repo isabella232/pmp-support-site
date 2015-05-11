@@ -89,7 +89,7 @@ PMP.search =
       # load dependencies and re-render
       linkDependencies = []
       _.each data.items, (item) ->
-        linkDependencies.push PMP.search.loadLink(item.links.creator[0].href)
+        linkDependencies.push PMP.search.loadLink(item.links.owner[0].href)
         if series = PMP.search.findLink(this, 'urn:collectiondoc:collection:series')
           linkDependencies.push PMP.search.loadLink(series.href)
         if prop = PMP.search.findLink(this, 'urn:collectiondoc:collection:property')
