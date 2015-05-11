@@ -45,9 +45,8 @@ Once you have reset your password and are able to login, you are now able to cre
 3. Click the "+New Client" button.
 4. Next, you will see "write" and a drop down icon in the "Scope" column. Select the "write" option, which is required if you intend to push content into the PMP.
 5. You will see "your-label-here" in the "Label" column. Type an appropriate identifier (Core Publisher, WordPress, Bento, etc.) into the field.
-6. You will see "14 days" and a drop down icon in the "Token Expires In" column. You can select any option here as the token will not expire.
-7. Finally, in the "Actions" column, click "Save."
-8. You will notice that the "Client ID" and the "Client Secret" columns have now been populated with unique alphanumeric strings. Keep this browser window open as you will need to return to this screen later.
+6. Finally, in the "Actions" column, click "Save."
+7. You will notice that the "Client ID" and the "Client Secret" columns have now been populated with unique alphanumeric strings. Keep this browser window open as you will need to return to this screen later.
 
 ## Saving your credentials
 

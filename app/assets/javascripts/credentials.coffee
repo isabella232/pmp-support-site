@@ -17,7 +17,6 @@ $(document).on 'page:load ready', ->
     $form = $row.find('.create-client-form')
     $form.find('#scope').val($row.find('.new-scope').val())
     $form.find('#label').val($row.find('.new-label').val())
-    $form.find('#token_expires_in').val($row.find('.new-expires').val())
     $form.submit()
   $('.cancel-client').click (e) ->
     $('.new-client-row').last().remove()
