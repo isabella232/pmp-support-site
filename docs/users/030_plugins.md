@@ -1,5 +1,7 @@
 # Plugins
 
+![wp_plugin](https://cloud.githubusercontent.com/assets/4427754/7612175/32d5e8f0-f957-11e4-9dc2-e57c9f450de2.png)
+
 Plugins for several popular platforms have been released, and are still being further developed.  If you know of any additional integrations, or would like to build one yourself, please contact us at support@publimediaplatform.org.
 
 Platform       | Author                       | Links
