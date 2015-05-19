@@ -8,11 +8,11 @@ Plugins for several popular platforms have been released, and are still being fu
 
 | CMS            | Author                             | Pull <br />from PMP? | Automated/ <br />Manual Pulls? | Push <br />to PMP? | Images? | Audio?  | Video | Full Story<br />Text? |
 | -------------- |:----------------------------------:|:--------------------:|:-------------------------------|:------------------:|:-------:|:-------:|:-----:|:---------------------:|
-| Bento          | [PBS](http://spiblog.pbs.org/)     | Y                    | Manual                         | N                  | Y       | N (soon)| N     | N                     |
-| Core Publisher | [NPR DS](digitalservices.npr.org/) | Y                    | Automated                      | Soon               | Y       | Y       | N     | Y                     |
-| Drupal         | [NPR DS](digitalservices.npr.org/) | Y                    | Both                           | Y                  | Y       | Y       | N     | Y                     |
-| RSS/PRX        | [PRX](http://prx.org/)             | N                    | N/A                            | Y (+auto)          | Y       | Y       | N     | N/A                   |
-| Wordpress      | [INN](http://inn.org/)             | Y                    | Manual                         | N                  | Y       | Y       | N     | Y                     |
+| Bento          | PBS    | Y                    | Manual                         | N                  | Y       | N (soon)| N     | N                     |
+| Core Publisher | NPR DS | Y                    | Automated                      | Soon               | Y       | Y       | N     | Y                     |
+| Drupal         | NPR DS | Y                    | Both                           | Y                  | Y       | Y       | N     | Y                     |
+| RSS/PRX        | PRX           | N                    | N/A                            | Y (+auto)          | Y       | Y       | N     | N/A                   |
+| Wordpress      | INN            | Y                    | Manual                         | N                  | Y       | Y       | N     | Y                     |
 
 ## Bento
 
