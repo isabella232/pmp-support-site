@@ -6,7 +6,7 @@ If a publisher uses idiosyncratic fields, attributes, or profiles, the documents
 
 ## Standard Profiles
 
-The PMP provides incredible flexibility, extensible, and forgiving. It allows a publisher to create their own content profiles and schemas, so that almost any kind of content document could be saved to the PMP.  However, clients of the PMP will find it difficult to discover, display or otherwise use content which does not use or extend the basic content types.
+The PMP is incredibly flexible, extensible, and forgiving. It allows a publisher to create their own content profiles and schemas, so that almost any kind of content document could be saved to the PMP.  However, clients of the PMP will find it difficult to discover, display or otherwise use content which does not use or extend the basic content types.
 
 Before creating a new Profile, examine [the existing ones](#profiles-and-schemas-hierarchy) in common use, and see if they could be used.  If they cannot, see if one of them, such as the [Base Content Profile](https://api.pmp.io/profile/base), could be extended for your purposes.
 
