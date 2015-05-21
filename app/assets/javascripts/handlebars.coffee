@@ -150,7 +150,7 @@ Handlebars.registerHelper 'description', (attrs) ->
 
 Handlebars.registerHelper 'img-thumb', (enclosures, options) ->
   best = _.first(enclosures).href
-  _.find ['small', 'thumb', 'standard', 'primary'], (cropType) ->
+  _.find ['square', 'small', 'medium'], (cropType) ->
     _.find enclosures, (encl) ->
       if encl && encl.meta && encl.meta.crop == cropType
         best = encl.href
@@ -163,7 +163,7 @@ Handlebars.registerHelper 'img-thumb', (enclosures, options) ->
 
 Handlebars.registerHelper 'img-normal', (enclosures, options) ->
   best = _.first(enclosures).href
-  _.find ['primary', 'standard'], (cropType) ->
+  _.find ['primary', 'large', 'medium'], (cropType) ->
     _.find enclosures, (encl) ->
       if encl && encl.meta && encl.meta.crop == cropType
         best = encl.href
