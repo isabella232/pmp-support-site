@@ -10,7 +10,7 @@ Plugins for several popular platforms have been released, and are still being fu
 | -------------- |:----------------------------------:|:--------------------:|:-------------------------------|:------------------:|:-------:|:-------:|:-----:|:---------------------:|
 | Bento          | PBS    | Y                    | Manual                         | N                  | Y       | N (soon)| N     | N                     |
 | Core Publisher | NPR DS | Y                    | Automated                      | Soon               | Y       | Y       | N     | Y                     |
-| Drupal         | NPR DS | Y                    | Both                           | Y                  | Y       | Y       | N     | Y                     |
+| Drupal         | NPR DS | Y                    | Both                           | Y                  | Y       | Y       | Y     | Y                     |
 | RSS/PRX        | PRX           | N                    | N/A                            | Y (+auto)          | Y       | Y       | N     | N/A                   |
 | Wordpress      | INN            | Y                    | Manual                         | N                  | Y       | Y       | N     | Y                     |
 
