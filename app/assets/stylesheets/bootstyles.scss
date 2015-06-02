@@ -187,7 +187,7 @@ a:hover, a:focus {
     }
   }
   .navbar-brand {
-    padding: 0 0 0 15px;
+    padding: 0 10px 0 15px;
     img {
       height: 51px;
       padding: 2px 0;
@@ -207,16 +207,16 @@ a:hover, a:focus {
   }
   .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
-    background-color: #54575C;
+    background-color: #696D73;
   }
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #54575C;
-    border-color: #54575C;
+    background-color: #696D73;
+    border-color: #696D73;
   }
   .navbar-nav > .active {
     a, a:hover, a:focus {
       text-decoration: none;
-      background-color: #5B6068;
+      background-color: #797D84;
     }
   }
 }
