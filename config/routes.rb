@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # landing
   root 'dashboard#index'
 
+  # json stats
+  get 'stats' => 'dashboard#stats'
+
   # documentation
   get 'guides' => 'docs#users'
   get 'docs'   => 'docs#developers'
