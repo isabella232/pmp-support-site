@@ -12,7 +12,9 @@ Plugins for several popular platforms have been released, and are still being fu
 | Core Publisher | NPR DS | Y                    | Automated                      | Soon               | Y       | Y       | N     | Y                     |
 | Drupal         | NPR DS | Y                    | Both                           | Y                  | Y       | Y       | Y     | Y                     |
 | RSS/PRX        | PRX           | N                    | N/A                            | Y (+auto)          | Y       | Y       | N     | N/A                   |
-| Wordpress      | INN            | Y                    | Manual                         | N                  | Y       | Y       | N     | Y                     |
+| WordPress      | INN            | Y                    | Manual                         | Y*                | Y       | Y       | N     | Y                     |
+
+*Audio and video push to the PMP is not yet supported
 
 ## Bento
 
