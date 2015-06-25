@@ -12,4 +12,16 @@ class DocsController < ApplicationController
     render :index
   end
 
+  # GET /terms
+  def terms_of_use
+    @markdown = "#{Rails.root}/docs/misc/terms_of_use.md"
+    render :show
+  end
+
+  # GET /service
+  def service_level_agreement
+    @markdown = "#{Rails.root}/docs/misc/service_level_agreement.md"
+    render :show
+  end
+
 end

@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   get 'stats' => 'dashboard#stats'
 
   # documentation
-  get 'guides' => 'docs#users'
-  get 'docs'   => 'docs#developers'
+  get 'guides'  => 'docs#users'
+  get 'docs'    => 'docs#developers'
+  get 'terms'   => 'docs#terms_of_use'
+  get 'service' => 'docs#service_level_agreement'
 
   # user sessions
   get  'login'       => 'sessions#login'

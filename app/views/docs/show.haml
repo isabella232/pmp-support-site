@@ -1,0 +1,7 @@
+.container
+  .row
+    .col-sm-8.col-sm-offset-2.panel
+      .markdown-content.legalese
+        - cache do
+          = find_and_preserve do
+            = render file: @markdown
