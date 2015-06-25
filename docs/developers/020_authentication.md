@@ -1,6 +1,6 @@
 # Authentication
 
-API users are given a `username` and `password`.  These cannot be used directly to authenticate with the PMP - rather they are used to manage multiple API client credentials under a single user account.  The PMP uses an OAuth2 [Client Credentials](http://techblog.hybris.com/2012/07/09/oauth-the-client-credentials-flow/) flow, meaning you'll be generating a separate `client_id` and `client_secret` for each application that will use the API.
+API users are given a `username` and `password`.  These cannot be used directly to authenticate with the PMP - rather they are used to manage multiple API client credentials under a single user account.  The PMP uses an OAuth2 [Client Credentials](https://labs.hybris.com/2012/07/09/oauth-the-client-credentials-flow/) flow, meaning you'll be generating a separate `client_id` and `client_secret` for each application that will use the API.
 
 <div class="alert alert-warning media">
   <i class="fa fa-bullhorn fa-3x pull-left media-object"></i>
