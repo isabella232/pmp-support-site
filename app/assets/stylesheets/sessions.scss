@@ -26,6 +26,11 @@ body.sessions, body.password_reset, body.register {
     }
   }
 
+  .doc-link {
+    text-align: center;
+    padding: 12px 0 0 12px;
+  }
+
   .btn-group.with-prefix {
     display: block;
     margin-bottom: -1px;

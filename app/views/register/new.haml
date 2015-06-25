@@ -29,6 +29,15 @@
     = negative_text_area_tag(@captcha, :intention, class: 'form-control', required: true, placeholder: 'For what purpose do you intend to use the PMP?', rows: 6)
     %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
       Send request
+    .help-block.text-center
+      By using the PMP API you are agreeing <br/> to our
+      = link_to 'Terms of Use', terms_path
+
+-# doc links
+- content_for :logbox_docs do
+  .doc-link
+    = link_to service_path do
+      Service Level Agreement
 
 -# nav links
 - content_for :logbox_links do

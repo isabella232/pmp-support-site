@@ -7,6 +7,7 @@
             .logo
               %a{href: 'http://publicmediaplatform.org'}
                 = image_tag 'logo.png'
+            = yield(:logbox_docs)
           .col-md-8
             = yield(:logbox)
       = yield(:logbox_links)
