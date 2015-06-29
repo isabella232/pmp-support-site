@@ -8,19 +8,20 @@ Plugins for several popular platforms have been released, and are still being fu
 
 | CMS            | Author                             | Pull <br />from PMP? | Automated/ <br />Manual Pulls? | Push <br />to PMP? | Images? | Audio?  | Video | Full Story<br />Text? |
 | -------------- |:----------------------------------:|:--------------------:|:-------------------------------|:------------------:|:-------:|:-------:|:-----:|:---------------------:|
-| Bento          | PBS    | Y                    | Manual                         | N                  | Y       | N (soon)| N     | N                     |
+| Bento          | PBS    | Y                    | Both                           | N                  | Y       | Y       | N     | Y                     |
 | Core Publisher | NPR DS | Y                    | Automated                      | Soon               | Y       | Y       | N     | Y                     |
 | Drupal         | NPR DS | Y                    | Both                           | Y                  | Y       | Y       | Y     | Y                     |
 | RSS/PRX        | PRX           | N                    | N/A                            | Y (+auto)          | Y       | Y       | N     | N/A                   |
-| WordPress      | INN            | Y                    | Manual                         | Y*                | Y       | Y       | N     | Y                     |
+| WordPress      | INN            | Y                    | Both                          | Y*                | Y       | Y       | N     | Y                     |
 
 *Audio and video push to the PMP is not yet supported
 
 ## Bento
 
-The Bento plugin allows you to pull stories from the PMP via Bento's Explorer Custom Promo smart snippet.
+The Bento plugin allows you to pull full story content manually or automatically as blog posts or to pull individual story headlines/teasers/photos from the PMP via Bento's Explorer Custom Promo smart snippet.
 
-[Background](https://projects.pbs.org/confluence/pages/viewpage.action?pageId=50659379) | [Requesting access to PMP](https://projects.pbs.org/confluence/display/lunchbox/PMP+Setup) | [Training video](http://digital.pbs.org/classroom/whats-new/pmp)
+[Pulling full PMP Stories into blogs](http://spiblog.pbs.org/2015/06/bento-product-update-pmp-feature.html) | 
+[Pulling stories via the smart snippet](http://spiblog.pbs.org/2015/05/update-on-pmp-implementation-in-bento.html)
 
 ## Core Publisher
 
