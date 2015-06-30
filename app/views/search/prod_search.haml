@@ -14,9 +14,11 @@
             (0)
         .sorts
           Sort by
-          %a.sort-relevance{href: '#', class: params[:searchsort] == 'relevance' ? 'active' : ''} Most Relevant
+          %a{'data-value' => 'title', class: params[:searchsort] == 'title' ? 'active' : ''} Title
           \/
-          %a.sort-date{href: '#', class: params[:searchsort] == 'relevance' ? '' : 'active'} Most Recent
+          %a{'data-value' => 'relevance', class: params[:searchsort] == 'relevance' ? 'active' : ''} Most Relevant
+          \/
+          %a{'data-value' => 'date', class: params[:searchsort] == 'date' || params[:searchsort].blank? ? 'active' : ''} Most Recent
       .results-list
         .results-placeholder
           %h3 Enter some search terms to get started

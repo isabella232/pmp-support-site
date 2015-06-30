@@ -46,7 +46,7 @@ $(document).on 'page:load ready', ->
       _.map $(".pmp-search-form input[name=#{name}]:checked"), valFn
     params =
       advanced:   if $('.pmp-search-form .advanced.show-all').length && !forProxy then '1'
-      searchsort: if $('.pmp-search-form .sort-relevance.active').length then 'relevance'
+      searchsort: $('.pmp-search-form .sorts a.active').data('value')
       text:       $('.pmp-search-form input[name=text]').val()
       guid:       $('.pmp-search-form input[name=guid]').val()
       collection: $('.pmp-search-form input[name=collection]').val()
@@ -83,16 +83,10 @@ $(document).on 'page:load ready', ->
     updateHasCheckboxes()
 
   # sorting
-  $('.pmp-search-form .sort-relevance').click (e) ->
+  $('.pmp-search-form .sorts a').click (e) ->
     e.preventDefault()
     unless $(this).hasClass('active')
-      $('.pmp-search-form .sort-date').removeClass('active')
-      $(this).addClass('active')
-      $('.pmp-search-form form').submit()
-  $('.pmp-search-form .sort-date').click (e) ->
-    e.preventDefault()
-    unless $(this).hasClass('active')
-      $('.pmp-search-form .sort-relevance').removeClass('active')
+      $('.pmp-search-form .sorts .active').removeClass('active')
       $(this).addClass('active')
       $('.pmp-search-form form').submit()
 
