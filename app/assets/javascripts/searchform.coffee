@@ -16,6 +16,10 @@ $(document).on 'page:load ready', ->
     if raw = getParam(name)
       _.each raw.split(';'), fn
 
+  updateShowMoreCheckboxes = ->
+    _.each $('.more input:checked'), (el) ->
+      $(el).closest('.with-more').addClass('showing')
+
   updateHasCheckboxes = ->
     profs = _.map $('.advanced input[name=profile]:checked'), (el) -> $(el).val()
     if profs.length == 1 && profs[0] == 'story'
@@ -33,12 +37,15 @@ $(document).on 'page:load ready', ->
     $('input[name=guid]').val getParam('guid')
     $('input[name=collection]').val getParam('collection')
     $('input[name=tag]').val getParam('tag')
+    $('input[name=startdate]').val(getParam('startdate')).datepicker('update')
+    $('input[name=enddate]').val(getParam('enddate')).datepicker('update')
     splitter 'profile', (type) ->
       $("input[name=profile][value=#{type}]").prop('checked', true)
     splitter 'has', (type) ->
       $("input[name=has][value=#{type}]").prop('checked', true)
     splitter 'creator', (name) ->
       $("input[name=creator][value=#{name}]").prop('checked', true)
+    updateShowMoreCheckboxes()
     updateHasCheckboxes()
 
   formToQuery = (forProxy = false) ->
@@ -51,6 +58,8 @@ $(document).on 'page:load ready', ->
       guid:       $('.pmp-search-form input[name=guid]').val()
       collection: $('.pmp-search-form input[name=collection]').val()
       tag:        $('.pmp-search-form input[name=tag]').val()
+      startdate:  $('.pmp-search-form input[name=startdate]').val()
+      enddate:    $('.pmp-search-form input[name=enddate]').val()
       profile:    getChecks 'profile', (el) -> $(el).val()
       has:        getChecks 'has', (el) -> $(el).val()
       creator:    getChecks 'creator', (el) -> if forProxy then $(el).data('guid') else $(el).val()
@@ -81,6 +90,14 @@ $(document).on 'page:load ready', ->
   $('.advanced input[name=profile]').change (e) ->
     e.preventDefault()
     updateHasCheckboxes()
+  $('.toggle-more').click (e) ->
+    e.preventDefault()
+    $(this).closest('.with-more').addClass('showing')
+
+  # dates
+  dateOpts = autoclose: true, clearBtn: true, format: 'yyyy-mm-dd'
+  $('.pmp-search-form #input-startdate').datepicker(dateOpts)
+  $('.pmp-search-form #input-enddate').datepicker(dateOpts)
 
   # sorting
   $('.pmp-search-form .sorts a').click (e) ->

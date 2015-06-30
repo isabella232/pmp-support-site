@@ -138,7 +138,7 @@ Handlebars.registerHelper 'item-attachments', (options) ->
   rets.join('')
 
 Handlebars.registerHelper 'item-collect', (options) ->
-  if _.contains ['episode', 'property', 'series', 'base'], getProfile(this)
+  if _.contains ['episode', 'property', 'series', 'topic', 'contributor', 'group', 'base'], getProfile(this)
     options.fn(href: "#{location.pathname}?advanced=1&collection=#{this.attributes.guid}")
 
 Handlebars.registerHelper 'fancy-date', (dateStr) ->

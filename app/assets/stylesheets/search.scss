@@ -21,6 +21,35 @@
   .btn-success {
     padding: 9px 20px;
   }
+
+  // checkboxes with "show more"
+  .with-more {
+    position: relative;
+    .checkbox-inline {
+      padding-right: 12px;
+    }
+    .toggle-more {
+      position: absolute;
+      right: 12px;
+      top: 7px;
+    }
+    .more {
+      display: none;
+      .checkbox-inline {
+        padding-top: 4px;
+      }
+    }
+    &.showing {
+      .toggle-more {
+        display: none;
+      }
+      .more {
+        display: table-row;
+      }
+    }
+  }
+
+  // advanced hidden
   .advanced {
     margin: 20px 0;
     overflow: hidden;
@@ -49,6 +78,15 @@
     .text-muted {
       color: #bababa;
       font-weight: normal;
+    }
+    .input-split {
+      .form-control {
+        width: 49%;
+        display: inline-block;
+        &:last-child {
+          float: right;
+        }
+      }
     }
     &.show-all {
       .fields { display: block; }
