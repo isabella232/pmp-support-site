@@ -1,6 +1,6 @@
 # PMP Terminology
 
-*A guide to some of the terminology you may encounter while using the PMP.*
+*A guide to some terminology you may encounter while using the PMP.*
 
 This is a guide primarily geared toward users of the PMP who either put content into the PMP or pull it out rather than developers. More technical information on many of these terms is available in the [developer documentation](https://support.pmp.io/docs).
 
@@ -8,25 +8,15 @@ Note that the PMP is *extremely* flexible, which is a big part of what makes it 
 
 ## Documents
 
-**Every** piece of data in the PMP is referred to as a Document.  These are generally broken down into as small of components as possible.  A piece of audio is a Document.  An image is a Document.  The HTML providing the context for those images and audio is a Document.
+**Every** piece of data in the PMP is referred to as a Document. These are generally broken down into the smallest possible components. A piece of audio is a Document. An image is a Document. The HTML providing the context for those images and audio is a Document.
 
-Documents contain text attributes, and links to other resources on the internet.  Documents **do not** store any binary media assets - photos, audio and video files are all stored elsewhere.  The PMP Documents simply point to the URLs where those assets are stored.
+Documents contain text attributes and links to other resources on the internet. Documents **do not** store any binary media assets -- photos, audio and video files are all stored elsewhere. The PMP Documents simply point to the URLs where those assets are stored.
 
-### GUIDs
+## GUIDs
 
 Documents are identified via a **GUID** (a globally unique identifier).  The GUID for [PRI's The World](https://support.pmp.io/search?text=guid%3A4d3a942d-91c0-46a5-86df-9338f88c8487) is `4d3a942d-91c0-46a5-86df-9338f88c8487`.  And the GUID for the NPR story [Yoink! Dad Nabs Foul Ball While Holding Baby At Cubs Game](http://www.npr.org/sections/thetwo-way/2015/06/24/417116256/yoink-dad-nabs-foul-ball-while-holding-baby-at-cubs-game?ft=nprml&f=417116256) is `57769e4d-6449-4131-b581-fde4c53cb92c`.
 
-You'll often need to find the GUID for a Document in order to use it in your application.  The PMP Support Searcher provides an easy way to find and copy a GUID - just hover over the numbers/letters in the lower-right corner of any search result.
-
-### Tags
-
-Free-form attributes of a Document in the PMP.  They are human readable, and describe the Document itself -- not metadata about the Document.  Content creators can assign any tags that they'd like for their content.  Examples: Stories tagged with ["movie"](https://support.pmp.io/search?advanced=1&tag=Movie&profile=story) and Stories tagged with ["money"](https://support.pmp.io/search?advanced=1&tag=Money&profile=story).  Sadly, there are no Stories currently tagged with his majesty [Buck Showalter](https://support.pmp.io/search?advanced=1&tag=Buck%20Showalter&profile=story).
-
-## Collections
-
-We use the term Collection to refer to the relationship between Documents in the PMP.  And (you'll want to remember this one) **every** Document in the PMP is a potential Collection of other Documents.  A Story like [How do you explain the leap second to a 6-year-old?](https://support.pmp.io/search?advanced=1&guid=fb5ef942-1e1e-4ef0-a188-e188c1ad199f) is a Collection of Audio and Images.  A Series like [State of the Re:Union Fall 2010 Season](https://support.pmp.io/search?advanced=1&guid=fc55819c-cddc-4b1a-adf8-590b78150cdf) is a Collection of Stories produced during that 2010 season.  And a Topic like [Money](https://support.pmp.io/search?advanced=1&guid=4d0acb4c-7057-4771-987d-97fc21ad0bcc) is a Collection of Stories related to finances and banking.
-
-As opposed to a text search, searching by one of these PMP Collections will return only Documents specifically assigned to the GUID of that Collection.
+You'll often need to find the GUID for a Document in order to use it in your application.  The [PMP Support Searcher](https://support.pmp.io/) provides an easy way to find and copy a GUID -- just hover over the numbers/letters in the lower-right corner of any search result.
 
 ## Profiles
 
@@ -50,6 +40,14 @@ Audio Documents are used to represent a certain chunk of audio.  They can includ
 
 Unlike other media, Video Documents often don't include a link to a binary source file (like a jpg or mp3 file).  Instead, they include an embeddable-player that a PMP consumer can use to play that video from their web or mobile app.  Multiple video qualities/resolutions are recommended, to support mobile platforms.  A human-readable title is required, and captions and credits are recommended.
 
+## Collections
+
+We use the term Collection to refer to the relationship between Documents in the PMP.  And (you'll want to remember this one) **every** Document in the PMP is a potential Collection of other Documents.  A Story like [How do you explain the leap second to a 6-year-old?](https://support.pmp.io/search?advanced=1&guid=fb5ef942-1e1e-4ef0-a188-e188c1ad199f) is a Collection of Audio and Images.  A Series like [State of the Re:Union Fall 2010 Season](https://support.pmp.io/search?advanced=1&guid=fc55819c-cddc-4b1a-adf8-590b78150cdf) is a Collection of Stories produced during that 2010 season.  And a Topic like [Money](https://support.pmp.io/search?advanced=1&guid=4d0acb4c-7057-4771-987d-97fc21ad0bcc) is a Collection of Stories related to finances and banking.
+
+As opposed to a text search, searching by one of these PMP Collections will return only Documents specifically assigned to the GUID of that Collection.
+
+
+
 ### Episode
 
 An ordered list of stories that are usually the equivalent to a broadcast episode.  Example: [*Marketplace Morning Report for June 8, 2015*](https://support.pmp.io/search?advanced=1&collection=6ec0c8d8-78e1-4004-86ef-4bd5db60c7ed).
@@ -70,6 +68,11 @@ Topics are a shared taxonomy for classifying PMP Stories by subject matter.  The
 ### Contributors
 
 The person largely responsible for a Story -- equivalent to a byline.  Allows for the return of all Stories credited to an individual.  Stories can have multiple Contributors.  Example: all the Stories in the PMP by [Kai Ryssdal](https://support.pmp.io/search?advanced=1&collection=ffdef6fe-a061-4f1c-8fd3-a0b688727f36&profile=story).
+
+## Tags
+
+Free-form attributes of a Document in the PMP.  They are human readable, and describe the Document itself -- not metadata about the Document.  Content creators can assign any tags that they'd like for their content.  Examples: Stories tagged with ["movie"](https://support.pmp.io/search?advanced=1&tag=Movie&profile=story) and Stories tagged with ["money"](https://support.pmp.io/search?advanced=1&tag=Money&profile=story).  Sadly, there are no Stories currently tagged with his majesty [Buck Showalter](https://support.pmp.io/search?advanced=1&tag=Buck%20Showalter&profile=story).
+
 
 ## Permissions
 
