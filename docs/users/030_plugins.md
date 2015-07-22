@@ -20,7 +20,7 @@ Plugins for several popular platforms have been released, and are still being fu
 
 The Bento plugin allows you to pull full story content manually or automatically as blog posts or to pull individual story headlines/teasers/photos from the PMP via Bento's Explorer Custom Promo smart snippet.
 
-[Pulling full PMP Stories into blogs](http://spiblog.pbs.org/2015/06/bento-product-update-pmp-feature.html) | 
+[Pulling full PMP Stories into blogs](http://spiblog.pbs.org/2015/06/bento-product-update-pmp-feature.html) |
 [Pulling stories via the smart snippet](http://spiblog.pbs.org/2015/05/update-on-pmp-implementation-in-bento.html)
 
 ## Core Publisher
@@ -33,16 +33,16 @@ The CP plugin allows you to set up automatic pulls of stories for your program p
 
 This plugin allows your Drupal site to pull and push content to/from the PMP.
 
-[Press release](http://digitalservices.npr.org/post/digital-services-makes-pmp-content-available-core-publisher-and-drupal-sites) | [pmpapi project page](https://www.drupal.org/project/pmpapi)
+[Press release](http://digitalservices.npr.org/post/digital-services-makes-pmp-content-available-core-publisher-and-drupal-sites) | [Drupal project page](https://www.drupal.org/project/pmpapi) | [Issue tracker](https://www.drupal.org/project/issues/pmpapi)
 
 ## RSS/PRX
 
 This PMP importer allows you to import individual stories from PRX (via the PRX story ID) or an RSS feed of stories (via an RSS URL).
 
-[pmp-importer on github](https://github.com/PRX/pmp-importer/)
+[Github project page](https://github.com/PRX/pmp-importer/) | [Issue tracker](https://github.com/PRX/pmp-importer/issues)
 
 ## WordPress
 
 This WordPress plugin allow you to manually pull or push from/to the PMP.
 
-[pmp-wordpress on github](https://github.com/publicmediaplatform/pmp-wordpress)
+[Wordpress plugin directory](https://wordpress.org/plugins/public-media-platform/) | [Github project page](https://github.com/publicmediaplatform/pmp-wordpress) | [Issue tracker](https://github.com/publicmediaplatform/pmp-wordpress/issues)
