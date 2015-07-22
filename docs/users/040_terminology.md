@@ -69,10 +69,16 @@ The PMP currently has twelve defined Topics for classifying PMP Stories and Epis
 ### Contributors
 
 The person largely responsible for a Story -- equivalent to a byline. Allows for the return of all Stories credited to an individual. Stories can have multiple Contributors. Example: all the Stories in the PMP by [Kai Ryssdal](https://support.pmp.io/search?advanced=1&collection=ffdef6fe-a061-4f1c-8fd3-a0b688727f36&profile=story).
+
+Here are a couple of illustrations of how broadcast programs could be set up in the PMP:
+![slide1](https://cloud.githubusercontent.com/assets/4427754/8828689/7542799c-3061-11e5-87c4-81c629ef72c3.PNG)
+<br / ><br />
+![slide2](https://cloud.githubusercontent.com/assets/4427754/8828690/7548faba-3061-11e5-9197-0ec41329b968.PNG)
 <br /><br />
 ## Tags
 
 Free-form attributes of a Document in the PMP. They are human readable, and describe the Document itself -- not metadata about the Document. Content creators can assign any tags that they'd like for their content. Examples: Stories tagged with ["movie"](https://support.pmp.io/search?advanced=1&tag=Movie&profile=story) and Stories tagged with ["money"](https://support.pmp.io/search?advanced=1&tag=Money&profile=story). Sadly, there are no Stories currently tagged with his majesty [Buck Showalter](https://support.pmp.io/search?advanced=1&tag=Buck%20Showalter&profile=story).
+
 
 <br /><br />
 ## Permissions
