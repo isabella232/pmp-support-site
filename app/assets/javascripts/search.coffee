@@ -90,9 +90,9 @@ PMP.search =
       linkDependencies = []
       _.each data.items, (item) ->
         linkDependencies.push PMP.search.loadLink(item.links.owner[0].href)
-        if series = PMP.search.findLink(this, 'urn:collectiondoc:collection:series')
+        if series = PMP.search.findLink(item, 'urn:collectiondoc:collection:series')
           linkDependencies.push PMP.search.loadLink(series.href)
-        if prop = PMP.search.findLink(this, 'urn:collectiondoc:collection:property')
+        if prop = PMP.search.findLink(item, 'urn:collectiondoc:collection:property')
           linkDependencies.push PMP.search.loadLink(prop.href)
       $.when.apply($, linkDependencies).always ->
         $newEl = $(HandlebarsTemplates['search/row'](data))
