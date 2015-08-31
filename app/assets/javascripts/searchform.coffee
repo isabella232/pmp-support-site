@@ -43,8 +43,8 @@ $(document).on 'page:load ready', ->
       $("input[name=profile][value=#{type}]").prop('checked', true)
     splitter 'has', (type) ->
       $("input[name=has][value=#{type}]").prop('checked', true)
-    splitter 'creator', (name) ->
-      $("input[name=creator][value=#{name}]").prop('checked', true)
+    splitter 'owner', (name) ->
+      $("input[name=owner][value=#{name}]").prop('checked', true)
     updateShowMoreCheckboxes()
     updateHasCheckboxes()
 
@@ -62,7 +62,7 @@ $(document).on 'page:load ready', ->
       enddate:    $('.pmp-search-form input[name=enddate]').val()
       profile:    getChecks 'profile', (el) -> $(el).val()
       has:        getChecks 'has', (el) -> $(el).val()
-      creator:    getChecks 'creator', (el) -> if forProxy then $(el).data('guid') else $(el).val()
+      owner:      getChecks 'owner', (el) -> if forProxy then $(el).data('guid') else $(el).val()
     _.each params, (val, key) ->
       if _.isEmpty(val)
         delete params[key]

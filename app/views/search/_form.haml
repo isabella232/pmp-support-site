@@ -62,13 +62,13 @@
           %label.checkbox-inline
             %input{type: 'checkbox', name: 'has', value: 'image'} Image
 
-    -# restrict creators
+    -# restrict owners
     .form-group
       %label.control-label Source
       .checks.well
         - UserStat::KNOWN_USERS.each do |key, guid|
           %label.checkbox-inline
-            %input{type: 'checkbox', name: 'creator', value: key, 'data-guid' => guid}
+            %input{type: 'checkbox', name: 'owner', value: key, 'data-guid' => guid}
               = key.upcase
 
     -# guids and collections
