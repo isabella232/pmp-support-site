@@ -84,7 +84,3 @@ Example: PRI created a Group for *PRI's The World*, and to that Group they added
 
 And here's a diagram illustrating how permissions can be set in the PMP. Each of the different orgs can be set to have access to different documents:
 ![how_do_permissions_work](https://cloud.githubusercontent.com/assets/4427754/9914554/650e085c-5c80-11e5-99d7-12410230c747.jpg)
-
-
-
-If you have questions or suggestions regarding any of this, [please let us know!](mailto:support@publicmediaplatform.org)
