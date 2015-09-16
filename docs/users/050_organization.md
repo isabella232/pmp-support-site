@@ -13,3 +13,6 @@ Here are a couple of illustrations of how broadcast programs could be set up in 
 ![slide2](https://cloud.githubusercontent.com/assets/4427754/8828690/7548faba-3061-11e5-9197-0ec41329b968.PNG)
 
 <br/> <br/>
+
+
+If you have questions or suggestions regarding any of this, [please let us know!](mailto:support@publicmediaplatform.org)
