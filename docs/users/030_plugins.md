@@ -8,7 +8,7 @@ Plugins for several popular platforms have been released, and are still being fu
 
 | CMS            | Author                             | Pull <br />from PMP? | Automated/ <br />Manual Pulls? | Push <br />to PMP? | Images? | Audio?  | Video | Full Story<br />Text? |
 | -------------- |:----------------------------------:|:--------------------:|:-------------------------------|:------------------:|:-------:|:-------:|:-----:|:---------------------:|
-| Bento          | PBS    | Y                    | Both                           | N                  | Y       | Y       | N     | Y                     |
+| Bento          | PBS    | Y                    | Both                           | Y                  | Y       | Y       | N     | Y                     |
 | Core Publisher | NPR DS | Y                    | Automated                      | Soon               | Y       | Y       | N     | Y                     |
 | Drupal         | NPR DS | Y                    | Both                           | Y                  | Y       | Y       | Y     | Y                     |
 | RSS/PRX        | PRX           | N                    | N/A                            | Y (+auto)          | Y       | Y       | N     | N/A                   |
@@ -21,7 +21,7 @@ Plugins for several popular platforms have been released, and are still being fu
 The Bento plugin allows you to pull full story content manually or automatically as blog posts or to pull individual story headlines/teasers/photos from the PMP via Bento's Explorer Custom Promo smart snippet.
 
 [Pulling full PMP Stories into blogs](http://spiblog.pbs.org/2015/06/bento-product-update-pmp-feature.html) |
-[Pulling stories via the smart snippet](http://spiblog.pbs.org/2015/05/update-on-pmp-implementation-in-bento.html)
+[Pulling stories via the smart snippet](http://spiblog.pbs.org/2015/05/update-on-pmp-implementation-in-bento.html) | [Pushing content to PMP](http://spiblog.pbs.org/2015/10/bento-product-update-pushing-content-to.html)
 
 ## Core Publisher
 
