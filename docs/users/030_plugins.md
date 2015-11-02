@@ -2,7 +2,7 @@
 
 Plugins for several popular platforms have been released, and are still being further developed.  If you know of any additional integrations, or would like to build one yourself, please contact us at support@publimediaplatform.org.
 
-![wp_plugin](https://cloud.githubusercontent.com/assets/4427754/7612175/32d5e8f0-f957-11e4-9dc2-e57c9f450de2.png)
+![pmp_wp_plugin](https://cloud.githubusercontent.com/assets/4427754/10888991/28658e78-815d-11e5-999a-29d02ead2c45.png)
 
 ## Feature Overview
 
