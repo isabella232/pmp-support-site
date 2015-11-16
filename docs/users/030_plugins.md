@@ -9,7 +9,7 @@ Plugins for several popular platforms have been released, and are still being fu
 | CMS            | Author                             | Pull <br />from PMP? | Automated/ <br />Manual Pulls? | Push <br />to PMP? | Images? | Audio?  | Video | Full Story<br />Text? |
 | -------------- |:----------------------------------:|:--------------------:|:-------------------------------|:------------------:|:-------:|:-------:|:-----:|:---------------------:|
 | Bento          | PBS    | Y                    | Both                           | Y                  | Y       | Y       | N     | Y                     |
-| Core Publisher | NPR DS | Y                    | Automated                      | Soon               | Y       | Y       | N     | Y                     |
+| Core Publisher | NPR DS | Y                    | Both                      | Soon               | Y       | Y       | N     | Y                     |
 | Drupal         | NPR DS | Y                    | Both                           | Y                  | Y       | Y       | Y     | Y                     |
 | RSS/PRX        | PRX           | N                    | N/A                            | Y (+auto)          | Y       | Y       | N     | N/A                   |
 | WordPress      | INN            | Y                    | Both                          | Y                | Y       | Y       | N     | Y                     |
