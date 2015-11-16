@@ -27,7 +27,7 @@ The Bento plugin allows you to automatically push content into the PMP. It also 
 
 The CP plugin allows you to set up automatic pulls of stories for your program pages, and to manually pull individual stories.
 
-[Press release](http://digitalservices.npr.org/post/digital-services-makes-pmp-content-available-core-publisher-and-drupal-sites) | [Integration guide](http://mediad.publicbroadcasting.net/p/newnprdsblog/files/201504/how_to_pull_content_from_the_pmp_into_core_publisher_march_2015.pdf)
+[Press release](http://digitalservices.npr.org/post/digital-services-makes-pmp-content-available-core-publisher-and-drupal-sites) | [Integration guide/automatic story publishing](http://mediad.publicbroadcasting.net/p/newnprdsblog/files/201504/how_to_pull_content_from_the_pmp_into_core_publisher_march_2015.pdf) | [Single story publishing](https://github.com/jackbrighton/cp-pmp-docs/blob/master/pulling-pmp-content-into-cp-by-story.md)
 
 ## Drupal
 
