@@ -10,15 +10,15 @@ Though many of the CMS plugins have PMP search built in, it is often easier to u
 * **Easy.** Once you get the hang of it, it’s easy to find the asset you’re looking for and pull it into the CMS you’re using. 
 * **Powerful.** With the PMP searcher you can specify exactly what you’re looking for, making use of all of the metadata available to find what you need.
 
-**Important!** *The searcher may have different content permissions than your PMP account, so assets you may find in the searcher may not be available to you.* Example: if your account does not have rights to content to PRI’s The World, you will not be able to add content from The World to your site even though you can find it in the support searcher.  
+**Important!** *The searcher may have different content permissions than your PMP account, so assets you may find in the searcher may not be available to you.* Example: if your account does not have rights to content to PRI’s *The World*, you will not be able to add content from *The World* to your site even though you can find it in the support searcher.  
 
 ## Using the Searcher, Part 1: Text Searches
 
-By default, the searcher returns stories that have an image. We’ll start with the default to perform our first searches. 
+By default, the searcher returns stories that have an image. We’ll stick with that to perform our first searches. 
 
 Let’s do a text search. First, enter “star wars” (without quotes) in the search box and hit search.
 
-[It returns over 2,500 stories,](https://support.pmp.io/search?advanced=1&searchsort=date&text=star%20wars&profile=story&has=image) and the first one returned features Star Trek’s George Takei. Probably not what we’re looking for. Without quotes, it PMP searches for any occurrences of “star” or “wars” within story text, headlines, teasers and bylines. 
+[It returns over 2,500 stories,](https://support.pmp.io/search?advanced=1&searchsort=date&text=star%20wars&profile=story&has=image) and the first one returned features *Star Trek*’s George Takei. Probably not what we’re looking for. Without quotes, it PMP searches for any occurrences of “star” or “wars” within story text, headlines, teasers and bylines. 
 
 ![star_wars_takei](https://cloud.githubusercontent.com/assets/4427754/11099099/5b3ea0ac-8877-11e5-888e-0a30b29f7fed.png)
 
@@ -64,7 +64,7 @@ Note that you need to click the ‘more’ link in the searcher’s Type box to 
 
 Here are definitions of some of the less obvious checkboxes/form fields:
 
-**Property**: If the structure of content in the PMP were depicted as a pyramid, Properties would be on top. They are often equivalent to a broadcast program (examples: *The Moth*, *PRI’s The World*), but in some cases they are more akin to a brand (example: Marketplace, which includes all incarnations of Marketplace programming such as Marketplace, Marketplace Morning Report, etc.). This search by the [GUID of The Moth Property](https://support.pmp.io/search?advanced=1&collection=9a5e5095-c9a5-44cc-9788-4093d6390c7e) will return all Stories and items associated with that Property. A similar search using the [Marketplace Property GUID](https://support.pmp.io/search?advanced=1&collection=3e3b6243-31c6-4686-bb88-a8e8446f0c2a) will likewise return all Stories and items associated with that Property, which includes all programs under the Marketplace umbrella.
+**Property**: If the structure of content in the PMP were depicted as a pyramid, Properties would be on top. They are often equivalent to a broadcast program (examples: *The Moth*, *PRI’s The World*), but in some cases they are more akin to a brand (example: Marketplace, which includes all incarnations of Marketplace programming such as *Marketplace*, *Marketplace Morning Report*, etc.). This search by the [GUID of *The Moth* Property](https://support.pmp.io/search?advanced=1&collection=9a5e5095-c9a5-44cc-9788-4093d6390c7e) will return all Stories and items associated with that Property. A similar search using the [Marketplace Property GUID](https://support.pmp.io/search?advanced=1&collection=3e3b6243-31c6-4686-bb88-a8e8446f0c2a) will likewise return all Stories and items associated with that Property, which includes all programs under the Marketplace umbrella.
 
 **Series**: A Collection of related Stories. As opposed to Properties, Series are more loosely defined. In some cases, they may correspond to a broadcast program, but also could be used to collect Episodes of a program or a selection of Stories from multiple Episodes of a program. Examples: [*Marketplace Morning Report*](https://support.pmp.io/search?advanced=1&collection=a9ce9da3-5798-4e99-90ce-43980df38e85), *State of the Re:Union Fall 2013*, *American Routes*, or [MPR News' “On Campus” series.](https://support.pmp.io/search?advanced=1&collection=a5eb210c-1256-4f1a-b597-7c1467a2c846&profile=story) 
 
@@ -79,12 +79,12 @@ Here are definitions of some of the less obvious checkboxes/form fields:
 
 *Great, so how do I use this? How do I know if something is organized in the PMP as a Series or as a Property?* 
 
-Though Series, Properties and Contributors and other documents can be used to help searching, you can also use the PMP to search for these things themselves.
+Though Series, Properties and Contributors and other documents can be used to help searching, you can also use the PMP to find these things themselves.
 * [Properties](https://support.pmp.io/search?advanced=1&searchsort=date&profile=property) in the PMP
 *	[Series](https://support.pmp.io/search?advanced=1&searchsort=date&profile=series) in the PMP
 *	[Contributors](https://support.pmp.io/search?advanced=1&searchsort=date&profile=contributor) in the PMP
 
-To do searches like this, make sure that only the thing you’re looking for specifically is checked and hit the search button. 
+To do searches like this, make sure that only the thing you’re looking for specifically is checked and hit the search button.   
 
 Here’s what the Contributors search setup looks like, and the top result:
  ![contributor_search](https://cloud.githubusercontent.com/assets/4427754/11099091/5b327c64-8877-11e5-9188-0c2f2943c7d7.png)
@@ -92,7 +92,7 @@ Here’s what the Contributors search setup looks like, and the top result:
 Notice that in the lower right corner where you copy the GUID from, it says “Collect.” This means that the GUID is a collection rather than a single document GUID. I can copy that GUID back into search to retrieve all of Melanie’s stories in the PMP. I can also click on “Collect” and the PMP will automatically run a search for that Collection:
 ![contributer_search_results](https://cloud.githubusercontent.com/assets/4427754/11099095/5b379708-8877-11e5-993a-b869b29c671c.png) 
  
-Similarly, if I know the GUID of a particular Property, I can use it to find everything associated with that Property. Here’s a search for The Takeaway Property:
+Similarly, if I know the GUID of a particular Property, I can use it to find everything associated with that Property. Here’s a search for *The Takeaway* Property:
 ![takeaway_property](https://cloud.githubusercontent.com/assets/4427754/11099102/5b43a71e-8877-11e5-968d-d3b6e5ed56ed.png) 
 
 ##Bringing it All Together – Search Combos
