@@ -12,7 +12,7 @@ Though many of the CMS plugins have PMP search built in, it is often easier to u
 
 **Important!** *The searcher may have different content permissions than your PMP account, so assets you may find in the searcher may not be available to you.* Example: if your account does not have rights to content to PRI’s *The World*, you will not be able to add content from *The World* to your site even though you can find it in the support searcher.  
 
-## Part 1: Text Searches
+##Text Searches
 
 By default, the searcher returns stories that have an image. We’ll stick with that to perform our first searches. Let’s do a text search. First, enter “star wars” (without quotes) in the search box and hit search.
 
@@ -56,7 +56,7 @@ If you look at the top right of the search results, you’ll see that the defaul
  <br /><br />
 By clicking on one of the other options (Title and Most Relevant), you can reorder the search results in ways that may make more sense. While Most Recent is probably best when searching for a recent news story, ordering results by Title may be better when searching for collections like Properties and Series. Ordering by Most Relevant may be useful when a search yields many results. 
 
-## Part 2: The Checkboxes 
+##Using The Checkboxes 
 
 To get the most out of the support searcher it helps to have a basic understanding of some of the building blocks of the PMP, because those blocks are what the checkboxes on the searcher are. The [PMP terminology guide](https://support.pmp.io/guides#pmp-terminology) explains it all, but below is a quick summary of the ones you need to know.
 
