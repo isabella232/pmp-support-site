@@ -46,7 +46,7 @@ Getting the GUID is pretty easy: click on the box in the lower right corner of t
 ![selecting_guid](https://cloud.githubusercontent.com/assets/4427754/11099093/5b359d18-8877-11e5-9846-d78dcadcc04d.png) 
 <br /><br />
 You can then take that GUID and put it in your CMS. Here’s how it’s done in Core Publisher:
-![contributor_search](https://cloud.githubusercontent.com/assets/4427754/11099091/5b327c64-8877-11e5-9188-0c2f2943c7d7.png)
+![guid_in_pmp](https://cloud.githubusercontent.com/assets/4427754/11099092/5b33f90e-8877-11e5-8f3f-34a514f04d36.png)
 <br /><br />
 ###Tweaking the Search Results
 
