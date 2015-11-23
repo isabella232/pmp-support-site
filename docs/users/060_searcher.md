@@ -1,6 +1,6 @@
 # Using the PMP Searcher 
 
-![support_searcher](https://cloud.githubusercontent.com/assets/4427754/11099100/5b401eb4-8877-11e5-8036-f75b78f8ba82.png)
+![support_searcher_sm](https://cloud.githubusercontent.com/assets/4427754/11346526/11e9864c-91eb-11e5-857e-34c02589c766.png)
  
 The support site searcher (https://support.pmp.io/?advanced=1&profile=story&has=image) was created primarily as a tool for PMP development, but it is a handy tool that can be used by anyone to quickly find content in the PMP.
 
@@ -18,16 +18,16 @@ By default, the searcher returns stories that have an image. We’ll stick with 
 
 [It returns over 2,500 stories,](https://support.pmp.io/search?advanced=1&searchsort=date&text=star%20wars&profile=story&has=image) and the first one returned features *Star Trek*’s George Takei. Probably not what we’re looking for. Without quotes, it PMP searches for any occurrences of “star” or “wars” within story text, headlines, teasers and bylines. 
 
-![star_wars_takei](https://cloud.githubusercontent.com/assets/4427754/11099099/5b3ea0ac-8877-11e5-888e-0a30b29f7fed.png)
+![star_wars_takei_sm](https://cloud.githubusercontent.com/assets/4427754/11346525/11e67b46-91eb-11e5-82f2-eef915a4fed7.png)
 <br /><br />
 
  If we put quotes around “star wars” we may be getting a little closer. The [109 stories returned](https://support.pmp.io/search?advanced=1&searchsort=date&text=%22star%20wars%22&profile=story&has=image) do have a mention of “Star Wars” in them. But they’re not really about *Star Wars*:
 
-![star_wars_trump](https://cloud.githubusercontent.com/assets/4427754/11099098/5b3df530-8877-11e5-8912-7a64622d9a7d.png) 
+![star_wars_trump_sm](https://cloud.githubusercontent.com/assets/4427754/11346527/11ebdb7c-91eb-11e5-9429-b9cdeb362fc2.png)
 <br /><br />
 If we specify where in the stories we want the phrase “star wars” to appear, we may get what we’re after. A search for [`title:"Star Wars" OR teaser:"Star Wars"`](https://support.pmp.io/search?advanced=1&searchsort=date&text=title%3A%22Star%20Wars%22%20OR%20teaser%3A%22Star%20Wars%22%60%20&profile=story&has=image) returns results with photos of Stormtroopers in them. We’re in business: 
 
-![star_wars_title_teaser](https://cloud.githubusercontent.com/assets/4427754/11099097/5b3d3b7c-8877-11e5-8f9e-54bf27051b92.png)
+![star_wars_title_teaser_sm](https://cloud.githubusercontent.com/assets/4427754/11346524/11dbd0d8-91eb-11e5-8cdf-74ab15b94335.png)
 <br /><br />
  
 And for fun, one more search before leaving this universe: [`teaser:"Star Trek" OR teaser:"Star Wars"`.](https://support.pmp.io/search?advanced=1&searchsort=date&text=%20teaser%3A%22Star%20Trek%22%20OR%20teaser%3A%22Star%20Wars%22%60&profile=story&has=image)
@@ -43,7 +43,7 @@ And for fun, one more search before leaving this universe: [`teaser:"Star Trek" 
 Once you find the story (or asset) you’re looking for, you need to retrieve its GUID to be able to pull it into your CMS and use it in your site or app. A  GUID is a unique identifier that every document in the PMP has, not matter what it is (image, story, audio, etc.) Here’s the GUID of the top story above: [2d36795c-8cec-4545-84f0-bd20404b1f1b.](https://support.pmp.io/search?advanced=1&searchsort=date&guid=2d36795c-8cec-4545-84f0-bd20404b1f1b)
 <br /><br />
 Getting the GUID is pretty easy: click on the box in the lower right corner of the story’s search result and hit CTRL+C to copy:
-![selecting_guid](https://cloud.githubusercontent.com/assets/4427754/11099093/5b359d18-8877-11e5-9846-d78dcadcc04d.png) 
+![selecting_guid_sm](https://cloud.githubusercontent.com/assets/4427754/11346528/11ecc32a-91eb-11e5-8374-9a869bd690e1.png)
 <br /><br />
 You can then take that GUID and put it in your CMS. Here’s how it’s done in Core Publisher:
 ![guid_in_pmp](https://cloud.githubusercontent.com/assets/4427754/11099092/5b33f90e-8877-11e5-8f3f-34a514f04d36.png)
