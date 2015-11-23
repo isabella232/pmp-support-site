@@ -12,7 +12,7 @@ Though many of the CMS plugins have PMP search built in, it is often easier to u
 
 **Important!** *The searcher may have different content permissions than your PMP account, so assets you may find in the searcher may not be available to you.* Example: if your account does not have rights to content to PRI’s *The World*, you will not be able to add content from *The World* to your site even though you can find it in the support searcher.  
 
-## Using the Searcher, Part 1: Text Searches
+## Part 1: Text Searches
 
 By default, the searcher returns stories that have an image. We’ll stick with that to perform our first searches. Let’s do a text search. First, enter “star wars” (without quotes) in the search box and hit search.
 
@@ -56,7 +56,7 @@ If you look at the top right of the search results, you’ll see that the defaul
  <br /><br />
 By clicking on one of the other options (Title and Most Relevant), you can reorder the search results in ways that may make more sense. While Most Recent is probably best when searching for a recent news story, ordering results by Title may be better when searching for collections like Properties and Series. Ordering by Most Relevant may be useful when a search yields many results. 
 
-##Using the Searcher, Part 2: Checkboxes 
+## Part 2: The Checkboxes 
 
 To get the most out of the support searcher it helps to have a basic understanding of some of the building blocks of the PMP, because those blocks are what the checkboxes on the searcher are. The [PMP terminology guide](https://support.pmp.io/guides#pmp-terminology) explains it all, but below is a quick summary of the ones you need to know.
 
@@ -95,11 +95,11 @@ Notice that in the lower right corner where you copy the GUID from, it says “C
 Similarly, if I know the GUID of a particular Property, I can use it to find everything associated with that Property. Here’s a search for *The Takeaway* Property:
 ![takeaway_property](https://cloud.githubusercontent.com/assets/4427754/11099102/5b43a71e-8877-11e5-968d-d3b6e5ed56ed.png) 
 <br /><br />
-##Bringing it All Together – Search Combos
+##Combination Searches
 Of course these different ways to use the PMP searcher can be combined. Here’s a search for [stories published from *The World* in the last two years with audio and with “religion” in the teaser:](https://support.pmp.io/search?advanced=1&searchsort=date&text=teaser%3Areligion&collection=4d3a942d-91c0-46a5-86df-9338f88c8487&startdate=2014-11-11&enddate=2016-11-11&profile=story&has=audio)
 ![world_audio_religion](https://cloud.githubusercontent.com/assets/4427754/11099101/5b43152e-8877-11e5-8bd4-d54026a814d0.png) 
 <br /><br />
-##Advanced – Searching Using Multiple Collections
+##Advanced – Multiple Collection Searches
 You can query with multiple collections by putting them all in the collections box. Separating GUIDs with a semicolon is “OR,” and with a comma is “AND.” The PMP also automatically converts Topics into their GUID, so a search for [*Marketplace* stories within the Topic money](https://support.pmp.io/search?advanced=1&searchsort=date&collection=3e3b6243-31c6-4686-bb88-a8e8446f0c2a%2CMusic&profile=story) looks like the following:
 ![marketplace_music](https://cloud.githubusercontent.com/assets/4427754/11099094/5b367ff8-8877-11e5-8b54-4112bf66c22f.png)
 <br /><br />
