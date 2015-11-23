@@ -37,7 +37,7 @@ And for fun, one more search before leaving this universe: [`teaser:"Star Trek" 
 * Use quotes for exact phrases
 * Tell the PMP where to search (ex: title) to provide better results.
 * Use AND or OR for searching for multiple phrases or to search multiple fields.
-
+<br /><br />
 ###Gettin’ GUID
 
 Once you find the story (or asset) you’re looking for, you need to retrieve its GUID to be able to pull it into your CMS and use it in your site or app. A  GUID is a unique identifier that every document in the PMP has, not matter what it is (image, story, audio, etc.) Here’s the GUID of the top story above: [2d36795c-8cec-4545-84f0-bd20404b1f1b.](https://support.pmp.io/search?advanced=1&searchsort=date&guid=2d36795c-8cec-4545-84f0-bd20404b1f1b)
@@ -48,7 +48,7 @@ Getting the GUID is pretty easy: click on the box in the lower right corner of t
 You can then take that GUID and put it in your CMS. Here’s how it’s done in Core Publisher:
 ![guid_in_pmp](https://cloud.githubusercontent.com/assets/4427754/11099092/5b33f90e-8877-11e5-8f3f-34a514f04d36.png)
 <br /><br />
-###Tweaking the Search Results
+###Tweaking Search Results
 
 If you look at the top right of the search results, you’ll see that the default is to return the most recent results:
 
@@ -95,15 +95,15 @@ Notice that in the lower right corner where you copy the GUID from, it says “C
 Similarly, if I know the GUID of a particular Property, I can use it to find everything associated with that Property. Here’s a search for *The Takeaway* Property:
 ![takeaway_property](https://cloud.githubusercontent.com/assets/4427754/11099102/5b43a71e-8877-11e5-968d-d3b6e5ed56ed.png) 
 <br /><br />
-##Combination Searches
+##Search Combos
 Of course these different ways to use the PMP searcher can be combined. Here’s a search for [stories published from *The World* in the last two years with audio and with “religion” in the teaser:](https://support.pmp.io/search?advanced=1&searchsort=date&text=teaser%3Areligion&collection=4d3a942d-91c0-46a5-86df-9338f88c8487&startdate=2014-11-11&enddate=2016-11-11&profile=story&has=audio)
 ![world_audio_religion](https://cloud.githubusercontent.com/assets/4427754/11099101/5b43152e-8877-11e5-8bd4-d54026a814d0.png) 
 <br /><br />
-##Advanced – Multiple Collection Searches
+##Multiple Collection Searches
 You can query with multiple collections by putting them all in the collections box. Separating GUIDs with a semicolon is “OR,” and with a comma is “AND.” The PMP also automatically converts Topics into their GUID, so a search for [*Marketplace* stories within the Topic money](https://support.pmp.io/search?advanced=1&searchsort=date&collection=3e3b6243-31c6-4686-bb88-a8e8446f0c2a%2CMusic&profile=story) looks like the following:
 ![marketplace_music](https://cloud.githubusercontent.com/assets/4427754/11099094/5b367ff8-8877-11e5-8b54-4112bf66c22f.png)
 <br /><br />
-##And That's a Wrap!
+##Wrapping Up
 
 Using the techniques detailed above, you too can become a Support Searcher Pro. You'll find what you're looking for quickly. It looks like a lot, but after you've used it a few times, it will click and become intuitive. If something isn't clicking or doesn't make sense, drop us a line to me, Jeff Nemic ([jeff@publicmediaplatform.org](mailto:jeff@publicmediaplatform.org)) or to [support@publicmediaplatform.org](mailto:support@publicmediaplatform.org) and we'll be happy to help you out!
  
