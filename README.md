@@ -1,3 +1,6 @@
+# Support Requests
+We have migrated to [nprsupport.desk.com](https://nprsupport.desk.com/) for bug reports, enhancement requests, and other issues. Please submit a ticket there if you need assistance.
+
 # PMP Support Site
 
 [![Build Status](https://travis-ci.org/publicmediaplatform/support.pmp.io.svg?branch=master)](https://travis-ci.org/publicmediaplatform/support.pmp.io)
