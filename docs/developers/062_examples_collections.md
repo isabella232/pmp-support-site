@@ -1,8 +1,8 @@
 ## Fetching collections
 
-Alright, now say we want to find all **stories** belonging to the "arts" topic.  That is - all **stories** with a `links.collection` pointing to the "arts" topic.
+Next, let's say that swe want to find all **stories** belonging to the "arts" topic.  That is, all **stories** with a `links.collection` pointing to the "arts" topic.
 
-Knowing the guid of the collection, we can do a query-by-guid:
+If we know the GUID of the collection, we can do a query-by-guid:
 
 ```shell
 curl -H "Authorization: Bearer 3f2401ae1a74adf8b14a638a" -X GET "https://api.pmp.io/docs?collection=89944632-fe7c-47df-bc2c-b2036d823f98"
@@ -66,7 +66,7 @@ search.items.each do |item|
 end
 ```
 
-Or we can use the **collections** endpoint to query within the collection (see `urn:collectiondoc:query:collection` in [the home doc](https://api.pmp.io)).  We could use a `guid` here, but let's use the **arts** collection alias.
+We can also use the **collections** endpoint to query within the collection (see `urn:collectiondoc:query:collection` in [the home doc](https://api.pmp.io)).  We could use a `guid` here, but let's use the **arts** collection alias.
 
 ```shell
 curl -H "Authorization: Bearer 3f2401ae1a74adf8b14a638a" -X GET "https://api.pmp.io/collection/arts?profile=story"

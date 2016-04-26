@@ -1,4 +1,4 @@
-# The PMP API
+* The searcher will look for your query in story text, titles, teasers and bylines# The PMP API
 
 <div class="alert alert-warning media">
   <i class="fa fa-university fa-3x pull-left media-object"></i>
@@ -7,7 +7,7 @@
   </div>
 </div>
 
-The Public Media Platform [is a Hypermedia API](http://www.infoq.com/articles/hypermedia-api-tutorial-part-one) that is accessible over HTTP, on the web and lets API clients communicate using [Collection.doc+JSON](http://cdoc.io/spec.html) media type. `Collection.doc+JSON` is a recursive, generic, JSON hypermedia type optimized for flexible exchange of structured content by content providers and consumers.
+The Public Media Platform [is a Hypermedia API](http://www.infoq.com/articles/hypermedia-api-tutorial-part-one) that is accessible on the web over HTTPS and allows API clients to communicate with the server using the [Collection.doc+JSON](http://cdoc.io/spec.html) media type. `Collection.doc+JSON` is a recursive, generic, JSON hypermedia type optimized for the flexible exchange of structured content by content providers and consumers.
 
 Don't see what you're looking for?  You can also check our [legacy docs](http://docs.pmp.io).
 
@@ -15,7 +15,7 @@ These documents are hosted on Github, so consider [contributing back](https://gi
 
 ## Environments
 
-Currently, PMP developers can register accounts in 2 environments:
+Currently, PMP developers can register accounts in two environments:
 
 Environment                 | Usage
 --------------------------- | -------------------

@@ -1,6 +1,6 @@
 # Collection.doc+JSON
 
-Aside from authentication, the responses of the PMP API are exclusively of the media type `Collection.doc+JSON`.  For a real example, go check out the [PMP home document](https://api.pmp.io).  But it is basically a JSON object with the following top-level structure:
+Aside from authentication, PMP API responses are exclusively of the media type `Collection.doc+JSON`.  For a real example, check out the [PMP home document](https://api.pmp.io).  But it is basically a JSON object with the following top-level structure:
 
 ```json
 {
@@ -27,13 +27,13 @@ Key          | Usage
 
 ### Content-Type
 
-The primary MIME type used by the PMP is `application/vnd.collection.doc+json`.  You can expect to see this in the `Content-Type` header in responses from the PMP.  And you should be setting the `Content-Type` to this when you're interacting with the PMP.
+The primary MIME type used by the PMP is `application/vnd.collection.doc+json`.  You can expect to see this in the `Content-Type` header in responses from the PMP  and you should set this as the `Content-Type` when you are interacting with the PMP.
 
 ### Response Sizes
 
-PMP responses include all sorts of boilerplate links.  Clients really only need to get this information once, and can afterwards ignore the information.  To give clients some options for what data they'd like in the response, the PMP utilizes the [HTTP Prefer header](http://tools.ietf.org/html/draft-snell-http-prefer-18).  To assist in caching, variable preferences will also be included in the `Vary` response header.
+PMP responses include all sorts of boilerplate links.  Clients really only need to get this information once, and can afterwards ignore the information.  To give clients some options for what data they would like in the response, the PMP utilizes the [HTTP Prefer header](http://tools.ietf.org/html/draft-snell-http-prefer-18).  To assist in caching, variable preferences will also be included in the `Vary` response header.
 
-By default (not specifying a `Prefer` header), you're going to see a response header of `Vary: Prefer, Accept-Encoding`.  And you will get the full set of PMP boilerplate links.
+By default (not specifying a `Prefer` header), you're going to see a response header of `Vary: Prefer, Accept-Encoding` and you will get the full set of PMP boilerplate links.
 
 If you want a minimal response, set `Prefer: return=minimal`.  The PMP will include the usual `Vary: Prefer, Accept-Encoding`, plus an additional header to indicate that it did apply your preference: `Preference-Applied: return=minimal`.  This response will NOT include any PMP boilerplate links.
 
@@ -108,7 +108,7 @@ Key        | Usage
 
 The links section of the document is a hash of `{"link_relation_ship_type": ["array", "of", "link", "objects"]}`.
 The relationship type is a descriptive string of how the current document is related to the linked document(s).
-These relationship types are defined by the [Core Schema](https://api.pmp.io/schemas/core), and common to all PMP documents:
+These relationship types are defined by the [Core Schema](https://api.pmp.io/schemas/core) and common to all PMP documents:
 
 Key           | Usage
 ------------- | -------------

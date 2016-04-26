@@ -1,6 +1,6 @@
 # Authentication
 
-API users are given a `username` and `password`.  These cannot be used directly to authenticate with the PMP - rather they are used to manage multiple API client credentials under a single user account.  The PMP uses an OAuth2 [Client Credentials](https://labs.hybris.com/2012/07/09/oauth-the-client-credentials-flow/) flow, meaning you'll be generating a separate `client_id` and `client_secret` for each application that will use the API.
+API users are given a `username` and `password`.  These cannot be used directly to authenticate with the PMP - rather they are used to manage multiple API client credentials under a single user account.  The PMP uses an OAuth2 [Client Credentials](https://labs.hybris.com/2012/07/09/oauth-the-client-credentials-flow/) flow, meaning that you will be generating a separate `client_id` and `client_secret` for each application that will use the API.
 
 <div class="alert alert-warning media">
   <i class="fa fa-bullhorn fa-3x pull-left media-object"></i>
@@ -9,7 +9,7 @@ API users are given a `username` and `password`.  These cannot be used directly 
   </div>
 </div>
 
-Let me just stress that you should **NEVER** be using your PMP username/password directly in an application.  You should be giving each app its own client-id/secret, to use the PMP *on your behalf*.
+Let me just stress that you should **NEVER** be using your PMP username/password directly in an application.  You should give each app its own client-id/secret, to use the PMP *on your behalf*.
 
 ## Credential List
 
@@ -71,9 +71,9 @@ puts creds.clients.first.label
 
 See `urn:collectiondoc:form:createcredentials` in [the home doc](https://api.pmp.io).
 
-* Uses the "publish" endpoint
-* Must have header `Content-Type: application/x-www-form-encoded`
-* These optional form parameters may be included:
+* Use the "publish" endpoint
+* Include the header `Content-Type: application/x-www-form-encoded`
+* May inlcude the following optional form parameters:
 
 Parameter       | Default   | Usage
 --------------- | --------- | -----
@@ -143,7 +143,7 @@ puts cred.label
 
 See `urn:collectiondoc:form:removecredentials` in [the home doc](https://api.pmp.io).
 
-* Uses the "publish" endpoint
+* Use the "publish" endpoint
 * Include the `client_id` in the URL
 
 ```shell
@@ -185,14 +185,14 @@ auth.credentials.destroy('405a022e-6274-4170-8eba-67933551c3c3')
 
 ## Token Creation
 
-To begin making requests to the API, you'll need a non-expired bearer token.  This is normally handled transparently by the client sdk, but if you'd like to get one manually...
+To make authenticated requests to the API, you need a valid bearer token.  This is normally handled transparently by the client SDK, but if you'd like to get one manually...
 
 See `urn:collectiondoc:form:issuetoken` in [the home doc](https://api.pmp.io).
 
-* DOES NOT use the "publish" endpoint, even though it is a POST request
-* The Content-Type header must be set to `application/x-www-form-encoded`
-* `client_id`/`client_secret` should be included as the basic auth
-* Must send the form parameter `grant_type=client_credentials`
+* Use the main request endpoint [api.pmp.io](https://api.pmp.ioDo rather than "publish", even though this is a POST request
+* Set the Content-Type header to `application/x-www-form-encoded`
+* Include your `client_id` and `client_secret` for the authorization flow
+* Include the form parameter `grant_type=client_credentials`
 
 ```shell
 curl -u "client_id:client_secret" -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials" "https://api.pmp.io/auth/access_token"
@@ -239,14 +239,14 @@ oauth_token = pmp.token
 puts oauth_token.token # the string
 ```
 
-In the response, `token_expires_in` is the number seconds until this `access_token` will expire and your client will need to request a new one.  Re-requesting a non-expired token for the same client will return the same `access_token`.  SDK's *should* automatically re-request the token when it expires.
+In the response, `token_expires_in` is the number in seconds until this `access_token` will expire and your client will need to request a new one.  Re-requesting a non-expired token for the same client will return the same `access_token`.  SDK's *should* automatically re-request the token when it expires.
 
 ## Token Deletion
 
 See `urn:collectiondoc:form:revoketoken` in [the home doc](https://api.pmp.io).
 
-* Uses the "publish" endpoint
-* HTTP `DELETE` request
+* Use the "publish" endpoint
+* Make an HTTP `DELETE` request
 
 ```shell
 curl -u "client_id:client" -X DELETE "https://api.pmp.io/auth/access_token"

@@ -6,11 +6,11 @@ To help interpret PMP documents, here is a list of some of the common PMP profil
 
 The Story profile is the glue of the PMP!
 
- * Typically the lead document type to which media assets (images/audio/video) are attached
- * Provides context for those `links.item` assets
+ * Primary document type to which most media assets (images/audio/video) are attached
+ * Provides context for `links.item` assets
  * Organizes itself into collections (topics/series/properties)
- * Identify authors and contributors to the story
- * Use tags to get all Stories for a certain collaboration or event
+ * Identifies authors and contributors to the story
+ * Tags can be used to get all related Stories for a certain collaboration or event
 
 It is not required to use Story documents, but it is highly suggested to use a Story or a sub-type of a Story when creating a complex document (e.g. one with child assets, such as media docs).
 
@@ -45,7 +45,7 @@ relType      | Key      | Value
 
 ## Episode
 
-An Episode is a sub-type of a Story that indicates the doc is the full episode of a series, general as it might have been produced for broadcast, which will often have within it multiple segments which could be considered stories themselves.
+An Episode is a sub-type of a Story that indicates the document is the full episode of a series, in the form that it might have been produced for broadcast. An Episode will often contain multiple segments that could also be considered stories themselves.
 
 ### Episode Links
 
@@ -70,19 +70,19 @@ Key                 | Value
 
 relType      | Key               | Value
 ------------ | ----------------- | -----------------------
-`enclosure`  | `href`            | Url for the binary image file <span class="badge badge-red">required</span>
+`enclosure`  | `href`            | URL for the binary image file <span class="badge badge-red">required</span>
              | `type`            | The MIME-type of the image file <span class="badge badge-red">required</span>
              | `meta.crop`       | The [semantic crop identifier](#best-practices-image-crops) for this file
              | `meta.height`     | Height in pixels
              | `meta.width`      | Width in pixels
              | `meta.resolution` | Resolution in pixels per inch (ppi)
-`copyright`  | `href`            | The url for a web page showing the copyright terms for this image
+`copyright`  | `href`            | URL for a web page showing the copyright terms for this image
              | `type`            | Should be `text/html` (since link is not a doc)
              | `title`           | Text to be displayed for the copyright link
 
 ## Audio
 
-The Audio profile is used to represent multiple sources/qualities/bitrates of a piece of audio.  These are each encapsulated in their own `enclosure` link, which clients can iterate over to find the one they'd like to use.
+The Audio profile is used to represent multiple sources/qualities/bitrates of a piece of audio.  These are each encapsulated in their own `enclosure` link that clients can iterate through to find the one they would like to use.
 
 ### Audio Attributes
 
@@ -97,21 +97,21 @@ Key                 | Value
 
 relType      | Key               | Value
 ------------ | ----------------- | -----------------------
-`enclosure`  | `href`            | Url for the binary audio file <span class="badge badge-orange">co-required</span>
+`enclosure`  | `href`            | URL for the binary audio file <span class="badge badge-orange">co-required</span>
              | `type`            | The MIME-type of the audio file <span class="badge badge-red">required</span>
              | `meta.codec`      | Audio codec
              | `meta.format`     | Audio format
              | `meta.duration`   | Audio duration in seconds
-`oembed`     | `href`            | The url for a valid [oembed](http://www.oembed.com/) object representing this audio <span class="badge badge-orange">co-required</span>
-`copyright`  | `href`            | The url for a web page showing the copyright terms for this audio
+`oembed`     | `href`            | URL for a valid [oembed](http://www.oembed.com/) object representing this audio <span class="badge badge-orange">co-required</span>
+`copyright`  | `href`            | URL for a web page showing the copyright terms for this audio
              | `type`            | Should be `text/html` (since link is not a doc)
              | `title`           | Text to be displayed for the copyright link
 
 ## Video
 
-The Video profile represents multiple formats/sources of a video.  Each of which should get its own enclosure.
+The Video profile represents multiple formats/sources of a video, each of which is given its own `enclosure` link.
 
-Unlike Images or Audio, it is common for a Video to lack any public link to the original binary file.  This is addressed via [Embeddable Media](#best-practices-embedded-media), a practice which is still evolving.  So stay tuned!
+Unlike Images or Audio, it is common for a Video to lack any public link to the original binary file.  This is addressed via [Embeddable Media](#best-practices-embedded-media), a practice which is still evolving.  
 
 ### Video Attributes
 
@@ -126,12 +126,12 @@ Key                 | Value
 
 relType      | Key               | Value
 ------------ | ----------------- | -----------------------
-`enclosure`  | `href`            | Url for the binary video file <span class="badge badge-orange">co-required</span>
+`enclosure`  | `href`            | URL for the binary video file <span class="badge badge-orange">co-required</span>
              | `type`            | The MIME-type of the video file <span class="badge badge-red">required</span>
              | `meta.codec`      | Video codec
              | `meta.format`     | Video format
              | `meta.duration`   | Video duration in seconds
-`oembed`     | `href`            | The url for a valid [oembed](http://www.oembed.com/) object representing this video <span class="badge badge-orange">co-required</span>
-`copyright`  | `href`            | The url for a web page showing the copyright terms for this video
+`oembed`     | `href`            | URL for a valid [oembed](http://www.oembed.com/) object representing this video <span class="badge badge-orange">co-required</span>
+`copyright`  | `href`            | URL for a web page showing the copyright terms for this video
              | `type`            | Should be `text/html` (since link is not a doc)
              | `title`           | Text to be displayed for the copyright link

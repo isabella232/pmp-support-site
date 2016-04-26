@@ -2,23 +2,23 @@
 
 Publishers to the PMP are encouraged to follow best practices for how they structure and persist their content.
 
-If a publisher uses idiosyncratic fields, attributes, or profiles, the documents may be very useful to them, but will be less useful (or even discoverable) to consumers attempting to use content from across the PMP.  Below are a set of documented Best Practices to encourage publishers to post content to PMP in standard, useful ways, consistent with the majority of the content shared on the PMP.
+If a publisher uses idiosyncratic fields, attributes, or profiles, the documents may be very useful to them, but will be less useful (or even discoverable) to consumers attempting to use content from across the PMP.  Below are a set of documented best practices to encourage publishers to post content to the PMP in a standard, useful way that will be consistent with the majority of PMP published content.
 
 ## Standard Profiles
 
-The PMP is incredibly flexible, extensible, and forgiving. It allows a publisher to create their own content profiles and schemas, so that almost any kind of content document could be saved to the PMP.  However, clients of the PMP will find it difficult to discover, display or otherwise use content which does not use or extend the basic content types.
+The PMP is flexible. It allows a publisher to create their own content profiles and schemas, so that almost any kind of content document could be published.  However, clients of the PMP will find it difficult to discover, display or otherwise use content that does not use or extend the basic content types.
 
-Before creating a new Profile, examine [the existing ones](#profiles-and-schemas-hierarchy) in common use, and see if they could be used.  If they cannot, see if one of them, such as the [Base Content Profile](https://api.pmp.io/profile/base), could be extended for your purposes.
+Before creating a new Profile, examine [the existing ones](#profiles-and-schemas-hierarchy) in common use, and see if they can be used.  If not, refer to the [Base Content Profile](https://api.pmp.io/profile/base), and try to extend it for your use case.
 
-Using or extending a standard profile will also help with discoverability via search.  When searching by document profile, the PMP returns not only docs for that exact profile, but also docs where the profile is extended from that profile.
+Using or extending a standard profile will also help with discoverability via search.  When searching by document profile, the PMP returns not only the documents for that exact profile, but also documents where the profile is extended from that profile.
 
 Use the media types for [images](#dictionary-image), [audio](#dictionary-audio) and [video](#dictionary-video).
 
-Use a [story document](#dictionary-story) to pull together multiple docs and as a default lead document type.
+Use a [story document](#dictionary-story) to pull together multiple documents and as a default lead document type.
 
 ## GUIDs
 
-The PMP API intentionally doesn't save documents without a pre-defined GUID. A publisher is responsible for generating a properly formatted GUID for a document before saving it to the PMP.
+The PMP API will not save a document without a pre-defined GUID (globally unique document identifier). Each publisher is responsible for generating a properly formatted GUID for a document before saving it to the PMP.
 
 For globally unique document identifiers PMP uses [UUID version 4 identifiers](http://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29) based on [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt), represented as 32 hexadecimal digits with optional dashes after the 8th, 12th, 16th, and 20th digits.
 
@@ -40,22 +40,22 @@ Bylines for documents should be rendered as follows:
 
     `Firstname Mid Lastname, Person One, Someone Else and Finally T Last`
 
-Do **NOT** add a prefix (such as "By") to the byline field.  The logic being that it is far easier to prepend a prefix, rather than grep for and remove one.
+Do **NOT** add a prefix (such as "By") to the byline field.  The logic being that it is far easier to prepend a prefix, rather than remove one.
 
 ## Tags and Itags
 
-PMP docs may have 2 separate sets of free-form tag attributes.
+PMP documents may have two separate sets of free-form tag attributes.
 
 Name                 | Description
 -------------------- | ---------------------
 `attributes.tags[]`  | An array of human-readable tags or keywords associated with the document
-`attributes.itags[]` | An array of internal tags for use by the publisher - often used for external id's, publisher-specific labeling systems, etc
+`attributes.itags[]` | An array of internal tags for use by the publisher - often used for external identifiers, publisher-specific labeling systems, etc.
 
-To keep tags useful, don't pollute the public `tags` pool with things that should properly be `itags`.
+Consider carefully whether or not the tag you are creating is for internal reference (`itags`) or public discoverability (`tags`).
 
 ## Story Content
 
-When creating Story documents, you should set at least one "content" field.  This will be searched by default when using the `?text=foobar` query param.
+When creating Story documents, set at least one "content" field.  This will be searched by default when using the `?text=foobar` query parameter.
 
 Name               | Description
 ------------------ | ---------------------
@@ -65,9 +65,9 @@ Name               | Description
 
 ## Item Links
 
-When a document "contains" other docs, you should use `links.item` in the parent doc to claim (and optionally order) the children.
+When a document "contains" other documents, you should use `links.item` in the parent doc to claim (and optionally order) the children.
 
-The most common use-case for this is in Story docs, when they "contain" associated image/audio/video media.  In this case, you should also set a `rels` key on each `links.item`, to indicate to consumers what type of child item each is.  This example illustrates common/known rels for Story items:
+The most common use case for this is in Story docs, when they "contain" associated image/audio/video media.  In this case, you should also set a `rels` key on each `links.item`, to indicate to consumers what type of child item each is.  This example illustrates common/known rels for Story items:
 
 ```javascript
 itemLink.href = "https://api.pmp.io/docs/<MEDIA_GUID>";
@@ -82,9 +82,9 @@ itemLink.rels = ["urn:collectiondoc:story"];
 
 ## Collection Links
 
-When a document "belongs to" a collection of docs, you should use `links.collection` to indicate that relationship.  Meaning the child doc is claiming to belong to the parent collection.  Note that you **cannot indicate order** using a `links.collection` - if you need order you should use `links.item` instead.
+When a document "belongs to" a collection of docs (often described as a parent/child documents), use `links.collection` to indicate that relationship. Note that you **cannot indicate order** using `links.collection`. If you need to enforce order, use `links.item` instead.
 
-This also most commonly occurs in Story docs, claiming to be a part of a Property, Series, Contributor or Topic.  You should also set one of the following `rels` on your collection links, to help consumers differentiate between them:
+This occurs most commonly in Story documents claiming to be part of a Property, Series, Contributor or Topic.  You can set one of the following `rels` on your collection links, to help consumers differentiate between them:
 
 ```javascript
 collectionLink.href = "https://api.pmp.io/docs/<COLLECTION_GUID>";
@@ -94,9 +94,9 @@ collectionLink.rels = ["urn:collectiondoc:collection:contributor"]; // ... or co
 collectionLink.rels = ["urn:collectiondoc:collection:topic"];       // ... or topic
 ```
 
-### Use Topic collections
+### Topic collections
 
-For greater topic reuse between PMP producers, you should try to map your documents to one of the standard PMP Topics:
+To ensure consistency among PMP publishers, map your documents to one of the standard PMP Topics:
 
 Topic      | Href                                 | Guid
 ---------- | ------------------------------------ | --------------------------------------
@@ -115,7 +115,7 @@ Technology | https://api.pmp.io/topics/technology | `3f829119-5310-43b9-acc5-0f3
 
 ## Image crops
 
-Enclosures for images include the metadata field `crop`.  To keep these useful, please try to constrain yourself to this set of known "semantic crop identifiers":
+Enclosures for images include the metadata field `crop`.  For consistency, refer to this set of known "semantic crop identifiers":
 
 Crop      | Description
 --------- | ---------------
@@ -134,10 +134,8 @@ Other crops seen in the wild:
 
 ## Embedded Media
 
-Sometimes it is not possible to provide urls to the actual media files.
+Sometimes it is not possible to provide URLs to the actual media file.
 
-In that case, the producer can provide the html code to be used to embed a player for the media in a web page, or a link to a page to view/hear the media (e.g. a YouTube URL).
+In that case, the producer can provide HTML code to embed a player for the media in a web page, or a link to a page to access the media file (e.g. a YouTube URL).
 
-A best practice for how to share embeds has not been established.
-
-[Current suggestions](https://discuss.pmp.io/t/best-way-to-handle-embeddable-media/96) include use of oembed type links, a new attribute on the video doc, or using the `contentencoded` attribute for the html to embed.
+A best practice for how to share embedded media has not yet been established, but please reference these [current suggestions](https://discuss.pmp.io/t/best-way-to-handle-embeddable-media/96), which include the use of oembed type links, setting a new attribute on the video doc, or using the `contentencoded` attribute for the HTML to embed.

@@ -1,6 +1,6 @@
 ## Searching the PMP
 
-To freestyle-search the PMP, the **docs** query is your go-to endpoint (see `urn:collectiondoc:query:docs` in [the home doc](https://api.pmp.io)).
+For open-ended searches, the **docs** query is your go-to endpoint (see `urn:collectiondoc:query:docs` in [the home doc](https://api.pmp.io)).
 
 For a complete list of PMP search parameters, check out the [legacy querying docs](https://github.com/publicmediaplatform/pmpdocs/wiki/Querying-the-API).
 
