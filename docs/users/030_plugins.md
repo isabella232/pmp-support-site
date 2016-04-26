@@ -1,6 +1,6 @@
 # Plugins
 
-Plugins for several popular platforms are available and are still being further developed.  If you know of any additional integrations, or would like to build one yourself, please contact us at support@publimediaplatform.org.
+Plugins for several popular platforms are available or are in development.  If you know of any additional integrations, or would like to build one yourself, please contact us at support@publimediaplatform.org.
 
 ![pmp_wp_plugin](https://cloud.githubusercontent.com/assets/4427754/10888991/28658e78-815d-11e5-999a-29d02ead2c45.png)
 
