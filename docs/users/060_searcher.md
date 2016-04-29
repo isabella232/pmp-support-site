@@ -112,4 +112,4 @@ You can query with multiple collections by putting them all in the collections b
 <br /><br />
 ##Wrapping Up
 
-Using the techniques detailed above, you too can become a Support Searcher Pro. You'll find what you're looking for quickly. It looks like a lot, but after you've used it a few times, it will click and become intuitive. If something isn't clicking or doesn't make sense, drop us a line to me, Jeff Nemic ([jeff@publicmediaplatform.org](mailto:jeff@publicmediaplatform.org)) or to [support@publicmediaplatform.org](mailto:support@publicmediaplatform.org) and we'll be happy to help you out!
+Using the techniques detailed above, you too can become a Support Searcher Pro. You'll find what you're looking for quickly. It looks like a lot, but after you've used it a few times, it will click and become intuitive. If something isn't clicking or doesn't make sense, drop us a line at [support@publicmediaplatform.org](mailto:support@publicmediaplatform.org) and we'll be happy to help you out!
