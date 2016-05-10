@@ -14,5 +14,3 @@ Welcome to the PMP!  These user guides are intended to help you:
     <b>Looking for the code?</b><br/>If you're a developer looking to use/build an SDK, you probably want to head over to the <a href="/docs">developer docs</a>.
   </div>
 </div>
-
-These guides are hosted on Github, so consider [contributing back](https://github.com/publicmediaplatform/support.pmp.io/tree/master/docs/users) to them!

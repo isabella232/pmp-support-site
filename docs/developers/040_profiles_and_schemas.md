@@ -73,7 +73,7 @@ For more info on interpreting JSON schemas, check out the [json-schema.org docs]
 
 ## Hierarchy
 
-The basic PMP profiles can be visually represented hrough a tree graph:
+The basic PMP profiles can be visually represented through a tree graph:
 
 <object data="//support.pmp.io/profiletree.svg" type="image/svg+xml">
   <img src="//support.pmp.io/profiletree.png"/>

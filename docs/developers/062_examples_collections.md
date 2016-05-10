@@ -1,6 +1,6 @@
 ## Fetching collections
 
-Next, let's say that swe want to find all **stories** belonging to the "arts" topic.  That is, all **stories** with a `links.collection` pointing to the "arts" topic.
+Next, let's say that we want to find all **stories** belonging to the "arts" topic.  That is, all **stories** with a `links.collection` pointing to the "arts" topic.
 
 If we know the GUID of the collection, we can do a query-by-guid:
 

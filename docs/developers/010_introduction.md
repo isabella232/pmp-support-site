@@ -19,12 +19,12 @@ Currently, PMP developers can register accounts in two environments:
 
 Environment                 | Usage
 --------------------------- | -------------------
-https://api.pmp.io          | Production data only - please don't create dummy/test data here.
-https://api-sandbox.pmp.io  | Integration testing and development - "do whatever".
+https://api.pmp.io          | Production data only - please do not perform any testing here.
+https://api-sandbox.pmp.io  | Integration testing and development - appropriate environment for testing.
 
-Additionally, each environment has a read and write endpoint.  For `GET` requests, [api.pmp.io](https://api.pmp.io) or [api-sandbox.pmp.io](https://api-sandbox.pmp.io) should be used.  For `POST/PUT/DELETE` requests, [publish.pmp.io](https://publish.pmp.io) or [publish-sandbox.pmp.io](https://publish-sandbox.pmp.io) should be used.  But... since this is a hypermedia API, the documents themselves will tell you the endpoints to use.  SDK's should not hardcode any URL except for the API home document - follow the links!
+Additionally, each environment has a read and write endpoint.  For `GET` requests, [api.pmp.io](https://api.pmp.io) or [api-sandbox.pmp.io](https://api-sandbox.pmp.io) should be used.  For `POST/PUT/DELETE` requests, [publish.pmp.io](https://publish.pmp.io) or [publish-sandbox.pmp.io](https://publish-sandbox.pmp.io) should be used.  Since this is a hypermedia API, the documents themselves will tell you the endpoints to use.  SDK's should not hardcode any URL except for the API home document - follow the links!
 
-The code examples in these docs will use [api.pmp.io]() and [publish.pmp.io](https://publish.pmp.io) - just replace with [api-sandbox.pmp.io](https://api-sandbox.pmp.io) and [publish-sandbox.pmp.io](https://publish-sandbox.pmp.io) to use the sandbox.
+The code examples in these docs will use [api.pmp.io]() and [publish.pmp.io](https://publish.pmp.io) - just replace with [api-sandbox.pmp.io](https://api-sandbox.pmp.io) and [publish-sandbox.pmp.io](https://publish-sandbox.pmp.io) to use the testing environment.
 
 ## SDKs
 

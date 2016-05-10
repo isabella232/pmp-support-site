@@ -12,21 +12,23 @@ If you already have an account, you can [log in](/login) to manage your user.
 
 ![1final](https://cloud.githubusercontent.com/assets/4427754/7566204/8b689d68-f7c3-11e4-9921-20461c2605d5.png)
 
-1. Go to the ["Request an API user for the PMP" page](/register) and complete the Request an Account form.
-2. Host – Select api.pmp.io if you intend to use an existing PMP plugin or Core Publisher. Choose api-sandbox.pmp.io if you are a developer and want an account to test with in a sandbox environment.
-3. Name – Enter your name.
-4. Contact Email - We recommend that stations use a generic email address that isn’t tied to one person’s email account. If there is a change in personnel, you cannot change the email account tied to the API user account.
-5. Name of Organization – Use your Station call letters in the “Name of organization” field.
-6. What CMS do you use? – Select the CMS your site uses.
-7. For what purpose do you intend to use the PMP? Enter a description of how you intend to use the PMP.
+**Complete the [request form](/register) for a new account.**
 
-Within 24 hours you will receive a reply via email.
+* Host: Select api.pmp.io if you intend to use an existing PMP plugin or Core Publisher. Choose api-sandbox.pmp.io if you are a developer and want an account to test with in a sandbox environment.
+
+* Contact email: We recommend that stations use a generic email address rather than a personal email account. If there is a change in personnel, you cannot change the email account tied to the API user account.
+
+* Name of organization: Enter your Station call letters.
+
+* What CMS do you use? Select the CMS you currently use, or select 'Other' and provide a description in the field below.
+
+You will receive an email reply to your request within 24 hours.
 
 ## Reset password
 
 ![2final](https://cloud.githubusercontent.com/assets/4427754/7526208/b7167126-f4dd-11e4-9b35-704a422cfc33.png)
 
-Once you receive your email, you will need to set a password for your account.
+Once you receive the email with your PMP credentials, you will need to set a password for your account.
 
 1. Go to the ["Forgot Password" page](/forgot).
 2. Enter the Host by selection "api.pmp.io" or "api-sandbox.pmp.io" as appropriate from the dropdown menu.

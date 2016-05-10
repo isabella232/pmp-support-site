@@ -136,7 +136,7 @@ Key             | Usage
 --------------- | --------------
 `hints`         | Object containing hints about interacting with the link, such as HTTP methods.
 `href`          | URL of the linked document. <span class="badge badge-red">required</span>
-`href-template` | An [RFC6570](http://tools.ietf.org/html/rfc6570) templated URL. <span class="badge badge-red">required</span>
+`href-template` | A [RFC6570](http://tools.ietf.org/html/rfc6570) templated URL. <span class="badge badge-red">required</span>
 `href-vars`     | Object of the format `{"varname": "http://descriptive/link"}`, linking `href-template` variables to their documentation. <span class="badge badge-red">required</span>
 `hreflang`      | Language of this document using [ISO639-1](http://www.iso.org/iso/home/standards/language_codes.htm) code.
 `method`        | Expected HTTP method to use for the link
