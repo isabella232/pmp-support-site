@@ -55,6 +55,7 @@ Getting the GUID is pretty easy: click on the box in the lower right corner of t
 You can then take that GUID and put it in your CMS. Here’s how it’s done in Core Publisher:
 ![guid_in_pmp](https://cloud.githubusercontent.com/assets/4427754/11099092/5b33f90e-8877-11e5-8f3f-34a514f04d36.png)
 <br /><br />
+
 ###Tweaking Search Results
 
 If you look at the top right of the search results, you’ll see that the default is to return the most recent results:
