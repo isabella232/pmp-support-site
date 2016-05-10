@@ -18,10 +18,4 @@ class DocsController < ApplicationController
     render :show
   end
 
-  # GET /service
-  def service_level_agreement
-    @markdown = "#{Rails.root}/docs/misc/service_level_agreement.md"
-    render :show
-  end
-
 end
