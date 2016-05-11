@@ -14,7 +14,7 @@ If you already have an account, you can [log in](/login) to manage your user.
 
 **Complete the** [request form](/register) **for a new account.**
 
-* Host: Select api.pmp.io if you intend to use an existing PMP plugin or Core Publisher. Choose api-sandbox.pmp.io if you are a developer and want an account to test with in a sandbox environment.
+* Host: Select api.pmp.io if you intend to use an existing PMP plugin or Core Publisher. Choose api-sandbox.pmp.io if you are a developer and want an account to perform testing in a sandbox environment.
 
 * Contact email: We recommend that stations use a generic email address rather than a personal email account. If there is a change in personnel, you cannot change the email account tied to the API user account.
 
@@ -51,9 +51,9 @@ Now that you have reset your password and are able to login, you can create uniq
 
 * Click the green "New Client" button on the credentials page.
 
-* Select the "write" option from the "Scope" column. "Write" scope is required if you intend to push content into the PMP.
+* Select the "write" option from the "Scope" column ("write" scope will allow you to push content into the PMP).
 
-* Type an appropriate identifier (Core Publisher, WordPress, Bento, etc.) into the "your-label-here" field, found under the "Label" column.
+* Type an appropriate identifier for your CMS (Core Publisher, WordPress, Bento, etc.) into the "your-label-here" field, found under the "Label" column.
 
 * Click "Save" in the "Actions" column.
 
@@ -78,7 +78,6 @@ The final piece of information you will need to complete your PMP setup is your 
 
 * On the left-hand side of your screen, you will see a field identified as "GUID". The alphanumeric string is the unique GUID for your account. Record this value in a secure place for future use in your application or CMS plugin.
 
-Congratulations, you have successfully set up credentials for accessing the PMP API! Next, you’ll need to use this information to set up the application you will use to make requests to the PMP.
-Instructions for that process should be available from the application or plugin provider; NPR member stations using the Core Publisher plugin can find that information on the [NPR's Digital Services website.](http://mediad.publicbroadcasting.net/p/newnprdsblog/files/201504/how_to_pull_content_from_the_pmp_into_core_publisher_march_2015.pdf) 
+Congratulations, you have successfully set up credentials for accessing the PMP API! Next, you’ll need to use this information to set up the application you will use to make requests to the PMP. Instructions for that process should be available from the application or plugin provider; NPR member stations using the Core Publisher plugin can find that information on [NPR's Digital Services website.](http://mediad.publicbroadcasting.net/p/newnprdsblog/files/201504/how_to_pull_content_from_the_pmp_into_core_publisher_march_2015.pdf)
 
 NOTE: For additional support or any questions about your PMP user account please contact the PMP directly at support@publicmediaplatform.org.
