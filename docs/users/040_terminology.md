@@ -4,7 +4,7 @@
 
 This is a guide primarily geared toward users of the PMP rather than developers. More technical information on many of these terms is available in the [developer documentation](https://support.pmp.io/docs).
 
-Note that the PMP is extremely flexible, which is on of its strengths, but that also means that not every content producer will structure their content in the same way. Some producers may use tags for their content, for example, while others may not.
+Note that the PMP is extremely flexible, which is one of its strengths, but that also means that not every content producer will structure their content in the same way. Some producers may use tags for their content, for example, while others may not.
 
 ## Documents
 
