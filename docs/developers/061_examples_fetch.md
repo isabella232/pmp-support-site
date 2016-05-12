@@ -1,6 +1,6 @@
 ## Fetching documents
 
-One of the basic PMP usages is to fetch a single document.  For instance, let's fetch the "arts topic" document, with a guid of `89944632-fe7c-47df-bc2c-b2036d823f98`...
+One of the basic PMP usages is fetching a single document.  For instance, let's fetch the "arts topic" document, with a GUID of `89944632-fe7c-47df-bc2c-b2036d823f98`...
 
 ```shell
 curl -H "Authorization: Bearer 3f2401ae1a74adf8b14a638a" -X GET "https://api.pmp.io/docs/89944632-fe7c-47df-bc2c-b2036d823f98"
@@ -51,7 +51,7 @@ puts doc.guid  # "04224975-e93c-4b17-9df9-96db37d318f3"
 puts doc.title # "Arts Topic"
 ```
 
-Alternately, we can fetch some documents by their "alias", rather than the guid.  For the "arts topic" document, we can fetch it via the **arts** alias, using the **topics** endpoint (see `urn:collectiondoc:hreftpl:topics` in [the home doc](https://api.pmp.io)).
+Alternatively, we can fetch some documents by their "alias", rather than the GUID.  For the "arts topic" document, we can fetch it via the **arts** alias, using the **topics** endpoint (see `urn:collectiondoc:hreftpl:topics` in [the home doc](https://api.pmp.io)).
 
 ```shell
 curl -H "Authorization: Bearer 3f2401ae1a74adf8b14a638a" -X GET "https://api.pmp.io/topics/arts"

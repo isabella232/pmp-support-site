@@ -4,7 +4,7 @@
 
 This is a guide primarily geared toward users of the PMP rather than developers. More technical information on many of these terms is available in the [developer documentation](https://support.pmp.io/docs).
 
-Note that the PMP is *extremely* flexible, which is a big part of what makes it so great. But that also means that not every content producer will structure their content in the same way. Some producers may use tags for their content, for example, while others may not.
+Note that the PMP is extremely flexible, which is one of its strengths, but that also means that not every content producer will structure their content in the same way. Some producers may use tags for their content, for example, while others may not.
 
 ## Documents
 
@@ -56,7 +56,7 @@ If the structure of content in the PMP is depicted as a pyramid, Properties are 
 
 ### Series
 
-A Collection of related Stories. As opposed to Properties, Series are more loosely defined. In some cases, they may correspond to a broadcast program, but also could be used to collect Episodes of a program or a selection of Stories from multiple Episodes of a program. Examples: [*Marketplace Morning Report*](https://support.pmp.io/search?advanced=1&collection=a9ce9da3-5798-4e99-90ce-43980df38e85), *State of the Re:Union* Fall 2013 Series, *American Routes*, or [MPR News' "On Campus" series](https://support.pmp.io/search?advanced=1&collection=a5eb210c-1256-4f1a-b597-7c1467a2c846&profile=story).  The occasional *Morning Edition* on-air series ["Crime in the City"](http://www.npr.org/series/13795507/crime-in-the-city) could also have been collected in the PMP as a series.
+A Collection of related Stories. As opposed to Properties, Series are more loosely defined. In some cases, they may correspond to a broadcast program, but also could be used to collect Episodes of a program or a selection of Stories from multiple Episodes of a program. Examples: [*Marketplace Morning Report*](https://support.pmp.io/search?advanced=1&collection=a9ce9da3-5798-4e99-90ce-43980df38e85), *State of the Re:Union* Fall 2013 Series, *American Routes*, or [MPR News' "On Campus" series](https://support.pmp.io/search?advanced=1&collection=a5eb210c-1256-4f1a-b597-7c1467a2c846&profile=story).  The occasional *Morning Edition* on-air series ["Crime in the City"](http://www.npr.org/series/13795507/crime-in-the-city) could also have been collected in the PMP as a Series.
 
 ### Episode
 
@@ -82,5 +82,5 @@ Remember that any data in the PMP is a document, so permissions can be assigned 
 
 Example: PRI created a Group for *PRI's The World*, and to that Group they added Users which are stations corresponding to their broadcast carriage list.  Any content from *The World* that is published to the PMP is available to those Users and only those Users.
 
-And here's a diagram illustrating how permissions can be set in the PMP. Each of the different orgs can be set to have access to different documents:
+And here's a diagram illustrating how permissions can be set in the PMP. Each of the different organizations can be set to have access to different documents:
 ![how_do_permissions_work](https://cloud.githubusercontent.com/assets/4427754/9914554/650e085c-5c80-11e5-99d7-12410230c747.jpg)
