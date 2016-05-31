@@ -1,4 +1,4 @@
-* The searcher will look for your query in story text, titles, teasers and bylines# The PMP API
+# The PMP API
 
 <div class="alert alert-warning media">
   <i class="fa fa-university fa-3x pull-left media-object"></i>
