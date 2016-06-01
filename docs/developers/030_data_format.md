@@ -114,11 +114,11 @@ Key           | Usage
 ------------- | -------------
 `alternate`   | Links that represent alternate representations of this document.
 `auth`        | Links describing how to authorize against the PMP. <span class="badge">readonly</span>
-`collection`  | Links that represent collection documents that contain this document.
+`collection`  | Links that represent the collection documents that contain this document. Typically used as a way to model an unordered parent/child relationship; the `collection` link indicates that the current resource has a loose coupling to another resource document that can be viewed as a collection of other documents. A resource may be linked to multiple collections. Order can not be communicated via collection links; if order of documents in a collection is important, use item links within the collection document itself.
 `creator`     | Auto-generated link representing the user that created this document. <span class="badge">readonly</span>
 `distributor` | Links that represent users that can legally distribute this document.
 `edit`        | Links that represent URLs for updates to this document. <span class="badge">readonly</span>
-`item`        | Links that represent documents that are items of this document.
+`item`        | Links that represent documents that are items of this document. Typically used as a way to model an ordered parent/child relationship, these item documents are often associated assets such as images or audio files that are tightly coupled to this linking document. A resource may be linked as an item of multiple documents. Order is meaningful; `item` links are a way for a document to communicate its ordered structure.
 `navigation`  | Links that represent navigation and pagination for this document. <span class="badge">readonly</span>
 `owner`       | Links that represents users that legally own this document. Defaults to `creator`. <span class="badge badge-red">required</span>
 `permission`  | Links that represent permission groups associated with this document.
