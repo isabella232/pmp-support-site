@@ -2,7 +2,7 @@
 
 To access the PMP, your station must have a PMP account with credentials. These credentials allow the PMP API to approve requests to access PMP content, identify who is pulling content, and what content is being pulled by each account. There are a few steps required to complete your PMP API account and credential set up: requesting an account, setting a password, setting proper permissions to the account, and copying your account details to use in your CMS or application.
 
-**Note:** Typically, one account is set up per organization, but under that account individual credentials can be set up for each tool/product/site. So if you're using the PMP for multiple applications, you'll need to set up separate credentials (not accounts) for each.
+**Note:** Typically, one account is set up per organization and the login and password are shared securely amongst people in that organization who will be using the PMP. Under that account, individual credentials can be set up for each tool/product/site, so if you're using the PMP for multiple applications, you will need to set up separate credentials (but not accounts) for each. In some cases, an organization may wish to set up a separate account for an application that will be uniquely branded; in these cases please contact support@publicmediaplatform.org.
 
 **Note for developers:** Though you may have the same username for each, PMP sandbox and production accounts are otherwise independent.   
 
@@ -22,7 +22,7 @@ If you already have an account, you can [log in](/login) to manage your user.
 
 * What CMS do you use? Select the CMS you currently use, or select 'Other' and provide a description in the field below.
 
-You will receive an email reply to your request within 24 hours.
+You will receive an email reply to your request within 48 hours.
 
 ## Reset Your Password
 
