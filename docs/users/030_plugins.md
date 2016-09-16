@@ -33,15 +33,15 @@ The CP plugin allows you to set up automatic pulls of stories for your program p
 
 This plugin allows your Drupal site to pull and push content to/from the PMP.
 
-[Press release](http://digitalservices.npr.org/post/digital-services-makes-pmp-content-available-core-publisher-and-drupal-sites) | [Drupal project page](https://www.drupal.org/project/pmpapi) | [Issue tracker](https://www.drupal.org/project/issues/pmpapi)
+[Press release](http://digitalservices.npr.org/post/digital-services-releases-new-versions-pmp-plugins) | [GitHub project page](https://github.com/nprds/pmpapi-drupal/)
 
 ## RSS/PRX
 
 This PMP importer allows you to import individual stories from PRX (via the PRX story ID) or an RSS feed of stories (via an RSS URL).
 
-[Github project page](https://github.com/PRX/pmp-importer/) | [Issue tracker](https://github.com/PRX/pmp-importer/issues)
+[GitHub project page](https://github.com/PRX/pmp-importer/) | [Issue tracker](https://github.com/PRX/pmp-importer/issues)
 
 ## WordPress
 
 This WordPress plugin allow you to push content to the PMP and to manually or automatically pull content from the PMP.
-[Wordpress plugin directory](https://wordpress.org/plugins/public-media-platform/) | [Github project page](https://github.com/publicmediaplatform/pmp-wordpress) | [Documentation](https://github.com/publicmediaplatform/pmp-wordpress) | [Issue tracker](https://github.com/publicmediaplatform/pmp-wordpress/issues)
+[Wordpress plugin directory](https://wordpress.org/plugins/public-media-platform/) | [GitHub project page](https://github.com/publicmediaplatform/pmp-wordpress) | [Documentation](https://github.com/publicmediaplatform/pmp-wordpress) | [Issue tracker](https://github.com/publicmediaplatform/pmp-wordpress/issues)
