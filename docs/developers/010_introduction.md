@@ -39,4 +39,4 @@ Python     | pmp-myriad on [github](https://github.com/pbs/pmp-myriad)
 Python     | py3-pmp-wrapper on [github](https://github.com/KPBS/py3-pmp-wrapper)
 Ruby       | pmp on [github](https://github.com/PRX/pmp) / [rubygems](https://rubygems.org/gems/pmp)
 
-If you know of another SDK not mentioned here, please [let us know](mailto:support@publicmediaplatform.org)!
+If you know of another SDK not mentioned here, please [let us know](mailto:support@publicmediaplatform.org)!!
