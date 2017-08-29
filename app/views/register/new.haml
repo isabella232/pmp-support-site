@@ -12,32 +12,8 @@
         != flash.notice
     - else
       %span.help-block
-        Request an API user for the PMP.
-    = render partial: 'sessions/hoster'
-    = negative_text_field_tag(@captcha, :name, class: 'form-control', autofocus: true, required: true, placeholder: 'Your name')
-    = negative_text_field_tag(@captcha, :email, class: 'form-control', required: true, placeholder: 'Contact email')
-    = negative_text_field_tag(@captcha, :organization, class: 'form-control', required: true, placeholder: 'Name of organization')
-    %select.form-control.cmspicker{name: 'cms[]', multiple: true, 'data-title' => 'What CMS do you use?'}
-      %option{value: 'Drupal'} Drupal
-      %option{value: 'Joomla!'} Joomla!
-      %option{value: 'NPR Core Publisher'} NPR Core Publisher
-      %option{value: 'PBS Bento'} PBS Bento
-      %option{value: 'Wordpress'} Wordpress
-      %option{'data-divider' => 'true'}
-      %option{value: 'Other', 'data-subtext' => 'Please explain below'} Other
-      %option{value: 'None'} None
-    = negative_text_area_tag(@captcha, :intention, class: 'form-control', required: true, placeholder: 'For what purpose do you intend to use the PMP?', rows: 6)
-    %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
-      Send request
-    .help-block.text-center
-      By using the PMP API you are agreeing <br/> to our
-      = link_to 'Terms of Use', terms_path
-
--# doc links
-- content_for :logbox_docs do
-  .doc-link
-    = link_to service_path do
-      Service Level Agreement
+        %h2 New API user.
+        %p Please email support@pmp.io to have a new account created.
 
 -# nav links
 - content_for :logbox_links do
