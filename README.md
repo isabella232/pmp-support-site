@@ -40,6 +40,28 @@ export PMP_PASSWORD=p&ssw0rd
 bundle exec rake
 ```
 
+## Making updates to support.pmp.io
+
+The process: 
+1. Make changes and submit a pull request on GitHub (https://github.com/publicmediaplatform/support.pmp.io). 
+2. Please turn on notifications for the repo if you haven’t done so.
+3. DS ops will merge the pull request.
+4. DS ops will pull the changes down on the server and clear cache/restart service so they take effect.
+
+For the ops folks, the quick and dirty instructions on how to do step 3:
+
+ssh -i /path/to/pmp_key ec2-user@support.pmp.io
+
+# switch to pmpbot
+sudo su - pmpbot
+cd ~/support.pmp.io
+git pull
+/opt/rbenv/shims/bundle exec rake tmp:cache:clear
+
+# back to ec2-user to restart service
+exit
+sudo restart unicorn.support
+
 Notice that this will skip several tests.  To get a full-run, you'll also need to set "public" credentials, and "admin" credentials for whatever `PMP_HOST` you're using.  (As detailed in the "Running" section above).  Don't have admin access?  Not to worry - Travis CI will do a complete test run.
 
 ## Issues and Contributing
