@@ -52,13 +52,13 @@ For the ops folks, the quick and dirty instructions on how to do step 3:
 
 ssh -i /path/to/pmp_key ec2-user@support.pmp.io
 
-# switch to pmpbot
+### switch to pmpbot
 sudo su - pmpbot
 cd ~/support.pmp.io
 git pull
 /opt/rbenv/shims/bundle exec rake tmp:cache:clear
 
-# back to ec2-user to restart service
+### back to ec2-user to restart service
 exit
 sudo restart unicorn.support
 
