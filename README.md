@@ -43,12 +43,12 @@ bundle exec rake
 ## Making updates to support.pmp.io
 
 The process: 
-1. Make changes and submit a pull request on GitHub (https://github.com/publicmediaplatform/support.pmp.io). 
+1. Make changes and submit a pull request on GitHub (https://github.com/npr/pmp-support-site). 
 2. Please turn on notifications for the repo if you haven’t done so.
-3. DS ops will merge the pull request.
-4. DS ops will pull the changes down on the server and clear cache/restart service so they take effect.
+3. Devops will merge the pull request.
+4. Devops will pull the changes down on the server and clear cache/restart service so they take effect.
 
-For the ops folks, the quick and dirty instructions on how to do step 3:
+For the devops folks, the quick and dirty instructions on how to do step 3:
 
 ssh -i /path/to/pmp_key ec2-user@support.pmp.io
 
@@ -63,10 +63,6 @@ exit
 sudo restart unicorn.support
 
 Notice that this will skip several tests.  To get a full-run, you'll also need to set "public" credentials, and "admin" credentials for whatever `PMP_HOST` you're using.  (As detailed in the "Running" section above).  Don't have admin access?  Not to worry - Travis CI will do a complete test run.
-
-## Issues and Contributing
-
-Report any bugs or feature-requests via this project's [issue tracker](http://github.com/publicmediaplatform/support.pmp.io/issues).  Or send me a fax.  Pull requests welcome!  Thanks.
 
 ## License
 
