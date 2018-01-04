@@ -45,10 +45,10 @@ bundle exec rake
 The process: 
 1. Make changes and submit a pull request on GitHub (https://github.com/npr/pmp-support-site). 
 2. Please turn on notifications for the repo if you haven’t done so.
-3. Devops will merge the pull request.
-4. Devops will pull the changes down on the server and clear cache/restart service so they take effect.
+3. NPR devops will merge the pull request.
+4. NPR devops will pull the changes down on the server and clear cache/restart service so they take effect.
 
-For the devops folks, the quick and dirty instructions on how to do step 3:
+For the NPR devops folks, the quick and dirty instructions on how to do step 3:
 
 ssh -i /path/to/pmp_key ec2-user@support.pmp.io
 
