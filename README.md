@@ -3,7 +3,7 @@ We have migrated to [nprsupport.desk.com](https://nprsupport.desk.com/) for bug 
 
 # PMP Support Site
 
-[![Build Status](https://travis-ci.org/publicmediaplatform/support.pmp.io.svg?branch=master)](https://travis-ci.org/publicmediaplatform/support.pmp.io)
+[![Build Status](https://travis-ci.org/npr/pmp-support-site.svg?branch=master)](https://travis-ci.org/npr/pmp-support-site)
 
 Rails application powering [support.pmp.io](https://support.pmp.io).
 
