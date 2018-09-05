@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.10'
 gem 'therubyracer',  platforms: :ruby
 gem 'turbolinks'
 gem 'negative_captcha'
