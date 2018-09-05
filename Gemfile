@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.10'
 gem 'therubyracer',  platforms: :ruby
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.5.3'
 gem 'negative_captcha'
 gem 'password_strength'
 gem 'pmp', '>= 0.5.3', require: true

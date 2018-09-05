@@ -50,10 +50,10 @@ GEM
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
-    coffee-script (2.3.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.7.1)
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     diff-lcs (1.3)
@@ -61,7 +61,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     excon (0.39.6)
-    execjs (2.2.1)
+    execjs (2.7.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
@@ -231,7 +231,7 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (1.4.1)
-    turbolinks (2.2.2)
+    turbolinks (2.5.4)
       coffee-rails
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
@@ -283,7 +283,7 @@ DEPENDENCIES
   sprockets (~> 2.12.5)
   sqlite3
   therubyracer
-  turbolinks
+  turbolinks (~> 2.5.3)
   uglifier (>= 1.3.0)
   unicorn
   whenever
