@@ -13,7 +13,7 @@ class PasswordReset < ActiveRecord::Base
   end
 
   def send_reset_email!
-    UserMailer.password_reset_email(self).deliver
+    UserMailer.password_reset_email(self).deliver_now
   end
 
   def host_url
