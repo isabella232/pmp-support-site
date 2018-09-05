@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'handlebars_assets'
 gem 'font-awesome-rails'
-gem 'rest-client'
+gem 'rest-client', '~> 2.0.0'
 gem 'redcarpet'
 gem 'rouge'
 
