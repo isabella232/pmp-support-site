@@ -53,7 +53,7 @@ feature 'client credentials' do
     expect(page.all('#main table tr').count).to eq(start_count + 1)
 
     while row = page.all('tr', text: 'support-app-credentials-spec').first
-      row.find('button').trigger('click')
+      row.find('button.destroy-client', visible: false).trigger('click')
       expect(page).to have_content('Really delete client?')
       page.find('.modal').click_button('Delete')
       expect(page).to have_content('Deleted client')
