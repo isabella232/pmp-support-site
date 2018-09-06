@@ -15,46 +15,46 @@ feature 'forgot password' do
     PasswordReset.create(email_address: 'foo@bar.com', user_name: pmp_username, user_guid: '12345678', host: pmp_host)
   end
 
-#  scenario 'fails to fill out all fields' do
-#    visit forgot_path
-#    click_button 'Email reset instructions'
-#    expect(page).to have_content('Please fill out all fields')
-#  end
+  scenario 'fails to fill out all fields' do
+    visit forgot_path
+    click_button 'Email reset instructions'
+    expect(page).to have_content('Please fill out all fields')
+  end
 
-#  scenario 'sets a fancy reverse captcha field' do
-#    visit forgot_path
-#    set_host_picker pmp_host
-#    fill_in 'Username', with: 'foobar'
-#    page.find('#username').set('foobar')
-#    click_button 'Email reset instructions'
-#    expect(page).to have_content('Hidden form fields were submitted')
-#  end
+  scenario 'sets a fancy reverse captcha field' do
+    visit forgot_path
+    set_host_picker pmp_host
+    fill_in 'Username', with: 'foobar'
+    page.find('#username').set('foobar')
+    click_button 'Email reset instructions'
+    expect(page).to have_content('Hidden form fields were submitted')
+  end
 
-#  scenario 'username not found', admin: true do
-#    visit forgot_path
-#    set_host_picker pmp_host
-#    fill_in 'Username', with: 'foobar93052758'
-#    click_button 'Email reset instructions'
-#    expect(page).to have_content('Unable to find a user by that name')
-#  end
+  scenario 'username not found', admin: true do
+    visit forgot_path
+    set_host_picker pmp_host
+    fill_in 'Username', with: 'foobar93052758'
+    click_button 'Email reset instructions'
+    expect(page).to have_content('Unable to find a user by that name')
+  end
 
-#  scenario 'too many users with that name' do
-#    allow_any_instance_of(PasswordResetController).to receive(:user_items) { [fake_user, fake_user] }
-#    visit forgot_path
-#    set_host_picker pmp_host
-#    fill_in 'Username', with: pmp_username
-#    click_button 'Email reset instructions'
-#    expect(page).to have_content('too many users with that name')
-#  end
+  scenario 'too many users with that name' do
+    allow_any_instance_of(PasswordResetController).to receive(:user_items) { [fake_user, fake_user] }
+    visit forgot_path
+    set_host_picker pmp_host
+    fill_in 'Username', with: pmp_username
+    click_button 'Email reset instructions'
+    expect(page).to have_content('too many users with that name')
+  end
 
-#  scenario 'user has no email' do
-#    allow_any_instance_of(PasswordResetController).to receive(:user_items) { [fake_user] }
-#    visit forgot_path
-#    set_host_picker pmp_host
-#    fill_in 'Username', with: pmp_username
-#    click_button 'Email reset instructions'
-#    expect(page).to have_content('No email associated with user')
-#  end
+  scenario 'user has no email' do
+    allow_any_instance_of(PasswordResetController).to receive(:user_items) { [fake_user] }
+    visit forgot_path
+    set_host_picker pmp_host
+    fill_in 'Username', with: pmp_username
+    click_button 'Email reset instructions'
+    expect(page).to have_content('No email associated with user')
+  end
 
   scenario 'invalid reset link' do
     expect { visit reset_password_path('foobar') }.to raise_error(ActiveRecord::RecordNotFound)
@@ -104,29 +104,29 @@ feature 'forgot password' do
     expect(PasswordReset.count).to eq(1)
   end
 
-#  scenario 'full reset path works', admin: true do
-#    visit forgot_path
-#    set_host_picker pmp_host
-#    fill_in 'Username', with: pmp_username
-#    click_button 'Email reset instructions'
-#    expect(page).to have_content('An email with reset instructions has been sent')
-#
-#    expect(PasswordReset.count).to eq(1)
-#    expect(PasswordReset.first.user_name).to eq(pmp_username)
-#
-#    expect(mails.count).to eq(1)
-#    expect(first_mail.from).to include('support@publicmediaplatform.org')
-#    expect(first_mail.subject).to eq("Reset your #{PasswordReset.first.host_title} password")
-#    expect(first_mail.body).to include(PasswordReset.first.token)
-#
-#    visit reset_password_path(PasswordReset.first.token)
-#    fill_in 'Username', with: pmp_username
-#    fill_in 'New password', with: pmp_password
-#    fill_in 'Confirm new password', with: pmp_password
-#    click_button 'Change password'
-#    expect(page).to have_content('Password changed!')
-#    expect(current_path).to eq(login_path)
-#    expect(PasswordReset.count).to eq(0)
-#  end
+  scenario 'full reset path works', admin: true do
+    visit forgot_path
+    set_host_picker pmp_host
+    fill_in 'Username', with: pmp_username
+    click_button 'Email reset instructions'
+    expect(page).to have_content('An email with reset instructions has been sent')
+
+    expect(PasswordReset.count).to eq(1)
+    expect(PasswordReset.first.user_name).to eq(pmp_username)
+
+    expect(mails.count).to eq(1)
+    expect(first_mail.from).to include('support@publicmediaplatform.org')
+    expect(first_mail.subject).to eq("Reset your #{PasswordReset.first.host_title} password")
+    expect(first_mail.body).to include(PasswordReset.first.token)
+
+    visit reset_password_path(PasswordReset.first.token)
+    fill_in 'Username', with: pmp_username
+    fill_in 'New password', with: pmp_password
+    fill_in 'Confirm new password', with: pmp_password
+    click_button 'Change password'
+    expect(page).to have_content('Password changed!')
+    expect(current_path).to eq(login_path)
+    expect(PasswordReset.count).to eq(0)
+  end
 
 end

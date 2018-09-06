@@ -12,8 +12,11 @@
         != flash.notice
     - else
       %span.help-block
-        %h2 Reset password
-        %p Please email support@pmp.io to have your password reset and emailed to you.
+        Instructions to reset your password will be emailed to the address associated with this username.
+    = render partial: 'sessions/hoster'
+    = negative_text_field_tag(@captcha, :username, class: 'form-control', autofocus: true, required: true, placeholder: 'Username')
+    %button.btn.btn-lg.btn-pmp.btn-block{type: 'submit'}
+      Email reset instructions
 
 -# nav links
 - content_for :logbox_links do
