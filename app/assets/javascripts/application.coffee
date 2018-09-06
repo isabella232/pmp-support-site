@@ -38,15 +38,6 @@ $(document).on 'page:load ready', ->
   if window.ga?
     ga (tracker) -> $('.ga-client-id').val(tracker.get('clientId'))
 
-  # statuspage
-  sp = new StatusPage.page(page: 'q5567b78h2jm')
-  sp.status
-    success: (data) ->
-      if data && data.status && data.status.description
-        $('#statuspage span').text(data.status.description)
-      else
-        $('#statuspage span').text('Unknown')
-
   # center modals
   $('body').on 'show.bs.modal', '.modal', ->
     $(this).css top: '50%', 'margin-top': -> -($(this).height() / 2)
