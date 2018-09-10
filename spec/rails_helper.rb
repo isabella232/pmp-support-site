@@ -22,6 +22,16 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # pending migrations?
 ActiveRecord::Migration.maintain_test_schema!
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+
+    # Choose one or more libraries:
+    with.library :rails
+  end
+end
+
 #
 # helper for heavyweight rspecs
 #

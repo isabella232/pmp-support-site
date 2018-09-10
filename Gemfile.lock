@@ -214,6 +214,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -287,6 +289,7 @@ DEPENDENCIES
   rouge
   rspec-rails (~> 3.5.0)
   sass-rails (~> 5.0)
+  shoulda-matchers (~> 3.1)
   simplecov
   spring
   sprockets (~> 2.12.5)
@@ -296,3 +299,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   whenever
+
+BUNDLED WITH
+   1.16.4

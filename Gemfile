@@ -33,6 +33,7 @@ group :test, :development do
   gem 'poltergeist', '~> 1.18.0'
   gem 'rake'
   gem 'simplecov', require: false
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :production do
