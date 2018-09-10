@@ -1,6 +1,14 @@
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
+
+require 'simplecov'
+unless ENV['COVERAGE'] == 'false'
+  SimpleCov.start do
+    add_filter 'spec/'
+  end
+end
+
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'

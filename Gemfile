@@ -22,6 +22,10 @@ gem 'sprockets', '~> 2.12.5'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+group :development do
+  gem 'brakeman'
+end
+
 group :test, :development do
   gem 'pry', require: true
   gem 'spring'
@@ -32,6 +36,7 @@ group :test, :development do
   gem 'capybara'
   gem 'poltergeist', '~> 1.18.0'
   gem 'rake'
+  gem 'simplecov', require: false
 end
 
 group :production do

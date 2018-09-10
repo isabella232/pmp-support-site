@@ -37,6 +37,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (6.0.4)
+    brakeman (4.3.1)
     builder (3.2.3)
     capybara (2.18.0)
       addressable
@@ -58,6 +59,7 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     diff-lcs (1.3)
+    docile (1.3.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
@@ -213,6 +215,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     slop (3.6.0)
     spring (1.1.3)
     sprockets (2.12.5)
@@ -259,6 +266,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  brakeman
   capybara
   coffee-rails (~> 4.0.0)
   font-awesome-rails
@@ -281,6 +289,7 @@ DEPENDENCIES
   rouge
   rspec-rails (~> 3.5.0)
   sass-rails (~> 5.0)
+  simplecov
   spring
   sprockets (~> 2.12.5)
   sqlite3
@@ -289,6 +298,3 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   whenever
-
-BUNDLED WITH
-   1.16.4
