@@ -22,10 +22,6 @@ gem 'sprockets', '~> 2.12.5'
 
 gem 'rack-cors', :require => 'rack/cors'
 
-group :development do
-  gem 'brakeman'
-end
-
 group :test, :development do
   gem 'pry', require: true
   gem 'spring'
