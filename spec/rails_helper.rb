@@ -1,6 +1,14 @@
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
+
+require 'simplecov'
+unless ENV['COVERAGE'] == 'false'
+  SimpleCov.start do
+    add_filter 'spec/'
+  end
+end
+
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
@@ -13,6 +21,16 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # pending migrations?
 ActiveRecord::Migration.maintain_test_schema!
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+
+    # Choose one or more libraries:
+    with.library :rails
+  end
+end
 
 #
 # helper for heavyweight rspecs
