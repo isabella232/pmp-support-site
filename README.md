@@ -13,37 +13,39 @@ Documentation is parsed from the markdown files in the `docs` directory.  They w
 
 ## Running
 
-In order to really get this thing cooking, you need to provide several environment variables.  Firstly, you need PMP admin credentials to be able to reset user passwords:
+In order to really get this thing cooking, you need to provide several environment variables.  Firstly: `cp .env.example .env`
+
+Then you need PMP admin credentials to be able to reset user passwords, set the following variables on the recent generated `.env` file.
 
 ```
-export SANDBOX_CLIENT_ID=the-sand-admin-client-id
-export SANDBOX_CLIENT_SECRET=the-sand-admin-client-secret
-export PRODUCTION_CLIENT_ID=the-prod-admin-client-id
-export PRODUCTION_CLIENT_SECRET=the-prod-admin-client-secret
+SANDBOX_CLIENT_ID=the-sand-admin-client-id
+SANDBOX_CLIENT_SECRET=the-sand-admin-client-secret
+PRODUCTION_CLIENT_ID=the-prod-admin-client-id
+PRODUCTION_CLIENT_SECRET=the-prod-admin-client-secret
 ```
 
 Secondly, you'll need some production, `READ-ONLY` credentials for the public API proxy:
 
 ```
-export PRODUCTION_PUBLIC_ID=some-prod-client-id
-export PRODUCTION_PUBLIC_SECRET=some-prod-client-secret
+PRODUCTION_PUBLIC_ID=some-prod-client-id
+PRODUCTION_PUBLIC_SECRET=some-prod-client-secret
 ```
 
 ## Testing
 
-This app is currently 100% non-recorded integration tests.  So you'll need to provide a PMP login (as if you were a user logging into the site).  Something like this:
+This app is currently 100% non-recorded integration tests. So you'll need to provide a PMP login (as if you were a user logging into the site). To do so firstly: `cp .env.test.example .env.test`, you need to set the following variables on `.env.test`
 
 ```
-export PMP_HOST=https://api-sandbox.pmp.io
-export PMP_USERNAME=pmpuser94
-export PMP_PASSWORD=p&ssw0rd
+PMP_HOST=https://api-sandbox.pmp.io
+PMP_USERNAME=pmpuser94
+PMP_PASSWORD=p&ssw0rd
 bundle exec rake
 ```
 
 ## Making updates to support.pmp.io
 
-The process: 
-1. Make changes and submit a pull request on GitHub (https://github.com/npr/pmp-support-site). 
+The process:
+1. Make changes and submit a pull request on GitHub (https://github.com/npr/pmp-support-site).
 2. Please turn on notifications for the repo if you haven’t done so.
 3. NPR devops will merge the pull request.
 4. NPR devops will pull the changes down on the server and clear cache/restart service so they take effect.

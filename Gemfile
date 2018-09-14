@@ -19,6 +19,7 @@ gem 'rest-client', '~> 2.0.0'
 gem 'redcarpet'
 gem 'rouge'
 gem 'sprockets', '~> 2.12.5'
+gem 'dotenv-rails'
 
 gem 'rack-cors', :require => 'rack/cors'
 
