@@ -12,8 +12,4 @@ describe 'documentation routing', type: :routing do
   it "routes GET '/terms' to 'docs#terms_of_use'" do
     expect(get('/terms')).to route_to('docs#terms_of_use')
   end
-
-  it "routes GET '/service' to 'docs#service_level_agreement'" do
-    expect(get('/service')).to route_to('docs#service_level_agreement')
-  end
 end

@@ -1,33 +1,15 @@
 .container
   .row
-    .col-sm-4.col-xs-6
+    .col-xs-6
       %ul
         %li
-          = link_to 'https://github.com/publicmediaplatform/pmp-issues/issues' do
-            %i.fa.fa-fw.fa-lg.fa-bug>
-            Issue Queue
-        %li
-          = link_to 'https://discuss.pmp.io' do
-            %i.fa.fa-fw.fa-lg.fa-comment>
-            Technical Discussion
-    .col-sm-4.col-xs-6
-      %ul
-        %li
-          = link_to 'http://publicmediaplatform.org', class: 'hidden-xs' do
+          = link_to 'https://digitalservices.npr.org/term/public-media-platform', class: 'hidden-xs' do
             %i.fa.fa-fw.fa-lg.fa-bookmark>
             publicmediaplatform.org
           = link_to 'http://publicmediaplatform.org', class: 'visible-xs' do
             %i.fa.fa-fw.fa-lg.fa-bookmark>
             pmp.io
-        %li
-          = link_to 'http://twitter.com/pmpio' do
-            %i.fa.fa-fw.fa-lg.fa-twitter>
-            pmpio
-        %li
-          = link_to 'https://freenode.net' do
-            %i.fa.fa-fw.fa-lg.fa-comments>
-            \#pmp on freenode
-    .col-sm-4.hidden-xs
+    .col-sm-6.hidden-xs
       %ul
         %li
           = link_to terms_path do
@@ -36,4 +18,4 @@
         %li
           %p
             %i.fa.fa-fw.fa-lg.fa-copyright>
-            2015 Public Media Platform
+            = "#{Date.current.year} Public Media Platform"
