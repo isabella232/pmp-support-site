@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get 'guides'  => 'docs#users'
   get 'docs'    => 'docs#developers'
   get 'terms'   => 'docs#terms_of_use'
-  get 'service' => 'docs#service_level_agreement'
 
   # user sessions
   get  'login'       => 'sessions#login'
