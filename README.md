@@ -46,23 +46,19 @@ bundle exec rake
 
 The process:
 1. Make changes and submit a pull request on GitHub (https://github.com/npr/pmp-support-site).
-2. Please turn on notifications for the repo if you haven’t done so.
-3. NPR devops will merge the pull request.
-4. NPR devops will pull the changes down on the server and clear cache/restart service so they take effect.
+1. Please turn on notifications for the repo if you haven’t done so.
+1. NPR DevOps will merge the pull request.
+1. NPR DevOps will pull the changes down on the server and clear cache/restart service so they take effect.
 
-For the NPR devops folks, the quick and dirty instructions on how to do step 3:
-
-ssh -i /path/to/pmp_key ec2-user@support.pmp.io
-
-### switch to pmpbot
-sudo su - pmpbot
-cd ~/support.pmp.io
-git pull
-/opt/rbenv/shims/bundle exec rake tmp:cache:clear
-
-### back to ec2-user to restart service
-exit
-sudo restart unicorn.support
+To deploy the changes:
+- ssh -i /path/to/pmp_key ec2-user@support.pmp.io
+- sudo su - pmpbot
+- cd ~/support.pmp.io
+- git pull
+- RAILS_ENV=production bundle exec rake assets:precompile
+- RAILS_ENV=production bundle exec rake tmp:cache:clear
+- exit
+- sudo restart unicorn.support
 
 Notice that this will skip several tests.  To get a full-run, you'll also need to set "public" credentials, and "admin" credentials for whatever `PMP_HOST` you're using.  (As detailed in the "Running" section above).  Don't have admin access?  Not to worry - Travis CI will do a complete test run.
 
