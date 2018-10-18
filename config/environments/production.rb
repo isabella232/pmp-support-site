@@ -68,12 +68,12 @@ Rails.application.configure do
   if Rails.application.secrets.smtp_user.present? && Rails.application.secrets.smtp_pass.present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address:              'smtp.mandrillapp.com',
+      address:              'smtp.gmail.com',
       port:                 587,
-      domain:               'support.pmp.io',
+      domain:               'publicmediaplatform.org',
       user_name:            Rails.application.secrets.smtp_user,
       password:             Rails.application.secrets.smtp_pass,
-      authentication:       'plain',
+      authentication:       :plain,
       enable_starttls_auto: true,
     }
   end
