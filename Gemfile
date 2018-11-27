@@ -22,6 +22,8 @@ gem 'sprockets', '~> 2.12.5'
 gem 'dotenv-rails'
 
 gem 'rack-cors', :require => 'rack/cors'
+gem 'rack', '>= 1.6.11'
+gem 'loofah', '>= 2.2.3'
 
 group :test, :development do
   gem 'pry', require: true
