@@ -1,6 +1,11 @@
 language: ruby
 rvm:
 - 2.4.0
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_pmpsupport_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
 before_install:
 - bundle config build.nokogiri --use-system-libraries
 bundler_args: "--without production"

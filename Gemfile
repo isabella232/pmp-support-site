@@ -29,6 +29,7 @@ gem 'loofah', '>= 2.2.3'
 gem 'pg', '~> 0.18'
 
 group :test, :development do
+  gem 'puma'
   gem 'pry', require: true
   gem 'spring'
   gem 'letter_opener'
