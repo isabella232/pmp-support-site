@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.10'
+ruby '2.4.0'
+
+gem 'rails', '4.2.11.1'
 gem 'therubyracer',  platforms: :ruby
 gem 'turbolinks', '~> 2.5.3'
 gem 'negative_captcha'
@@ -34,7 +36,6 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.5.0'
   gem 'capybara'
   gem 'poltergeist', '~> 1.18.0'
-  gem 'rake'
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.1'
 end
