@@ -26,13 +26,13 @@ gem 'dotenv-rails'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rack', '>= 1.6.11'
 gem 'loofah', '>= 2.2.3'
+gem 'pg', '~> 0.18'
 
 group :test, :development do
   gem 'pry', require: true
   gem 'spring'
   gem 'letter_opener'
   gem 'quiet_assets'
-  gem 'sqlite3'
   gem 'rspec-rails', '~> 3.5.0'
   gem 'capybara'
   gem 'poltergeist', '~> 1.18.0'
@@ -41,6 +41,5 @@ group :test, :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'unicorn'
 end

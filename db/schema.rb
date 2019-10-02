@@ -13,7 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20140927201914) do
 
-  create_table "password_resets", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "password_resets", force: :cascade do |t|
     t.string   "token"
     t.string   "email_address"
     t.string   "user_name"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140927201914) do
     t.datetime "updated_at"
   end
 
-  create_table "recent_stories", force: true do |t|
+  create_table "recent_stories", force: :cascade do |t|
     t.string   "story_guid"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140927201914) do
     t.date     "published_date"
   end
 
-  create_table "user_stats", force: true do |t|
+  create_table "user_stats", force: :cascade do |t|
     t.string   "user_guid"
     t.datetime "created_at"
     t.datetime "updated_at"
