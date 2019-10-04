@@ -55,6 +55,8 @@ To deploy the changes:
 - sudo su - pmpbot
 - cd ~/support.pmp.io
 - git pull
+- `bundle exec` (if Gemfile or Gemfile.lock was updated)
+- `rake db:migrate` (if new files in db/migrate/)
 - RAILS_ENV=production bundle exec rake assets:precompile
 - RAILS_ENV=production bundle exec rake tmp:cache:clear
 - exit
