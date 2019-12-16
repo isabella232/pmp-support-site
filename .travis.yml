@@ -1,8 +1,11 @@
 language: ruby
 rvm:
 - 2.3.0
-# before_install:
-# - bundle config build.nokogiri --use-system-libraries
+install:
+  - gem uninstall bundler
+  - gem install bundler --version '1.17.3'
+before_install:
+- bundle config build.nokogiri --use-system-libraries
 bundler_args: "--without production"
 sudo: false
 notifications:
