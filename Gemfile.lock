@@ -277,6 +277,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   dotenv-rails
+  excon (~> 0.71.0)
   font-awesome-rails
   haml
   handlebars_assets

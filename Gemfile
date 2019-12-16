@@ -26,6 +26,7 @@ gem 'dotenv-rails'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rack', '>= 1.6.11'
 gem 'loofah', '>= 2.2.3'
+gem 'excon', '~> 0.71.0'
 
 group :test, :development do
   gem 'pry', require: true
