@@ -1,7 +1,7 @@
 language: ruby
 install:
   - gem uninstall bundler
-  - gem install bundler --version '1.16.4'
+  - gem install bundler --version '1.19.0'
 rvm:
 - 2.3.0
 bundler_args: "--without production"
