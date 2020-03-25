@@ -15,6 +15,7 @@ require 'capybara/poltergeist'
 
 # headless js testing
 Capybara.javascript_driver = :poltergeist
+Capybara.server = :webrick
 
 # support files
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }

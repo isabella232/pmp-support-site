@@ -1,12 +1,16 @@
 language: ruby
+services:
+  - postgresql
 rvm:
-- 2.3.0
+- 2.4.0
 install:
-  - gem uninstall bundler
-  - gem install bundler --version '1.17.3'
+  # - gem uninstall bundler
+  # - gem install bundler --version '1.9.0'
 before_install:
 - bundle config build.nokogiri --use-system-libraries
 bundler_args: "--without production"
+before_script:
+  - psql -c 'create database pmpsupport_test;' -U postgres
 sudo: false
 notifications:
   slack:

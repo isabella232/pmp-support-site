@@ -29,6 +29,5 @@ module PmpSupport
         resource '*', :headers => :any, :methods => [:get, :options]
       end
     end
-
   end
 end
