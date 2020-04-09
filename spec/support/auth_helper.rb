@@ -17,7 +17,7 @@ module AuthHelper
 
   # bypass javascript host dropdown
   def set_host_picker(host)
-    Rails.application.secrets.pmp_hosts.each do |name, cfg|
+    Rails.application.secrets.pmp_hosts.with_indifferent_access.each do |name, cfg|
       host = name if cfg['host'].include?(host)
     end
     find('select[name="host"]', visible: false).find('option[value="' + host + '"]', visible: false).select_option

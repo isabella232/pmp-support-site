@@ -9,7 +9,7 @@ module PmpUserFilters
   SESSION_TIMEOUT = 24.hours
 
   included do
-    before_filter :check_last_seen_at
+    before_action :check_last_seen_at
   end
 
 protected

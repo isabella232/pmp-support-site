@@ -1,5 +1,5 @@
 class CredentialsController < ApplicationController
-  before_filter :require_login!
+  before_action :require_login!
 
   # GET /credentials
   def index
@@ -9,7 +9,6 @@ class CredentialsController < ApplicationController
 
   # POST /credentials
   def create
-    client_params = params.slice(:scope, :label, :token_expires_in)
     cred = current_user.auth_client.credentials.create(client_params)
     ga_event!('credentials', 'create')
     redirect_to credentials_path, notice: "Created client #{cred[:client_id]}"
@@ -26,6 +25,12 @@ class CredentialsController < ApplicationController
   rescue Faraday::ClientError => e
     ga_event!('credentials', 'failure')
     redirect_to credentials_path, alert: "Unable to delete client: #{e}"
+  end
+
+  private
+
+  def client_params
+    params.permit(:scope, :label, :token_expires_in)
   end
 
 end

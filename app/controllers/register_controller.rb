@@ -1,7 +1,7 @@
 class RegisterController < ApplicationController
 
-  before_filter :setup_negative_captcha
-  before_filter :require_not_login!
+  before_action :setup_negative_captcha
+  before_action :require_not_login!
 
   # GET /register
   def new

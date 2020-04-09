@@ -43,7 +43,7 @@ class Remote::User
 
   # get host url as defined by secrets.yml
   def host
-    Rails.application.secrets.pmp_hosts[@env].try(:[], 'host') || 'unknown'
+    Rails.application.secrets.pmp_hosts.with_indifferent_access[@env].try(:[], 'host') || 'unknown'
   end
 
   # unique key per user+host

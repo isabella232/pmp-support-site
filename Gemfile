@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.4.0'
+ruby '2.5.0'
 
-gem 'rails', '5.0.7.2'
+gem 'rails', '5.2.4.2'
 gem 'therubyracer',  platforms: :ruby
 gem 'turbolinks'
 gem 'negative_captcha'
@@ -20,7 +20,7 @@ gem 'font-awesome-rails'
 gem 'rest-client'
 gem 'redcarpet'
 gem 'rouge'
-gem 'sprockets'
+gem 'sprockets', '3.7.2'
 gem 'dotenv-rails'
 
 gem 'rack-cors', require: 'rack/cors'
@@ -31,6 +31,7 @@ gem 'pg'
 gem 'oauth2', '1.2.0'
 
 group :test, :development do
+  gem 'rb-readline'
   gem 'pry', require: true
   gem 'spring'
   gem 'letter_opener'

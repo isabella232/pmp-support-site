@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
-  before_filter :require_login!,     only:   [:add_account, :do_add_account, :switch, :logout]
-  before_filter :require_not_login!, except: [:add_account, :do_add_account, :switch, :logout]
+  before_action :require_login!,     only:   [:add_account, :do_add_account, :switch, :logout]
+  before_action :require_not_login!, except: [:add_account, :do_add_account, :switch, :logout]
 
   # GET /login
   def login
@@ -72,7 +72,7 @@ protected
     if !%w(host username password).all? { |k| params[k].present? }
       flash.now.alert = 'Please fill out all fields'
       false
-    elsif !Rails.application.secrets.pmp_hosts.keys.include?(params['host'])
+    elsif !Rails.application.secrets.pmp_hosts.with_indifferent_access.keys.include?(params['host'])
       flash.now.alert = 'Invalid host'
       false
     else

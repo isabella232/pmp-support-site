@@ -1,5 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'uri'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -23,7 +24,7 @@ module PmpSupport
     # include libs
     config.autoload_paths << Rails.root.join('lib')
 
-    config.middleware.insert_before "Rack::Sendfile", "Rack::Cors" do
+    config.middleware.insert_before Rack::Sendfile, Rack::Cors do
       allow do
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :options]

@@ -17,8 +17,8 @@ class PasswordReset < ActiveRecord::Base
   end
 
   def host_url
-    if Rails.application.secrets.pmp_hosts[self.host]
-      Rails.application.secrets.pmp_hosts[self.host]['host']
+    if Rails.application.secrets.pmp_hosts.with_indifferent_access[self.host]
+      Rails.application.secrets.pmp_hosts.with_indifferent_access[self.host]['host']
     else
       'unknown'
     end

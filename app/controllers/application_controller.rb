@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include PmpUserFilters
 
   protect_from_forgery with: :exception
-  before_filter :set_mailer_host
+  before_action :set_mailer_host
 
 protected
 

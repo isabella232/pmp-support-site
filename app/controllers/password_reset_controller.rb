@@ -1,8 +1,8 @@
 class PasswordResetController < ApplicationController
   include PmpPassword
 
-  before_filter :setup_negative_captcha
-  before_filter :require_not_login!
+  before_action :setup_negative_captcha
+  before_action :require_not_login!
 
   # GET /forgot
   def new
@@ -16,7 +16,7 @@ class PasswordResetController < ApplicationController
     elsif !params['host'].present? || !@captcha.values['username'].present?
       flash.now.alert = 'Please fill out all fields'
       render :new
-    elsif !Rails.application.secrets.pmp_hosts.keys.include?(params['host'])
+    elsif !Rails.application.secrets.pmp_hosts.with_indifferent_access.keys.include?(params['host'])
       flash.now.alert = 'Invalid host'
       render :new
     elsif user_items.nil?

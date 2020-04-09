@@ -1,5 +1,5 @@
 -# host picking dropdown
-- pmp_hosts = Rails.application.secrets.pmp_hosts
+- pmp_hosts = Rails.application.secrets.pmp_hosts.with_indifferent_access
 - default_host = pmp_hosts.keys.last
 .btn-group.with-prefix
   .prefix.btn-pmp
@@ -7,4 +7,4 @@
   %select.hostpicker{name: :host}
     - pmp_hosts.each do |name, cfg|
       %option{value: name, selected: name == (params[:host] || default_host)}
-        = cfg['host'].gsub(/^https?:\/\/|\/$/, '')
+        = cfg[:host].gsub(/^https?:\/\/|\/$/, '')

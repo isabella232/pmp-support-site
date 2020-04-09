@@ -15,7 +15,7 @@ class ProxyController < ApplicationController
       resp = make_request(current_user)
       render json: resp.body, content_type: resp.headers['content-type'], status: resp.status
     else
-      render text: 'Unauthorized', status: 401
+      render html: 'Unauthorized', status: 401
     end
   end
 
@@ -61,7 +61,7 @@ protected
     if session["#{proxy_env}_public_user"].is_a?(Hash)
       Remote::User.new(session["#{proxy_env}_public_user"])
     else
-      cfg = Rails.application.secrets.pmp_hosts[proxy_env]
+      cfg = Rails.application.secrets.pmp_hosts.with_indifferent_access[proxy_env]
       u = Remote::User.new(env: proxy_env, client_id: cfg['public_id'], client_secret: cfg['public_secret'])
       session["#{proxy_env}_public_user"] = u.as_json
       u
